@@ -6,6 +6,7 @@
 package cec;
 
 import Entidades.Usuario;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -183,12 +184,13 @@ public class Main extends javax.swing.JFrame {
       FontMetrics fm = g.getFontMetrics(g.getFont());
       int charWidth = fm.charWidth('x');
       int maxAscent = fm.getMaxAscent();
-      g.drawString("x", textRect.x + textRect.width - 3, textRect.y + textRect.height - 3);
-      g.drawRect(textRect.x+textRect.width-5,
-                 textRect.y+textRect.height-maxAscent, charWidth+2, maxAscent-1);
+      g.drawString("x", textRect.x + textRect.width - 1, textRect.y + textRect.height - 4);
+      g.drawRect(textRect.x+textRect.width-3,
+                 textRect.y+textRect.height-maxAscent-1, charWidth+2, maxAscent-1);
       xRect = new Rectangle(textRect.x+textRect.width-5,
-                 textRect.y+textRect.height-maxAscent, charWidth+2, maxAscent-1);
+                 textRect.y+textRect.height-maxAscent-1, charWidth+2, maxAscent-1);
       g.setFont(f);
+      
     }
   
     public class MyMouseHandler extends MouseAdapter {
