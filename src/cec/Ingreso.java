@@ -175,7 +175,7 @@ public class Ingreso extends javax.swing.JFrame {
         if (this.fieldIp.getText().equals("test")) {
             Usuario current_user = new Usuario();
             current_user.setNombre("test");
-            current_user.setId("1");
+            current_user.setId(1);
             main.setCurrent_user(current_user);
 
             main.setVisible(true);
@@ -188,12 +188,12 @@ public class Ingreso extends javax.swing.JFrame {
                 rs = st.executeQuery(consulta);
                 String pass = new String();
                 conn.close();
-                String id_usuario = "";
+                int id_usuario = 0;
                 while (rs.next()) {
                     pass = rs.getString("contrasena");
                     if (this.fieldPass.getText().equals(pass)) {
                         this.ingresoCorrecto = true;
-                        id_usuario = rs.getString("id");
+                        id_usuario = rs.getInt("id");
 
                     }
                 }
