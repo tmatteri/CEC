@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Outputs;
-
 import Entidades.Usuario;
 import cec.JavaPostgreSQL;
 import java.awt.List;
@@ -18,8 +17,9 @@ import javax.swing.DefaultListModel;
 
 import javax.swing.table.DefaultTableColumnModel;
 import java.util.logging.*;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
-
+import Inputs.*;
 /**
  *
  * @author Programación 2
@@ -63,7 +63,7 @@ public class Panel_Usuarios extends javax.swing.JPanel {
             JavaPostgreSQL conexion = new JavaPostgreSQL();
             conn = conexion.getConnection();
             Statement st = conn.createStatement();
-            String consulta = "SELECT id, nombre, email, activo FROM usuarios;";
+            String consulta = "SELECT id, nombre, email, anulado FROM usuarios;";
             rs = st.executeQuery(consulta); //ejecutamos la consulta
             Object[] datos = new Object[4];//creamos un object de la cantidad de COLUMNAS
 
@@ -75,7 +75,6 @@ public class Panel_Usuarios extends javax.swing.JPanel {
 
                 }
                 modelo.addRow(datos);//cargamos el objeto en el model
-
             }
             rs.close();
         }
@@ -130,6 +129,11 @@ public class Panel_Usuarios extends javax.swing.JPanel {
         jB_Baja_Usuario.setText("Baja");
 
         jB_Modificar_Usuario.setText("Modificar");
+        jB_Modificar_Usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_Modificar_UsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -173,6 +177,17 @@ public class Panel_Usuarios extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jB_Modificar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_UsuarioActionPerformed
+        // TODO add your handling code here:
+      
+        Input_Usuarios JframeUsuarios = new Input_Usuarios();
+        JframeUsuarios.setVisible(true);
+        
+        
+        
+        
+    }//GEN-LAST:event_jB_Modificar_UsuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

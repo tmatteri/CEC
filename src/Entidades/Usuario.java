@@ -41,9 +41,13 @@ public class Usuario extends Entidad {
     }
 
     public static int insert(int id,String nombre, String contrasena, String email,boolean activo) {
-        String campos = "id,nombre,contrasena,email,activo";
+        String campos = "id,nombre,contrasena,email,anulado";
         String valores = id + ",'" + nombre + "','" + contrasena + "','" + email + "'," + activo;
         return Tabla.insert(tabla, campos, valores);
+    }
+    public  void Guardar(){
+        Usuario.insert(this.id, this.nombre, this.pass,this.mail,this.anulado);
+               
     }
 
     public static int delete(int id) {
