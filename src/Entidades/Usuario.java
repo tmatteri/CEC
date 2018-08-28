@@ -5,16 +5,18 @@
  */
 package Entidades;
 
+import cec.Tabla;
+import java.sql.ResultSet;
+
 /**
  *
  * @author Programación 2
  */
-public class Usuario extends Entidad{
+public class Usuario extends Entidad {
 
-
-    
     private String pass;
     private Permisos permisos[];
+    private static final String tabla = "usuarios";
 
     public String getPass() {
         return pass;
@@ -23,22 +25,37 @@ public class Usuario extends Entidad{
     public void setPass(String pass) {
         this.pass = pass;
     }
-    
-    public void cargaPermisos(){
-        
-    }
-    
-    public boolean verificaPermisos(){
-        
-        return true;
-        
-    }
-    
-    public Usuario() {
-                
+
+    public void cargaPermisos() {
+
     }
 
-    
-    
-    
+    public boolean verificaPermisos() {
+
+        return true;
+
+    }
+
+    public Usuario() {
+
+    }
+
+    public static int insert(int id,String nombre, String contrasena, String email,boolean activo) {
+        String campos = "id,nombre,contrasena,email,activo";
+        String valores = id + ",'" + nombre + "','" + contrasena + "','" + email + "'," + activo;
+        return Tabla.insert(tabla, campos, valores);
+    }
+
+    public static int delete(int id) {
+        return Tabla.delete(tabla, id);
+    }
+
+    public static int update(int id, String campo, String valor) {
+        return Tabla.update(tabla, id, campo, valor);
+    }
+
+    public static ResultSet select() {
+        return Tabla.select(tabla);
+    }
+
 }

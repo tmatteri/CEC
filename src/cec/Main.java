@@ -49,7 +49,7 @@ public class Main extends javax.swing.JFrame {
 
     private Usuario current_user = new Usuario();
     Panel_Usuarios panel_usuarios = new Panel_Usuarios();
-   
+    Panel_Clientes panel_clientes = new Panel_Clientes();
     public void setCurrent_user(Usuario user) {
 
         this.current_user = user;
@@ -66,11 +66,30 @@ public class Main extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                JOptionPane.showMessageDialog(Main.this, "click");
+                //JOptionPane.showMessageDialog(Main.this, "click");
+                panel_usuarios.setCurrent_user(current_user);
+               // panel_usuarios.CargaUsuarios();
                 jTabbedPane1.addTab("Usuarios   ", panel_usuarios);
+                
                 
             }
         });
+        menu_clientes.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                //JOptionPane.showMessageDialog(Main.this, "click");
+                //panel_usuarios.setCurrent_user(current_user);
+               // panel_usuarios.CargaUsuarios();
+                jTabbedPane1.addTab("Clientes   ", panel_clientes);
+                
+                
+            }
+        });
+        
+        
+        
     }
 
     private void CrearMenu() {
@@ -98,17 +117,9 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        ContenidoGeneral = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-
-        ContenidoGeneral.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ContenidoGeneralMouseClicked(evt);
-            }
-        });
-        jTabbedPane1.addTab("General   ", ContenidoGeneral);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,17 +129,13 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("General");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ContenidoGeneralMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContenidoGeneralMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ContenidoGeneralMouseClicked
 
     /**
      * @param args the command line arguments
@@ -206,7 +213,6 @@ public class Main extends javax.swing.JFrame {
     }
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane ContenidoGeneral;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

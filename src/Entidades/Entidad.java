@@ -10,10 +10,10 @@ package Entidades;
  * @author Programación 2
  */
 public class Entidad {
-    
-    protected String id;
+
+    protected int id;
     protected String nombre;
-  protected String cuit;
+    protected String cuit;
     protected String telefono;
     protected String mail;
     protected boolean anulado;
@@ -25,8 +25,8 @@ public class Entidad {
     public void setAnulado(boolean anulado) {
         this.anulado = anulado;
     }
-    
-    public void setId(String id) {
+
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -46,7 +46,7 @@ public class Entidad {
         this.mail = mail;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -65,7 +65,5 @@ public class Entidad {
     public String getMail() {
         return mail;
     }
-  
-    
-    
+
 }
