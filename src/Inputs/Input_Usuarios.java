@@ -101,7 +101,7 @@ public class Input_Usuarios extends javax.swing.JFrame {
 
         jLabel5.setText("Permisos");
 
-        jB_Baja_Usuario.setText("Salvar");
+        jB_Baja_Usuario.setText("Guardar");
 
         jB_Modificar_Usuario.setText("Cancelar");
 
