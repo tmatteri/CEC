@@ -172,10 +172,10 @@ public class Ingreso extends javax.swing.JFrame {
         Connection conn = null;
         JavaPostgreSQL conexion = new JavaPostgreSQL();
 
-        if (this.fieldIp.getText() != "test") {
+        if (this.fieldIp.getText().equals("test")) {
             Usuario current_user = new Usuario();
             current_user.setNombre("test");
-            current_user.setId(1);
+            current_user.setId("1");
             main.setCurrent_user(current_user);
 
             main.setVisible(true);

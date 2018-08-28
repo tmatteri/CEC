@@ -3,22 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clases;
+package Entidades;
 
 /**
  *
  * @author Tomas
  */
-public class Cuentas {
+public class Productos {
     
     private int id;
     private String descripcion;
-    private float saldo;
+    private int stock;
+    private float precio;
 
-    public Cuentas(int id, String descripcion, float saldo) {
+    public Productos(int id, String descripcion, int stock, float precio) {
         this.id = id;
         this.descripcion = descripcion;
-        this.saldo = saldo;
+        this.stock = stock;
+        this.precio = precio;
     }
 
     public int getId() {
@@ -37,12 +39,20 @@ public class Cuentas {
         this.descripcion = descripcion;
     }
 
-    public float getSaldo() {
-        return saldo;
+    public int getStock() {
+        return stock;
     }
 
-    public void setSaldo(float saldo) {
-        this.saldo = saldo;
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
     
     

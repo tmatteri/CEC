@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clases;
+package Entidades;
 
+import Entidades.Cobradores;
+import Entidades.Entidad;
 import java.sql.Time;
 import java.util.Date;
 
@@ -15,7 +17,7 @@ import java.util.Date;
 public class Comprobantes {
     private int id;
     private TiposDeComprobantes tipo_de_comprobante;
-    private Entidades entidad;
+    private Entidad entidad;
     private String descripcion;
     private Date fecha_creacion;
     private Date fecha_vencimiento;
@@ -28,7 +30,7 @@ public class Comprobantes {
     private Time hora_de_entrega;
     private Date fecha_de_entrega;
 
-    public Comprobantes(int id, TiposDeComprobantes tipo_de_comprobante, Entidades entidad, String descripcion, Date fecha_creacion, Date fecha_vencimiento, float total, Cobradores id_cobrador, int dias_financiacion, int dias_restantes, String estado, String lugar_de_entrega, Time hora_de_entrega, Date fecha_de_entrega) {
+    public Comprobantes(int id, TiposDeComprobantes tipo_de_comprobante, Entidad entidad, String descripcion, Date fecha_creacion, Date fecha_vencimiento, float total, Cobradores id_cobrador, int dias_financiacion, int dias_restantes, String estado, String lugar_de_entrega, Time hora_de_entrega, Date fecha_de_entrega) {
         this.id = id;
         this.tipo_de_comprobante = tipo_de_comprobante;
         this.entidad = entidad;
@@ -61,11 +63,11 @@ public class Comprobantes {
         this.tipo_de_comprobante = tipo_de_comprobante;
     }
 
-    public Entidades getEntidad() {
+    public Entidad getEntidad() {
         return entidad;
     }
 
-    public void setEntidad(Entidades entidad) {
+    public void setEntidad(Entidad entidad) {
         this.entidad = entidad;
     }
 

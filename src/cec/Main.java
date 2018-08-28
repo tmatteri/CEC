@@ -5,6 +5,8 @@
  */
 package cec;
 
+import Outputs.Panel_Clientes;
+import Outputs.Panel_Usuarios;
 import Entidades.Usuario;
 import java.awt.Color;
 import java.awt.Component;
@@ -17,6 +19,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.Parent;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -68,7 +74,13 @@ public class Main extends javax.swing.JFrame {
                 
                 //JOptionPane.showMessageDialog(Main.this, "click");
                 panel_usuarios.setCurrent_user(current_user);
-               // panel_usuarios.CargaUsuarios();
+                try {
+                    panel_usuarios.CargaUsuarios();
+                } catch (IOException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 jTabbedPane1.addTab("Usuarios   ", panel_usuarios);
                 
                 
