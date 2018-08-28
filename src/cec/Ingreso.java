@@ -26,7 +26,7 @@ public class Ingreso extends javax.swing.JFrame {
      * Creates new form Ingreso
      */
     Main main = new Main();
-    
+
     private boolean ingresoCorrecto = false;
 
     public boolean isIngresoCorrecto() {
@@ -45,7 +45,7 @@ public class Ingreso extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     /**
@@ -171,51 +171,54 @@ public class Ingreso extends javax.swing.JFrame {
         ResultSet rs;
         Connection conn = null;
         JavaPostgreSQL conexion = new JavaPostgreSQL();
-         
+
+        if (this.fieldIp.getText() != "test") {
+            Usuario current_user = new Usuario();
+            current_user.setNombre("test");
+            current_user.setId(1);
+            main.setCurrent_user(current_user);
+
             main.setVisible(true);
             this.setVisible(false);
-         if(this.fieldIp.getText()!="test"){
-             
-           
-        try {
-            conn = conexion.getConnection();
-            Statement st = conn.createStatement();
-            String consulta = "SELECT * FROM usuarios WHERE nombre = '" + this.fieldUser.getText() + "';";
-            rs = st.executeQuery(consulta);
-            String pass = new String();
-            conn.close();
-             String id_usuario = "";
-            while (rs.next()) {
-                pass = rs.getString("contrasena");
-                if (this.fieldPass.getText().equals(pass)) {
-                    this.ingresoCorrecto = true;
-                  id_usuario = rs.getString("id");
-                   
-                   
+        } else {
+            try {
+                conn = conexion.getConnection();
+                Statement st = conn.createStatement();
+                String consulta = "SELECT * FROM usuarios WHERE nombre = '" + this.fieldUser.getText() + "';";
+                rs = st.executeQuery(consulta);
+                String pass = new String();
+                conn.close();
+                String id_usuario = "";
+                while (rs.next()) {
+                    pass = rs.getString("contrasena");
+                    if (this.fieldPass.getText().equals(pass)) {
+                        this.ingresoCorrecto = true;
+                        id_usuario = rs.getString("id");
+
+                    }
                 }
-            }
-            st.close();
-            rs.close();
-            
-            if(this.ingresoCorrecto){
-                 Usuario current_user = new Usuario();
+                st.close();
+                rs.close();
+
+                if (this.ingresoCorrecto) {
+                    Usuario current_user = new Usuario();
                     current_user.setNombre(this.fieldUser.getText());
                     current_user.setId(id_usuario);
                     main.setCurrent_user(current_user);
-                    
+
                     main.setVisible(true);
                     this.setVisible(false);
-                    
+
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+
+            } catch (IOException ex) {
+                Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
-        } catch (SQLException ex) {
-            Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
-            
-        } catch (IOException ex) {
-            Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+
         }
-        
-         }
     }//GEN-LAST:event_buttonIngresarActionPerformed
 
     private void fieldIpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldIpActionPerformed
