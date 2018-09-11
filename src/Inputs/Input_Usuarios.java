@@ -5,6 +5,8 @@
  */
 package Inputs;
 
+import Entidades.Usuario;
+
 /**
  *
  * @author Programación 2
@@ -17,7 +19,19 @@ public class Input_Usuarios extends javax.swing.JFrame {
     public Input_Usuarios() {
         initComponents();
     }
-
+    
+    public void Alta(){
+        
+        
+    }
+    public void Modificacion(Usuario usu){
+        
+        
+    }
+    public void Baja(){
+        
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

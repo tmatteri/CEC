@@ -187,7 +187,10 @@ public class Panel_Usuarios extends javax.swing.JPanel {
     private void jB_Modificar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_UsuarioActionPerformed
         // TODO add your handling code here:
       
+        
         Input_Usuarios JframeUsuarios = new Input_Usuarios();
+        
+        JframeUsuarios.Modificacion();
         JframeUsuarios.setVisible(true);
         JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
