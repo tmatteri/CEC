@@ -3,6 +3,7 @@ package cec;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import util.Log;
 
@@ -69,6 +70,30 @@ public class Tabla {
         return execute();
     }
     
+    public static int updateAll(String tabla,int id,String campos,String valores){
+        
+        String[] campos1 = campos.split("<>");
+         String[] valores1 = valores.split("<>");
+         consulta = "update "+tabla+" set ";
+        for(int i=0;i<campos1.length;i++){
+            if(i==campos1.length-1){
+                 consulta = consulta +campos1[i]+" = "+valores1[i];
+            }
+            else{
+                 consulta = consulta +campos1[i]+" = "+valores1[i]+",";
+            }
+            
+        }
+        
+         consulta = consulta+" where id="+id;
+         
+        return execute();
+    }
+    
+    
+    
+    
+    
     public static ResultSet select(String tabla){
         return select (tabla,"1=1");
     }
@@ -85,6 +110,14 @@ public class Tabla {
         //close(); //El usuario es responsable de cerrar el result set
         //no puedo cerrar la conexion por que se pierde el enlace al rs
         return rs;
+    }
+    
+    public static int UltimoNumero(String tabla) throws SQLException{
+      ResultSet rs = Tabla.select(tabla, "id = (SELECT MAX(id) from "+tabla+")");
+      rs.next();
+      return rs.getInt("id");
+      
+      
     }
     
 }

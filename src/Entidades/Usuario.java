@@ -39,6 +39,9 @@ public class Usuario extends Entidad {
     public Usuario() {
 
     }
+    
+    
+    
 
     public static int insert(int id,String nombre, String contrasena, String email,boolean activo) {
         String campos = "id,nombre,contrasena,email,anulado";
@@ -50,6 +53,13 @@ public class Usuario extends Entidad {
                
     }
 
+     public static int updateAll(int id,String nombre, String contrasena, String email,boolean activo) {
+        String campos = "id<>nombre<>contrasena<>email<>anulado";
+        String valores = id + "<>'" + nombre + "'<>'" + contrasena + "'<>'" + email + "'<>" + activo;
+        return Tabla.updateAll(tabla,id, campos, valores);
+    }
+    
+    
     public static int delete(int id) {
         return Tabla.delete(tabla, id);
     }
@@ -57,6 +67,7 @@ public class Usuario extends Entidad {
     public static int update(int id, String campo, String valor) {
         return Tabla.update(tabla, id, campo, valor);
     }
+    
 
     public static ResultSet select() {
         return Tabla.select(tabla);

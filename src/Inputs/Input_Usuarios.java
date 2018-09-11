@@ -6,6 +6,13 @@
 package Inputs;
 
 import Entidades.Usuario;
+import cec.Tabla;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import util.CD;
 
 /**
  *
@@ -19,12 +26,22 @@ public class Input_Usuarios extends javax.swing.JFrame {
     public Input_Usuarios() {
         initComponents();
     }
-    
+    private boolean NewRecord =true;
     public void Alta(){
         
         
     }
-    public void Modificacion(Usuario usu){
+    public void Modificacion(int selectedId) throws SQLException{
+        
+        
+       NewRecord =false;
+        ResultSet rs = Tabla.select("usuarios", "id = "+selectedId);
+       rs.next();
+        jTNombre.setText(rs.getString("nombre"));
+       jTMail.setText(rs.getString("email"));
+        jTContrasena.setText(rs.getString("contrasena"));
+     
+        
         
         
     }
@@ -53,8 +70,8 @@ public class Input_Usuarios extends javax.swing.JFrame {
         jT_Usuarios = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jB_Baja_Usuario = new javax.swing.JButton();
-        jB_Modificar_Usuario = new javax.swing.JButton();
+        jB_Guardar_Usuario = new javax.swing.JButton();
+        jB_Cancelar_Usuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,14 +132,14 @@ public class Input_Usuarios extends javax.swing.JFrame {
 
         jLabel5.setText("Permisos");
 
-        jB_Baja_Usuario.setText("Guardar");
-        jB_Baja_Usuario.addActionListener(new java.awt.event.ActionListener() {
+        jB_Guardar_Usuario.setText("Guardar");
+        jB_Guardar_Usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jB_Baja_UsuarioActionPerformed(evt);
+                jB_Guardar_UsuarioActionPerformed(evt);
             }
         });
 
-        jB_Modificar_Usuario.setText("Cancelar");
+        jB_Cancelar_Usuario.setText("Cancelar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,9 +168,9 @@ public class Input_Usuarios extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jB_Baja_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jB_Guardar_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jB_Modificar_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jB_Cancelar_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
@@ -161,8 +178,8 @@ public class Input_Usuarios extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jB_Baja_Usuario)
-                    .addComponent(jB_Modificar_Usuario))
+                    .addComponent(jB_Guardar_Usuario)
+                    .addComponent(jB_Cancelar_Usuario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -177,9 +194,7 @@ public class Input_Usuarios extends javax.swing.JFrame {
                     .addComponent(jTMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel4))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jCBAnulado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jLabel5)
@@ -214,15 +229,30 @@ public class Input_Usuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTNombreActionPerformed
 
-    private void jB_Baja_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Baja_UsuarioActionPerformed
+    private void jB_Guardar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Guardar_UsuarioActionPerformed
         // TODO add your handling code here:
         
+       if(NewRecord){
+           
+           try {
+               Usuario.insert(Tabla.UltimoNumero("usuarios")+1,jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), true);
+           } catch (SQLException ex) {
+               Logger.getLogger(Input_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+           
+       }else{
+            try {
+               Usuario.updateAll(Tabla.UltimoNumero("usuarios"),jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), true);
+           } catch (SQLException ex) {
+               Logger.getLogger(Input_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+           }
+       }
         
         
         
         
-        
-    }//GEN-LAST:event_jB_Baja_UsuarioActionPerformed
+    }//GEN-LAST:event_jB_Guardar_UsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,8 +290,8 @@ public class Input_Usuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jB_Baja_Usuario;
-    private javax.swing.JButton jB_Modificar_Usuario;
+    private javax.swing.JButton jB_Cancelar_Usuario;
+    private javax.swing.JButton jB_Guardar_Usuario;
     private javax.swing.JCheckBox jCBAnulado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -1,2 +1,4 @@
 Tue Aug 28 19:38:00 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: no existe la columna «activo» en la relación «usuarios»
   Position: 50
+Tue Sep 11 19:45:38 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: error de sintaxis en o cerca de «,»
+  Position: 32

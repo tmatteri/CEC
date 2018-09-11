@@ -187,10 +187,20 @@ public class Panel_Usuarios extends javax.swing.JPanel {
     private void jB_Modificar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_UsuarioActionPerformed
         // TODO add your handling code here:
       
+        int selectedRow = jT_Usuarios.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jT_Usuarios.getModel();
+        
+        int selectedID = (int) model.getValueAt(selectedRow,0);
+        
+        
         
         Input_Usuarios JframeUsuarios = new Input_Usuarios();
         
-        JframeUsuarios.Modificacion();
+        try {
+            JframeUsuarios.Modificacion(selectedID);
+        } catch (SQLException ex) {
+            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
         JframeUsuarios.setVisible(true);
         JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
