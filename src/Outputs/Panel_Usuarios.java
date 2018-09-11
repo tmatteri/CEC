@@ -20,6 +20,7 @@ import java.util.logging.*;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import Inputs.*;
+import javax.swing.WindowConstants;
 /**
  *
  * @author Programación 2
@@ -125,6 +126,11 @@ public class Panel_Usuarios extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jT_Usuarios);
 
         jB_Alta_usuario.setText("Alta");
+        jB_Alta_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_Alta_usuarioActionPerformed(evt);
+            }
+        });
 
         jB_Baja_Usuario.setText("Baja");
 
@@ -183,11 +189,15 @@ public class Panel_Usuarios extends javax.swing.JPanel {
       
         Input_Usuarios JframeUsuarios = new Input_Usuarios();
         JframeUsuarios.setVisible(true);
-        
+        JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
         
         
     }//GEN-LAST:event_jB_Modificar_UsuarioActionPerformed
+
+    private void jB_Alta_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_usuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jB_Alta_usuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
