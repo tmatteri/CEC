@@ -27,8 +27,15 @@ public class Input_Usuarios extends javax.swing.JFrame {
         initComponents();
     }
     private boolean NewRecord = true;
+    private int idLocal = 0;
 
     public void Alta() {
+        NewRecord = true;
+
+        jTNombre.setText("");
+        jTMail.setText("");
+        jTContrasena.setText("");
+        jCBAnulado.setSelected(false);
 
     }
 
@@ -37,9 +44,11 @@ public class Input_Usuarios extends javax.swing.JFrame {
         NewRecord = false;
         ResultSet rs = Tabla.select("usuarios", "id = " + selectedId);
         rs.next();
+        idLocal = selectedId;
         jTNombre.setText(rs.getString("nombre"));
         jTMail.setText(rs.getString("email"));
         jTContrasena.setText(rs.getString("contrasena"));
+        jCBAnulado.setSelected(rs.getBoolean("anulado"));
 
     }
 
@@ -138,6 +147,11 @@ public class Input_Usuarios extends javax.swing.JFrame {
         });
 
         jB_Cancelar_Usuario.setText("Cancelar");
+        jB_Cancelar_Usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_Cancelar_UsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -233,21 +247,26 @@ public class Input_Usuarios extends javax.swing.JFrame {
         if (NewRecord) {
 
             try {
-                Usuario.insert(Tabla.UltimoNumero("usuarios") + 1, jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), true);
+                Usuario.insert(Tabla.UltimoNumero("usuarios") + 1, jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), jCBAnulado.isSelected());
+                this.setVisible(false);
             } catch (SQLException ex) {
                 Logger.getLogger(Input_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         } else {
-            try {
-                Usuario.updateAll(Tabla.UltimoNumero("usuarios"), jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), true);
-            } catch (SQLException ex) {
-                Logger.getLogger(Input_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Usuario.updateAll(idLocal, jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), jCBAnulado.isSelected());
+            this.setVisible(false);
         }
 
 
     }//GEN-LAST:event_jB_Guardar_UsuarioActionPerformed
+
+    private void jB_Cancelar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Cancelar_UsuarioActionPerformed
+        // TODO add your handling code here:
+
+        this.setVisible(false);
+
+    }//GEN-LAST:event_jB_Cancelar_UsuarioActionPerformed
 
     /**
      * @param args the command line arguments
