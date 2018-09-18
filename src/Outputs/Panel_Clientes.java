@@ -5,6 +5,13 @@
  */
 package Outputs;
 
+import Inputs.Input_Clientes;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author martin
@@ -38,7 +45,7 @@ public class Panel_Clientes extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Mail", "Telefono", "Direccion", "Provincia", "País"
+                "Nombre", "Mail", "Telefono", "Direccion", "Recorrido", "Cobrador"
             }
         ) {
             Class[] types = new Class [] {
@@ -59,10 +66,20 @@ public class Panel_Clientes extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jT_Clientes);
 
         jB_Alta_Cliente.setText("Alta");
+        jB_Alta_Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_Alta_ClienteActionPerformed(evt);
+            }
+        });
 
         jB_Baja_Cliente.setText("Baja");
 
         jB_Modificar_Cliente.setText("Modificar");
+        jB_Modificar_Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_Modificar_ClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -93,6 +110,40 @@ public class Panel_Clientes extends javax.swing.JPanel {
                 .addGap(138, 138, 138))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jB_Modificar_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_ClienteActionPerformed
+        int selectedRow = jT_Clientes.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jT_Clientes.getModel();
+
+        int selectedID = (int) model.getValueAt(selectedRow, 0);
+
+        Input_Clientes JframeClientes = new Input_Clientes();
+
+        try {
+            JframeClientes.Modificacion(selectedID);
+        } catch (SQLException ex) {
+            Logger.getLogger(Panel_Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JframeClientes.setVisible(true);
+        JframeClientes.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jB_Modificar_ClienteActionPerformed
+
+    private void jB_Alta_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_ClienteActionPerformed
+        int selectedRow = jT_Clientes.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jT_Clientes.getModel();
+
+        //int selectedID = (int) model.getValueAt(selectedRow, 0);
+
+        Input_Clientes JframeClientes = new Input_Clientes();
+
+        try {
+            JframeClientes.Alta();
+        } catch (SQLException ex) {
+            Logger.getLogger(Panel_Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JframeClientes.setVisible(true);
+        JframeClientes.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jB_Alta_ClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

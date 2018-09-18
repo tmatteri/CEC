@@ -26,29 +26,27 @@ public class Input_Usuarios extends javax.swing.JFrame {
     public Input_Usuarios() {
         initComponents();
     }
-    private boolean NewRecord =true;
-    public void Alta(){
-        
-        
+    private boolean NewRecord = true;
+
+    public void Alta() {
+
     }
-    public void Modificacion(int selectedId) throws SQLException{
-        
-        
-       NewRecord =false;
-        ResultSet rs = Tabla.select("usuarios", "id = "+selectedId);
-       rs.next();
+
+    public void Modificacion(int selectedId) throws SQLException {
+
+        NewRecord = false;
+        ResultSet rs = Tabla.select("usuarios", "id = " + selectedId);
+        rs.next();
         jTNombre.setText(rs.getString("nombre"));
-       jTMail.setText(rs.getString("email"));
+        jTMail.setText(rs.getString("email"));
         jTContrasena.setText(rs.getString("contrasena"));
-     
-        
-        
-        
+
     }
-    public void Baja(){
-        
-        
+
+    public void Baja() {
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -231,27 +229,24 @@ public class Input_Usuarios extends javax.swing.JFrame {
 
     private void jB_Guardar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Guardar_UsuarioActionPerformed
         // TODO add your handling code here:
-        
-       if(NewRecord){
-           
-           try {
-               Usuario.insert(Tabla.UltimoNumero("usuarios")+1,jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), true);
-           } catch (SQLException ex) {
-               Logger.getLogger(Input_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
-           }
-           
-           
-       }else{
+
+        if (NewRecord) {
+
             try {
-               Usuario.updateAll(Tabla.UltimoNumero("usuarios"),jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), true);
-           } catch (SQLException ex) {
-               Logger.getLogger(Input_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
-           }
-       }
-        
-        
-        
-        
+                Usuario.insert(Tabla.UltimoNumero("usuarios") + 1, jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Input_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+            try {
+                Usuario.updateAll(Tabla.UltimoNumero("usuarios"), jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Input_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
     }//GEN-LAST:event_jB_Guardar_UsuarioActionPerformed
 
     /**

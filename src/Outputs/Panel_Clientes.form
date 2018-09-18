@@ -64,8 +64,8 @@
                 <Column editable="false" title="Mail" type="java.lang.String"/>
                 <Column editable="false" title="Telefono" type="java.lang.String"/>
                 <Column editable="false" title="Direccion" type="java.lang.String"/>
-                <Column editable="false" title="Provincia" type="java.lang.String"/>
-                <Column editable="false" title="Pa&#xed;s" type="java.lang.String"/>
+                <Column editable="false" title="Recorrido" type="java.lang.String"/>
+                <Column editable="false" title="Cobrador" type="java.lang.String"/>
               </Table>
             </Property>
           </Properties>
@@ -76,6 +76,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Alta"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_Alta_ClienteActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jB_Baja_Cliente">
       <Properties>
@@ -86,6 +89,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_Modificar_ClienteActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
