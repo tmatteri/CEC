@@ -42,15 +42,14 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     JMenuBar barraMenu = new JMenuBar();
-    JMenu menu_cuenta = new JMenu("Cuenta");
+    JMenu menu_cuenta = new JMenu("Configuración");
     JMenu menu_entidades = new JMenu("Entidades");
-    JMenu menu_procesos = new JMenu("Procesos");
-    JMenu menu_opciones = new JMenu("Opciones");
+    JMenu menu_procesos = new JMenu("Comprobantes");
+    JMenu menu_opciones = new JMenu("Contabilidad");
 
     JMenuItem menu_usuarios = new JMenuItem("Usuarios");
-    JMenuItem menu_clientes = new JMenuItem("Clientes");
-    JMenuItem menu_proveedores = new JMenuItem("Proveedores");
-    JMenuItem menu_cobradores = new JMenuItem("Cobradores");
+    JMenuItem menu_clientes = new JMenuItem("Clientes/Proveedores");
+    JMenuItem menu_cobradores = new JMenuItem("Cobradores/Vendedores");
     JMenuItem menu_facturas = new JMenuItem("Facturas");
 
     private Usuario current_user = new Usuario();
@@ -108,7 +107,7 @@ public class Main extends javax.swing.JFrame {
 
         menu_cuenta.add(menu_usuarios);
         menu_entidades.add(menu_clientes);
-        menu_entidades.add(menu_proveedores);
+      
         menu_entidades.add(menu_cobradores);
         menu_procesos.add(menu_facturas);
         barraMenu.add(menu_cuenta);

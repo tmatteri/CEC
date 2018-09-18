@@ -20,6 +20,7 @@ import java.util.logging.*;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import Inputs.*;
+import cec.Tabla;
 import javax.swing.WindowConstants;
 /**
  *
@@ -46,11 +47,16 @@ public class Panel_Usuarios extends javax.swing.JPanel {
     }
 
     public void CargaUsuarios() throws IOException, SQLException {
-        DefaultTableModel modelo = new DefaultTableModel();
+        DefaultTableModel modelo = new DefaultTableModel()
+         {@Override
+     public boolean isCellEditable (int fila, int columna) {
+         return false;
+     }
+ };
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("Mail");
-        modelo.addColumn("Activo");
+        modelo.addColumn("Anulado");
        String NombreUsuario = current_user.getNombre();
        
 
@@ -77,6 +83,7 @@ public class Panel_Usuarios extends javax.swing.JPanel {
                 }
                 modelo.addRow(datos);//cargamos el objeto en el model
             }
+            modelo.fireTableDataChanged();
             rs.close();
         }
 
@@ -133,6 +140,11 @@ public class Panel_Usuarios extends javax.swing.JPanel {
         });
 
         jB_Baja_Usuario.setText("Baja");
+        jB_Baja_Usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_Baja_UsuarioActionPerformed(evt);
+            }
+        });
 
         jB_Modificar_Usuario.setText("Modificar");
         jB_Modificar_Usuario.addActionListener(new java.awt.event.ActionListener() {
@@ -186,31 +198,64 @@ public class Panel_Usuarios extends javax.swing.JPanel {
 
     private void jB_Modificar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_UsuarioActionPerformed
         // TODO add your handling code here:
-      
+        try {
         int selectedRow = jT_Usuarios.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jT_Usuarios.getModel();
         
         int selectedID = (int) model.getValueAt(selectedRow,0);
-        
-        
-        
+       
         Input_Usuarios JframeUsuarios = new Input_Usuarios();
         
-        try {
+      
             JframeUsuarios.Modificacion(selectedID);
+              JframeUsuarios.setVisible(true);
+        JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+         this.CargaUsuarios();
         } catch (SQLException ex) {
             Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
-        JframeUsuarios.setVisible(true);
-        JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        
+      
+       
+           
+     
         
         
     }//GEN-LAST:event_jB_Modificar_UsuarioActionPerformed
 
     private void jB_Alta_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_usuarioActionPerformed
         // TODO add your handling code here:
+           try {
+        Input_Usuarios JframeUsuarios = new Input_Usuarios();
+        JframeUsuarios.Alta();
+        JframeUsuarios.setVisible(true);
+        JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    
+            this.CargaUsuarios();
+        } catch (IOException ex) {
+            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jB_Alta_usuarioActionPerformed
+
+    private void jB_Baja_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Baja_UsuarioActionPerformed
+        try {
+            // TODO add your handling code here:
+            int selectedRow = jT_Usuarios.getSelectedRow();
+            DefaultTableModel model = (DefaultTableModel) jT_Usuarios.getModel();
+            
+            int selectedID = (int) model.getValueAt(selectedRow,0);
+            Tabla.update("usuarios", selectedID,"anulado", "True");
+            this.CargaUsuarios();
+        } catch (IOException ex) {
+            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jB_Baja_UsuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
