@@ -5,8 +5,8 @@
  */
 package cec;
 
-import Outputs.Panel_Clientes;
-import Outputs.Panel_Usuarios;
+import Outputs.*;
+
 import Entidades.Usuario;
 import java.awt.Color;
 import java.awt.Component;
@@ -55,6 +55,8 @@ public class Main extends javax.swing.JFrame {
     private Usuario current_user = new Usuario();
     Panel_Usuarios panel_usuarios = new Panel_Usuarios();
     Panel_Clientes panel_clientes = new Panel_Clientes();
+    Panel_Cobradores panel_cobradores = new Panel_Cobradores();
+    
     public void setCurrent_user(Usuario user) {
 
         this.current_user = user;
@@ -91,7 +93,7 @@ public class Main extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 
                 //JOptionPane.showMessageDialog(Main.this, "click");
-                //panel_usuarios.setCurrent_user(current_user);
+                panel_clientes.setCurrent_user(current_user);
                // panel_usuarios.CargaUsuarios();
                 jTabbedPane1.addTab("Clientes   ", panel_clientes);
                 
@@ -99,6 +101,25 @@ public class Main extends javax.swing.JFrame {
             }
         });
         
+         menu_cobradores.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               
+                try {
+                    //JOptionPane.showMessageDialog(Main.this, "click");
+                    panel_cobradores.setCurrent_user(current_user);
+                    panel_cobradores.Carga();
+                } catch (IOException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                jTabbedPane1.addTab("Cobradores  ", panel_cobradores);
+                  
+            }
+        });
+         
         
         
     }

@@ -15,8 +15,20 @@ public class Entidad {
     protected String nombre;
     protected String cuit;
     protected String telefono;
+    protected String celular;
+    protected String domicilio;
     protected String mail;
     protected boolean anulado;
+    protected String tipo;
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
 
     public boolean isAnulado() {
         return anulado;
@@ -65,5 +77,7 @@ public class Entidad {
     public String getMail() {
         return mail;
     }
+    
+    
 
 }

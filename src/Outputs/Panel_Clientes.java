@@ -5,6 +5,7 @@
  */
 package Outputs;
 
+import Entidades.Usuario;
 import Inputs.Input_Clientes;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -23,6 +24,14 @@ public class Panel_Clientes extends javax.swing.JPanel {
      */
     public Panel_Clientes() {
         initComponents();
+    }
+    Usuario current_user = new Usuario();
+    
+      public void setCurrent_user(Usuario user) {
+
+        this.current_user = user;
+        current_user.cargaPermisos();
+
     }
 
     /**

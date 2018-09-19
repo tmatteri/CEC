@@ -246,12 +246,10 @@ public class Input_Usuarios extends javax.swing.JFrame {
 
         if (NewRecord) {
 
-            try {
+         
                 Usuario.insert(Tabla.UltimoNumero("usuarios") + 1, jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), jCBAnulado.isSelected());
                 this.setVisible(false);
-            } catch (SQLException ex) {
-                Logger.getLogger(Input_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
-            }
+         
 
         } else {
             Usuario.updateAll(idLocal, jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), jCBAnulado.isSelected());

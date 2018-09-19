@@ -315,7 +315,12 @@ public class Input_Clientes extends javax.swing.JFrame {
 
         jLabel22.setText("Recorrido:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Proveedor" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Proveedor", "Ambos" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -505,18 +510,14 @@ public class Input_Clientes extends javax.swing.JFrame {
 
         if (NewRecord) {
 
-            try {
+           
                 Usuario.insert(Tabla.UltimoNumero("usuarios") + 1, jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), true);
-            } catch (SQLException ex) {
-                Logger.getLogger(Input_Clientes.class.getName()).log(Level.SEVERE, null, ex);
-            }
+             
 
         } else {
-            try {
+           
                 Usuario.updateAll(Tabla.UltimoNumero("usuarios"), jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), true);
-            } catch (SQLException ex) {
-                Logger.getLogger(Input_Clientes.class.getName()).log(Level.SEVERE, null, ex);
-            }
+           
         }
 
 
@@ -585,6 +586,10 @@ public class Input_Clientes extends javax.swing.JFrame {
     private void jTRazon_social15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTRazon_social15ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTRazon_social15ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments

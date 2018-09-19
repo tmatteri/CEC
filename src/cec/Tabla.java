@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import util.Log;
 
 public class Tabla {
@@ -107,10 +109,20 @@ public class Tabla {
         return rs;
     }
 
-    public static int UltimoNumero(String tabla) throws SQLException {
+    public static int UltimoNumero(String tabla) {
+        int retorno = 1;
+        
+       try { 
         ResultSet rs = Tabla.select(tabla, "id = (SELECT MAX(id) from " + tabla + ")");
-        rs.next();
-        return rs.getInt("id");
+        
+            rs.next();
+             retorno =  rs.getInt("id");
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(Tabla.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+       return retorno;
 
     }
 
