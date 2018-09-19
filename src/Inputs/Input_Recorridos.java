@@ -183,11 +183,7 @@ public class Input_Recorridos extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if (NewRecord) {
-            try {
-                Recorridos.insert(Tabla.UltimoNumero("recorridos") + 1, jTDescripcion.getText(), Integer.parseInt(jTId_cobrador.getText()), jCAnulado.isSelected());
-            } catch (SQLException ex) {
-                Logger.getLogger(Input_Recorridos.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Recorridos.insert(Tabla.UltimoNumero("recorridos") + 1, jTDescripcion.getText(), Integer.parseInt(jTId_cobrador.getText()), jCAnulado.isSelected());
 
         } else {
             Recorridos.updateAll(id_local, jTDescripcion.getText(), Integer.parseInt(jTId_cobrador.getText()), jCAnulado.isSelected());

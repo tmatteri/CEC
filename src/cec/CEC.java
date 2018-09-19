@@ -29,7 +29,7 @@ public class CEC {
     public static void main(String[] args) {
         // TODO code application logic here
         Ingreso ventanaIngreso = new Ingreso();
-        
+        ventanaIngreso.setLocation(500, 300);
         ventanaIngreso.setVisible(true);
         
         

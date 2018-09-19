@@ -2,3 +2,19 @@ Tue Aug 28 19:38:00 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.pos
   Position: 50
 Tue Sep 11 19:45:38 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: error de sintaxis en o cerca de «,»
   Position: 32
+Tue Sep 18 21:24:27 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «',true)»
+  Position: 114
+Tue Sep 18 21:26:49 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «',true)»
+  Position: 115
+Tue Sep 18 21:27:17 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «',true)»
+  Position: 115
+Tue Sep 18 21:28:13 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «',true)»
+  Position: 116
+Tue Sep 18 21:28:19 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «',true)»
+  Position: 116
+Tue Sep 18 21:29:18 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «',true)»
+  Position: 116
+Tue Sep 18 21:29:25 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «',true)»
+  Position: 116
+Tue Sep 18 21:31:22 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «',true)»
+  Position: 115
