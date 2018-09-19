@@ -8,6 +8,7 @@ package cec;
 import Outputs.Panel_Clientes;
 import Outputs.Panel_Usuarios;
 import Entidades.Usuario;
+import Outputs.Panel_Recorridos;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -51,10 +52,12 @@ public class Main extends javax.swing.JFrame {
     JMenuItem menu_clientes = new JMenuItem("Clientes/Proveedores");
     JMenuItem menu_cobradores = new JMenuItem("Cobradores/Vendedores");
     JMenuItem menu_facturas = new JMenuItem("Facturas");
+    JMenuItem menu_recorridos = new JMenuItem("Recorridos");
 
     private Usuario current_user = new Usuario();
     Panel_Usuarios panel_usuarios = new Panel_Usuarios();
     Panel_Clientes panel_clientes = new Panel_Clientes();
+    Panel_Recorridos panel_recorridos = new Panel_Recorridos();
     public void setCurrent_user(Usuario user) {
 
         this.current_user = user;
@@ -98,6 +101,14 @@ public class Main extends javax.swing.JFrame {
                 
             }
         });
+        menu_recorridos.addActionListener(new ActionListener(){
+            
+            @Override
+            public void actionPerformed(ActionEvent e){
+                jTabbedPane1.addTab("Recorridos   ", panel_recorridos);
+            }
+        
+        });
         
         
         
@@ -106,6 +117,7 @@ public class Main extends javax.swing.JFrame {
     private void CrearMenu() {
 
         menu_cuenta.add(menu_usuarios);
+        menu_cuenta.add(menu_recorridos);
         menu_entidades.add(menu_clientes);
       
         menu_entidades.add(menu_cobradores);
