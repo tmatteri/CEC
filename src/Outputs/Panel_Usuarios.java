@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Outputs;
+
 import Entidades.Usuario;
 import cec.JavaPostgreSQL;
 import java.awt.List;
@@ -22,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import Inputs.*;
 import cec.Tabla;
 import javax.swing.WindowConstants;
+
 /**
  *
  * @author Programación 2
@@ -47,18 +49,17 @@ public class Panel_Usuarios extends javax.swing.JPanel {
     }
 
     public void CargaUsuarios() throws IOException, SQLException {
-        DefaultTableModel modelo = new DefaultTableModel()
-         {@Override
-     public boolean isCellEditable (int fila, int columna) {
-         return false;
-     }
- };
+        DefaultTableModel modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int fila, int columna) {
+                return false;
+            }
+        };
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("Mail");
         modelo.addColumn("Anulado");
-       String NombreUsuario = current_user.getNombre();
-       
+        String NombreUsuario = current_user.getNombre();
 
         if (NombreUsuario.equals("test")) {
 
@@ -75,7 +76,7 @@ public class Panel_Usuarios extends javax.swing.JPanel {
             Object[] datos = new Object[4];//creamos un object de la cantidad de COLUMNAS
 
             conn.close();//cerramos conexion
-            
+
             while (rs.next()) {
                 for (int i = 0; i < 4; i++) {
                     datos[i] = rs.getObject(i + 1);//cargamos la fila en el objeto
@@ -199,39 +200,34 @@ public class Panel_Usuarios extends javax.swing.JPanel {
     private void jB_Modificar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_UsuarioActionPerformed
         // TODO add your handling code here:
         try {
-        int selectedRow = jT_Usuarios.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) jT_Usuarios.getModel();
-        
-        int selectedID = (int) model.getValueAt(selectedRow,0);
-       
-        Input_Usuarios JframeUsuarios = new Input_Usuarios();
-        
-      
+            int selectedRow = jT_Usuarios.getSelectedRow();
+            DefaultTableModel model = (DefaultTableModel) jT_Usuarios.getModel();
+
+            int selectedID = (int) model.getValueAt(selectedRow, 0);
+
+            Input_Usuarios JframeUsuarios = new Input_Usuarios();
+
             JframeUsuarios.Modificacion(selectedID);
-              JframeUsuarios.setVisible(true);
-        JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-         this.CargaUsuarios();
+            JframeUsuarios.setVisible(true);
+            JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            this.CargaUsuarios();
         } catch (SQLException ex) {
             Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
-       
-           
-     
-        
-        
+
+
     }//GEN-LAST:event_jB_Modificar_UsuarioActionPerformed
 
     private void jB_Alta_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_usuarioActionPerformed
         // TODO add your handling code here:
-           try {
-        Input_Usuarios JframeUsuarios = new Input_Usuarios();
-        JframeUsuarios.Alta();
-        JframeUsuarios.setVisible(true);
-        JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-    
+        try {
+            Input_Usuarios JframeUsuarios = new Input_Usuarios();
+            JframeUsuarios.Alta();
+            JframeUsuarios.setVisible(true);
+            JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
             this.CargaUsuarios();
         } catch (IOException ex) {
             Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
@@ -245,16 +241,16 @@ public class Panel_Usuarios extends javax.swing.JPanel {
             // TODO add your handling code here:
             int selectedRow = jT_Usuarios.getSelectedRow();
             DefaultTableModel model = (DefaultTableModel) jT_Usuarios.getModel();
-            
-            int selectedID = (int) model.getValueAt(selectedRow,0);
-            Tabla.update("usuarios", selectedID,"anulado", "True");
+
+            int selectedID = (int) model.getValueAt(selectedRow, 0);
+            Tabla.update("usuarios", selectedID, "anulado", "True");
             this.CargaUsuarios();
         } catch (IOException ex) {
             Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jB_Baja_UsuarioActionPerformed
 
 

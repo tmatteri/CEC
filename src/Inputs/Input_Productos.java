@@ -5,8 +5,7 @@
  */
 package Inputs;
 
-import Entidades.Recorridos;
-import Entidades.Usuario;
+import Entidades.Productos;
 import cec.Tabla;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,32 +18,30 @@ import util.CD;
  *
  * @author Programación 2
  */
-public class Input_Recorridos extends javax.swing.JFrame {
+public class Input_Productos extends javax.swing.JFrame {
     
     /**
      * Creates new form Input_Usuarios
      */
-    public Input_Recorridos() {
+    public Input_Productos() {
         initComponents();
     }
     private boolean NewRecord = true;
     private int id_local = 0;
 
     public void Alta() throws SQLException {
-        int id = Tabla.UltimoNumero("recorridos");
-        jTId_cobrador.setVisible(false);
-        jTId_cobrador.setText("1");
+        int id = Tabla.UltimoNumero("productos");
     }
 
     public void Modificacion(int selectedId) throws SQLException {
         
         NewRecord = false;
         id_local = selectedId;
-        ResultSet rs = Tabla.select("recorridos", "id = " + selectedId);
+        ResultSet rs = Tabla.select("productos", "id = " + selectedId);
         rs.next();
-        jTDescripcion.setText(rs.getString("nombre"));
-        jTId_cobrador.setText(String.valueOf(rs.getInt("id_cobrador")));
-        jTId_cobrador.setVisible(false);
+        jTDescripcion.setText(rs.getString("descripcion"));
+        jTPrecio.setText(String.valueOf(rs.getInt("precio")));
+        jTStock.setText(String.valueOf(rs.getInt("stock")));
     }
 
     public void Baja() {
@@ -63,13 +60,11 @@ public class Input_Recorridos extends javax.swing.JFrame {
         javax.swing.JPanel jPanelRecorridos = new javax.swing.JPanel();
         jTDescripcion = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jB_Guardar_Usuario = new javax.swing.JButton();
-        jB_Cancelar_Usuario = new javax.swing.JButton();
-        jTCobrador = new javax.swing.JTextField();
+        jB_Guardar_Producto = new javax.swing.JButton();
+        jTStock = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jCAnulado = new javax.swing.JCheckBox();
-        jTId_cobrador = new javax.swing.JTextField();
+        jTPrecio = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,33 +76,28 @@ public class Input_Recorridos extends javax.swing.JFrame {
 
         jLabel1.setText("Descripción:");
 
-        jB_Guardar_Usuario.setText("Guardar");
-        jB_Guardar_Usuario.addActionListener(new java.awt.event.ActionListener() {
+        jB_Guardar_Producto.setText("Guardar");
+        jB_Guardar_Producto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jB_Guardar_UsuarioActionPerformed(evt);
+                jB_Guardar_ProductoActionPerformed(evt);
             }
         });
 
-        jB_Cancelar_Usuario.setText("Cancelar");
-
-        jTCobrador.setName("jTCobrador"); // NOI18N
-        jTCobrador.addActionListener(new java.awt.event.ActionListener() {
+        jTStock.setName("jTStock"); // NOI18N
+        jTStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTCobradorActionPerformed(evt);
+                jTStockActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Cobrador:");
+        jLabel6.setText("Stock:");
 
-        jLabel7.setText("Anulado:");
+        jLabel7.setText("Precio:");
 
-        jCAnulado.setText("jCheckBox1");
-
-        jTId_cobrador.setEditable(false);
-        jTId_cobrador.setName("jTCobrador"); // NOI18N
-        jTId_cobrador.addActionListener(new java.awt.event.ActionListener() {
+        jTPrecio.setName("jTCobrador"); // NOI18N
+        jTPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTId_cobradorActionPerformed(evt);
+                jTPrecioActionPerformed(evt);
             }
         });
 
@@ -125,41 +115,35 @@ public class Input_Recorridos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE))
                     .addGroup(jPanelRecorridosLayout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTId_cobrador, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
+                        .addGap(2, 100, Short.MAX_VALUE)))
                 .addGroup(jPanelRecorridosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelRecorridosLayout.createSequentialGroup()
-                        .addComponent(jTDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(332, 332, 332)
-                        .addComponent(jB_Guardar_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jB_Cancelar_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jCAnulado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTCobrador, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                    .addComponent(jTDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTStock, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(541, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRecorridosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jB_Guardar_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanelRecorridosLayout.setVerticalGroup(
             jPanelRecorridosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRecorridosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelRecorridosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jB_Guardar_Usuario)
-                    .addComponent(jB_Cancelar_Usuario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jB_Guardar_Producto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanelRecorridosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelRecorridosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTCobrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTId_cobrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelRecorridosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jCAnulado))
-                .addGap(599, 599, 599))
+                    .addComponent(jTPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(601, 601, 601))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -180,26 +164,27 @@ public class Input_Recorridos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTDescripcionActionPerformed
 
-    private void jB_Guardar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Guardar_UsuarioActionPerformed
+    private void jB_Guardar_ProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Guardar_ProductoActionPerformed
         // TODO add your handling code here:
 
         if (NewRecord) {
-            Recorridos.insert(Tabla.UltimoNumero("recorridos") + 1, jTDescripcion.getText(), Integer.parseInt(jTId_cobrador.getText()), jCAnulado.isSelected());
+            Productos.insert(Tabla.UltimoNumero("productos") + 1, jTDescripcion.getText(), Float.parseFloat(jTPrecio.getText()), Integer.parseInt(jTStock.getText()));
 
         } else {
-            Recorridos.updateAll(id_local, jTDescripcion.getText(), Integer.parseInt(jTId_cobrador.getText()), jCAnulado.isSelected());
+            Productos.updateAll(id_local, jTDescripcion.getText(), Float.parseFloat(jTPrecio.getText()), Integer.parseInt(jTStock.getText()));
         }
 
+        this.dispose();
 
-    }//GEN-LAST:event_jB_Guardar_UsuarioActionPerformed
+    }//GEN-LAST:event_jB_Guardar_ProductoActionPerformed
 
-    private void jTCobradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCobradorActionPerformed
+    private void jTStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTStockActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTCobradorActionPerformed
+    }//GEN-LAST:event_jTStockActionPerformed
 
-    private void jTId_cobradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTId_cobradorActionPerformed
+    private void jTPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTPrecioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTId_cobradorActionPerformed
+    }//GEN-LAST:event_jTPrecioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,14 +203,18 @@ public class Input_Recorridos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Input_Recorridos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Input_Productos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Input_Recorridos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Input_Productos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Input_Recorridos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Input_Productos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Input_Recorridos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Input_Productos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -234,21 +223,19 @@ public class Input_Recorridos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Input_Recorridos().setVisible(true);
+                new Input_Productos().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jB_Cancelar_Usuario;
-    private javax.swing.JButton jB_Guardar_Usuario;
-    private javax.swing.JCheckBox jCAnulado;
+    private javax.swing.JButton jB_Guardar_Producto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTCobrador;
     private javax.swing.JTextField jTDescripcion;
-    private javax.swing.JTextField jTId_cobrador;
+    private javax.swing.JTextField jTPrecio;
+    private javax.swing.JTextField jTStock;
     // End of variables declaration//GEN-END:variables
 
 }

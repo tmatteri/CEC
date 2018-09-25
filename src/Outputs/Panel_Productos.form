@@ -20,11 +20,11 @@
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jB_Alta_Recorridos" min="-2" pref="90" max="-2" attributes="0"/>
+                      <Component id="jB_Alta_Productos" min="-2" pref="90" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jB_Baja_Recorridos" min="-2" pref="90" max="-2" attributes="0"/>
+                      <Component id="jB_Baja_Productos" min="-2" pref="90" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jB_Modificar_Recorridos" min="-2" pref="90" max="-2" attributes="0"/>
+                      <Component id="jB_Modificar_Productos" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" alignment="1" min="-2" pref="980" max="-2" attributes="0"/>
               </Group>
@@ -37,9 +37,9 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jB_Alta_Recorridos" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jB_Baja_Recorridos" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jB_Modificar_Recorridos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jB_Alta_Productos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jB_Baja_Productos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jB_Modificar_Productos" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="552" max="-2" attributes="0"/>
@@ -56,39 +56,39 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jT_Recorridos">
+        <Component class="javax.swing.JTable" name="jT_Productos">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="1">
-                <Column editable="false" title="ID" type="java.lang.Integer"/>
+                <Column editable="false" title="ID" type="java.lang.String"/>
                 <Column editable="false" title="Descripci&#xf3;n" type="java.lang.String"/>
-                <Column editable="false" title="Cobrador" type="java.lang.Integer"/>
-                <Column editable="false" title="Activo" type="java.lang.Boolean"/>
+                <Column editable="false" title="Stock" type="java.lang.Integer"/>
+                <Column editable="false" title="Precio" type="java.lang.Float"/>
               </Table>
             </Property>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jB_Alta_Recorridos">
+    <Component class="javax.swing.JButton" name="jB_Alta_Productos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Alta"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_Alta_RecorridosActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_Alta_ProductosActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jB_Baja_Recorridos">
+    <Component class="javax.swing.JButton" name="jB_Baja_Productos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Baja"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jB_Modificar_Recorridos">
+    <Component class="javax.swing.JButton" name="jB_Modificar_Productos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_Modificar_RecorridosActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_Modificar_ProductosActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
