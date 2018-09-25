@@ -18,3 +18,11 @@ Tue Sep 18 21:29:25 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.pos
   Position: 116
 Tue Sep 18 21:31:22 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «',true)»
   Position: 115
+Tue Sep 25 18:57:05 ART 2018;Tomas;DESKTOP-AICU0K9/192.168.225.1;org.postgresql.util.PSQLException: ERROR: no existe la columna «descripcion» en la relación «recorridos»
+  Position: 28
+Tue Sep 25 18:58:57 ART 2018;Tomas;DESKTOP-AICU0K9/192.168.225.1;org.postgresql.util.PSQLException: ERROR: «T» no es un dígito binario válido
+  Position: 63
+Tue Sep 25 20:25:36 ART 2018;Tomas;DESKTOP-AICU0K9/192.168.225.1;org.postgresql.util.PSQLException: ERROR: llave duplicada viola restricción de unicidad «PRODUCTOS_pkey»
+  Detail: Ya existe la llave (id)=(2).
+Tue Sep 25 20:27:13 ART 2018;Tomas;DESKTOP-AICU0K9/192.168.225.1;org.postgresql.util.PSQLException: ERROR: llave duplicada viola restricción de unicidad «PRODUCTOS_pkey»
+  Detail: Ya existe la llave (id)=(2).

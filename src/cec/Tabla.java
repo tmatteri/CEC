@@ -109,20 +109,34 @@ public class Tabla {
         return rs;
     }
 
+    public static ResultSet select(String campos, String tabla, String filtro) {
+        ResultSet rs = null;
+        consulta = "select " + campos + " from " + tabla + " where " + filtro;
+        connect();
+        try {
+            rs = sentencia.executeQuery(consulta);
+        } catch (Exception e) {
+            Log.setLog(e);
+        }
+        //close(); //El usuario es responsable de cerrar el result set
+        //no puedo cerrar la conexion por que se pierde el enlace al rs
+        return rs;
+    }
+
     public static int UltimoNumero(String tabla) {
         int retorno = 1;
-        
-       try { 
-        ResultSet rs = Tabla.select(tabla, "id = (SELECT MAX(id) from " + tabla + ")");
-        
+
+        try {
+            ResultSet rs = Tabla.select(tabla, "id = (SELECT MAX(id) from " + tabla + ")");
+
             rs.next();
-             retorno =  rs.getInt("id");
-             
+            retorno = rs.getInt("id");
+
         } catch (SQLException ex) {
             Logger.getLogger(Tabla.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
-       return retorno;
+        return retorno;
 
     }
 

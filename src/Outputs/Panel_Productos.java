@@ -7,12 +7,14 @@ package Outputs;
 
 import Entidades.Usuario;
 import Inputs.Input_Clientes;
+import Inputs.Input_Productos;
 import Inputs.Input_Recorridos;
 import cec.Tabla;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.InputMap;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,12 +22,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author martin
  */
-public class Panel_Recorridos extends javax.swing.JPanel {
+public class Panel_Productos extends javax.swing.JPanel {
 
     /**
      * Creates new form Panel_Clientes
      */
-    public Panel_Recorridos() {
+    public Panel_Productos() {
         initComponents();
     }
 
@@ -38,15 +40,16 @@ public class Panel_Recorridos extends javax.swing.JPanel {
 
     }
 
-    public void cargaRecorridos() throws SQLException {
+    public void carga() throws SQLException {
         DefaultTableModel modelo = new DefaultTableModel();
-        jT_Recorridos.setModel(modelo);
-        modelo.addColumn("ID");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Cobrador");
-        modelo.addColumn("Anulado");
-        ResultSet rs = Tabla.select("recorridos");
+        jT_Productos.setModel(modelo);
+        ResultSet rs = Tabla.select("id,descripcion,precio,stock", "productos", "1=1");
+
         Object[] datos = new Object[4];//creamos un object de la cantidad de COLUMNAS
+        modelo.addColumn("ID");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Stock");
         while (rs.next()) {
             for (int i = 0; i < 4; i++) {
                 datos[i] = rs.getObject(i + 1);//cargamos la fila en el objeto
@@ -67,21 +70,21 @@ public class Panel_Recorridos extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jT_Recorridos = new javax.swing.JTable();
-        jB_Alta_Recorridos = new javax.swing.JButton();
-        jB_Baja_Recorridos = new javax.swing.JButton();
-        jB_Modificar_Recorridos = new javax.swing.JButton();
+        jT_Productos = new javax.swing.JTable();
+        jB_Alta_Productos = new javax.swing.JButton();
+        jB_Baja_Productos = new javax.swing.JButton();
+        jB_Modificar_Productos = new javax.swing.JButton();
 
-        jT_Recorridos.setModel(new javax.swing.table.DefaultTableModel(
+        jT_Productos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Descripción", "Cobrador", "Activo"
+                "ID", "Descripción", "Stock", "Precio"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -95,21 +98,21 @@ public class Panel_Recorridos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jT_Recorridos);
+        jScrollPane1.setViewportView(jT_Productos);
 
-        jB_Alta_Recorridos.setText("Alta");
-        jB_Alta_Recorridos.addActionListener(new java.awt.event.ActionListener() {
+        jB_Alta_Productos.setText("Alta");
+        jB_Alta_Productos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jB_Alta_RecorridosActionPerformed(evt);
+                jB_Alta_ProductosActionPerformed(evt);
             }
         });
 
-        jB_Baja_Recorridos.setText("Baja");
+        jB_Baja_Productos.setText("Baja");
 
-        jB_Modificar_Recorridos.setText("Modificar");
-        jB_Modificar_Recorridos.addActionListener(new java.awt.event.ActionListener() {
+        jB_Modificar_Productos.setText("Modificar");
+        jB_Modificar_Productos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jB_Modificar_RecorridosActionPerformed(evt);
+                jB_Modificar_ProductosActionPerformed(evt);
             }
         });
 
@@ -121,11 +124,11 @@ public class Panel_Recorridos extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jB_Alta_Recorridos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jB_Alta_Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jB_Baja_Recorridos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jB_Baja_Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jB_Modificar_Recorridos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jB_Modificar_Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -134,54 +137,54 @@ public class Panel_Recorridos extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jB_Alta_Recorridos)
-                    .addComponent(jB_Baja_Recorridos)
-                    .addComponent(jB_Modificar_Recorridos))
+                    .addComponent(jB_Alta_Productos)
+                    .addComponent(jB_Baja_Productos)
+                    .addComponent(jB_Modificar_Productos))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(138, 138, 138))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jB_Modificar_RecorridosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_RecorridosActionPerformed
-        int selectedRow = jT_Recorridos.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) jT_Recorridos.getModel();
+    private void jB_Modificar_ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_ProductosActionPerformed
+        int selectedRow = jT_Productos.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jT_Productos.getModel();
 
         int selectedID = (int) model.getValueAt(selectedRow, 0);
 
-        Input_Recorridos JframeRecorridos = new Input_Recorridos();
+        Input_Productos JframeProductos = new Input_Productos();
 
         try {
-            JframeRecorridos.Modificacion(selectedID);
+            JframeProductos.Modificacion(selectedID);
         } catch (SQLException ex) {
-            Logger.getLogger(Panel_Recorridos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Panel_Productos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        JframeRecorridos.setVisible(true);
-        JframeRecorridos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_jB_Modificar_RecorridosActionPerformed
+        JframeProductos.setVisible(true);
+        JframeProductos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jB_Modificar_ProductosActionPerformed
 
-    private void jB_Alta_RecorridosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_RecorridosActionPerformed
-        int selectedRow = jT_Recorridos.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) jT_Recorridos.getModel();
+    private void jB_Alta_ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_ProductosActionPerformed
+        int selectedRow = jT_Productos.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jT_Productos.getModel();
 
         //int selectedID = (int) model.getValueAt(selectedRow, 0);
-        Input_Recorridos JframeRecorridos = new Input_Recorridos();
+        Input_Productos JframeProductos = new Input_Productos();
 
         try {
-            JframeRecorridos.Alta();
+            JframeProductos.Alta();
         } catch (SQLException ex) {
-            Logger.getLogger(Panel_Recorridos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Panel_Productos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        JframeRecorridos.setVisible(true);
-        JframeRecorridos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_jB_Alta_RecorridosActionPerformed
+        JframeProductos.setVisible(true);
+        JframeProductos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jB_Alta_ProductosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jB_Alta_Recorridos;
-    private javax.swing.JButton jB_Baja_Recorridos;
-    private javax.swing.JButton jB_Modificar_Recorridos;
+    private javax.swing.JButton jB_Alta_Productos;
+    private javax.swing.JButton jB_Baja_Productos;
+    private javax.swing.JButton jB_Modificar_Productos;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jT_Recorridos;
+    private javax.swing.JTable jT_Productos;
     // End of variables declaration//GEN-END:variables
 }

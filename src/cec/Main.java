@@ -54,12 +54,14 @@ public class Main extends javax.swing.JFrame {
     JMenuItem menu_cobradores = new JMenuItem("Cobradores/Vendedores");
     JMenuItem menu_facturas = new JMenuItem("Facturas");
     JMenuItem menu_recorridos = new JMenuItem("Recorridos");
+    JMenuItem menu_productos = new JMenuItem("Productos");
 
     private Usuario current_user = new Usuario();
     Panel_Usuarios panel_usuarios = new Panel_Usuarios();
     Panel_Clientes panel_clientes = new Panel_Clientes();
     Panel_Recorridos panel_recorridos = new Panel_Recorridos();
     Panel_Cobradores panel_cobradores = new Panel_Cobradores();
+    Panel_Productos panel_productos = new Panel_Productos();
     
     public void setCurrent_user(Usuario user) {
 
@@ -108,7 +110,27 @@ public class Main extends javax.swing.JFrame {
             
             @Override
             public void actionPerformed(ActionEvent e){
+                panel_recorridos.setCurrent_user(current_user);
+                try {
+                    panel_recorridos.cargaRecorridos();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 jTabbedPane1.addTab("Recorridos   ", panel_recorridos);
+            }
+        
+        });
+        menu_productos.addActionListener(new ActionListener(){
+            
+            @Override
+            public void actionPerformed(ActionEvent e){
+                panel_productos.setCurrent_user(current_user);
+                try {
+                    panel_productos.carga();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                jTabbedPane1.addTab("Productos   ", panel_productos);
             }
         
         });
@@ -141,7 +163,7 @@ public class Main extends javax.swing.JFrame {
         menu_cuenta.add(menu_usuarios);
         menu_cuenta.add(menu_recorridos);
         menu_entidades.add(menu_clientes);
-      
+        menu_cuenta.add(menu_productos);
         menu_entidades.add(menu_cobradores);
         menu_procesos.add(menu_facturas);
         barraMenu.add(menu_cuenta);
