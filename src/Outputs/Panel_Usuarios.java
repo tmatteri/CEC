@@ -85,6 +85,7 @@ public class Panel_Usuarios extends javax.swing.JPanel {
             }
             modelo.fireTableDataChanged();
             rs.close();
+            conn.close();
         }
 
     }

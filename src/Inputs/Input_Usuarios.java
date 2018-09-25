@@ -4,15 +4,19 @@
  * and open the template in the editor.
  */
 package Inputs;
-
+import Entidades.Dato;
+import com.mxrck.autocompleter.*;
 import Entidades.Usuario;
 import cec.Tabla;
+
+import com.mxrck.autocompleter.TextAutoCompleter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import util.CD;
+import util.Help;
 
 /**
  *
@@ -23,12 +27,17 @@ public class Input_Usuarios extends javax.swing.JFrame {
     /**
      * Creates new form Input_Usuarios
      */
-    public Input_Usuarios() {
+    public Input_Usuarios() throws SQLException {
         initComponents();
+        
+      //  usuarioNombre.Autocompletar(jTNombre,"usuarios");
+      
+        
     }
     private boolean NewRecord = true;
     private int idLocal = 0;
-
+   // Help usuarioNombre = new Help();
+    
     public void Alta() {
         NewRecord = true;
 
@@ -89,6 +98,11 @@ public class Input_Usuarios extends javax.swing.JFrame {
         jLabel4.setText("Anulado:");
 
         jTNombre.setText("jTNombre");
+        jTNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTNombreFocusLost(evt);
+            }
+        });
         jTNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTNombreActionPerformed(evt);
@@ -239,11 +253,16 @@ public class Input_Usuarios extends javax.swing.JFrame {
 
     private void jTNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNombreActionPerformed
         // TODO add your handling code here:
+              
     }//GEN-LAST:event_jTNombreActionPerformed
 
     private void jB_Guardar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Guardar_UsuarioActionPerformed
         // TODO add your handling code here:
 
+     
+        
+        
+        
         if (NewRecord) {
 
          
@@ -265,6 +284,11 @@ public class Input_Usuarios extends javax.swing.JFrame {
         this.setVisible(false);
 
     }//GEN-LAST:event_jB_Cancelar_UsuarioActionPerformed
+
+    private void jTNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTNombreFocusLost
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jTNombreFocusLost
 
     /**
      * @param args the command line arguments
@@ -296,7 +320,11 @@ public class Input_Usuarios extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Input_Usuarios().setVisible(true);
+                try {
+                    new Input_Usuarios().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Input_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
