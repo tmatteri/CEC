@@ -5,6 +5,7 @@
  */
 package Outputs;
 
+import Entidades.CONSTANT;
 import Entidades.Usuario;
 import Inputs.Input_Clientes;
 import java.sql.SQLException;
@@ -46,7 +47,6 @@ public class Panel_Clientes extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jT_Clientes = new javax.swing.JTable();
         jB_Alta_Cliente = new javax.swing.JButton();
-        jB_Baja_Cliente = new javax.swing.JButton();
         jB_Modificar_Cliente = new javax.swing.JButton();
 
         jT_Clientes.setModel(new javax.swing.table.DefaultTableModel(
@@ -81,8 +81,6 @@ public class Panel_Clientes extends javax.swing.JPanel {
             }
         });
 
-        jB_Baja_Cliente.setText("Baja");
-
         jB_Modificar_Cliente.setText("Modificar");
         jB_Modificar_Cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,8 +98,6 @@ public class Panel_Clientes extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jB_Alta_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jB_Baja_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jB_Modificar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -112,7 +108,6 @@ public class Panel_Clientes extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jB_Alta_Cliente)
-                    .addComponent(jB_Baja_Cliente)
                     .addComponent(jB_Modificar_Cliente))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,6 +116,7 @@ public class Panel_Clientes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jB_Modificar_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_ClienteActionPerformed
+        if(current_user.VerificoPermisos(CONSTANT.CLIENTES,CONSTANT.MODIFICACION)){ 
         int selectedRow = jT_Clientes.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jT_Clientes.getModel();
 
@@ -135,9 +131,13 @@ public class Panel_Clientes extends javax.swing.JPanel {
         }
         JframeClientes.setVisible(true);
         JframeClientes.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        }
+        
     }//GEN-LAST:event_jB_Modificar_ClienteActionPerformed
 
     private void jB_Alta_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_ClienteActionPerformed
+     
+       if(current_user.VerificoPermisos(CONSTANT.CLIENTES,CONSTANT.ALTA)){ 
         int selectedRow = jT_Clientes.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jT_Clientes.getModel();
 
@@ -152,12 +152,15 @@ public class Panel_Clientes extends javax.swing.JPanel {
         }
         JframeClientes.setVisible(true);
         JframeClientes.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        
+        
+       }
+       
     }//GEN-LAST:event_jB_Alta_ClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jB_Alta_Cliente;
-    private javax.swing.JButton jB_Baja_Cliente;
     private javax.swing.JButton jB_Modificar_Cliente;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jT_Clientes;

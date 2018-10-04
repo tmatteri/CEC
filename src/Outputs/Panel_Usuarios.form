@@ -45,8 +45,6 @@
                       <Group type="102" attributes="0">
                           <Component id="jB_Alta_usuario" min="-2" pref="90" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jB_Baja_Usuario" min="-2" pref="90" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jB_Modificar_Usuario" min="-2" pref="90" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" min="-2" pref="980" max="-2" attributes="0"/>
@@ -61,7 +59,6 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jB_Alta_usuario" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jB_Baja_Usuario" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jB_Modificar_Usuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -126,14 +123,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_Alta_usuarioActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="jB_Baja_Usuario">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Baja"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_Baja_UsuarioActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jB_Modificar_Usuario">

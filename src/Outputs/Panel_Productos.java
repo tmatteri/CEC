@@ -5,6 +5,7 @@
  */
 package Outputs;
 
+import Entidades.CONSTANT;
 import Entidades.Usuario;
 import Inputs.Input_Clientes;
 import Inputs.Input_Productos;
@@ -72,7 +73,6 @@ public class Panel_Productos extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jT_Productos = new javax.swing.JTable();
         jB_Alta_Productos = new javax.swing.JButton();
-        jB_Baja_Productos = new javax.swing.JButton();
         jB_Modificar_Productos = new javax.swing.JButton();
 
         jT_Productos.setModel(new javax.swing.table.DefaultTableModel(
@@ -107,8 +107,6 @@ public class Panel_Productos extends javax.swing.JPanel {
             }
         });
 
-        jB_Baja_Productos.setText("Baja");
-
         jB_Modificar_Productos.setText("Modificar");
         jB_Modificar_Productos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,8 +124,6 @@ public class Panel_Productos extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jB_Alta_Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jB_Baja_Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jB_Modificar_Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -138,7 +134,6 @@ public class Panel_Productos extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jB_Alta_Productos)
-                    .addComponent(jB_Baja_Productos)
                     .addComponent(jB_Modificar_Productos))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,6 +142,7 @@ public class Panel_Productos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jB_Modificar_ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_ProductosActionPerformed
+        if(current_user.VerificoPermisos(CONSTANT.CLIENTES,CONSTANT.MODIFICACION)){ 
         int selectedRow = jT_Productos.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jT_Productos.getModel();
 
@@ -161,9 +157,12 @@ public class Panel_Productos extends javax.swing.JPanel {
         }
         JframeProductos.setVisible(true);
         JframeProductos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        }
+        
     }//GEN-LAST:event_jB_Modificar_ProductosActionPerformed
 
     private void jB_Alta_ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_ProductosActionPerformed
+         if(current_user.VerificoPermisos(CONSTANT.PRODUCTOS,CONSTANT.ALTA)){ 
         int selectedRow = jT_Productos.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jT_Productos.getModel();
 
@@ -177,12 +176,13 @@ public class Panel_Productos extends javax.swing.JPanel {
         }
         JframeProductos.setVisible(true);
         JframeProductos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+         }
+        
     }//GEN-LAST:event_jB_Alta_ProductosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jB_Alta_Productos;
-    private javax.swing.JButton jB_Baja_Productos;
     private javax.swing.JButton jB_Modificar_Productos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jT_Productos;
