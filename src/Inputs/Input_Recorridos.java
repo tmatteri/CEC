@@ -64,7 +64,6 @@ public class Input_Recorridos extends javax.swing.JFrame {
         jTDescripcion = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jB_Guardar_Usuario = new javax.swing.JButton();
-        jB_Cancelar_Usuario = new javax.swing.JButton();
         jTCobrador = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -87,8 +86,6 @@ public class Input_Recorridos extends javax.swing.JFrame {
                 jB_Guardar_UsuarioActionPerformed(evt);
             }
         });
-
-        jB_Cancelar_Usuario.setText("Cancelar");
 
         jTCobrador.setName("jTCobrador"); // NOI18N
         jTCobrador.addActionListener(new java.awt.event.ActionListener() {
@@ -129,23 +126,20 @@ public class Input_Recorridos extends javax.swing.JFrame {
                         .addComponent(jTId_cobrador, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)))
                 .addGroup(jPanelRecorridosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelRecorridosLayout.createSequentialGroup()
-                        .addComponent(jTDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(332, 332, 332)
-                        .addComponent(jB_Guardar_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jB_Cancelar_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCAnulado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTCobrador, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(541, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRecorridosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jB_Guardar_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         jPanelRecorridosLayout.setVerticalGroup(
             jPanelRecorridosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRecorridosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelRecorridosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jB_Guardar_Usuario)
-                    .addComponent(jB_Cancelar_Usuario))
+                .addComponent(jB_Guardar_Usuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanelRecorridosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -185,10 +179,11 @@ public class Input_Recorridos extends javax.swing.JFrame {
 
         if (NewRecord) {
             Recorridos.insert(Tabla.UltimoNumero("recorridos") + 1, jTDescripcion.getText(), Integer.parseInt(jTId_cobrador.getText()), jCAnulado.isSelected());
-
         } else {
             Recorridos.updateAll(id_local, jTDescripcion.getText(), Integer.parseInt(jTId_cobrador.getText()), jCAnulado.isSelected());
         }
+        
+        this.dispose();
 
 
     }//GEN-LAST:event_jB_Guardar_UsuarioActionPerformed
@@ -240,7 +235,6 @@ public class Input_Recorridos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jB_Cancelar_Usuario;
     private javax.swing.JButton jB_Guardar_Usuario;
     private javax.swing.JCheckBox jCAnulado;
     private javax.swing.JLabel jLabel1;

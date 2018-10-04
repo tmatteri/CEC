@@ -131,6 +131,7 @@ public class Tabla {
 
             rs.next();
             retorno = rs.getInt("id");
+            rs.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(Tabla.class.getName()).log(Level.SEVERE, null, ex);
