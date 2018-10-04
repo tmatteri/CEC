@@ -5,6 +5,7 @@
  */
 package Outputs;
 
+import Entidades.CONSTANT;
 import Entidades.Usuario;
 import cec.JavaPostgreSQL;
 import java.awt.List;
@@ -104,7 +105,6 @@ public class Panel_Usuarios extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jT_Usuarios = new javax.swing.JTable();
         jB_Alta_usuario = new javax.swing.JButton();
-        jB_Baja_Usuario = new javax.swing.JButton();
         jB_Modificar_Usuario = new javax.swing.JButton();
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 768));
@@ -141,13 +141,6 @@ public class Panel_Usuarios extends javax.swing.JPanel {
             }
         });
 
-        jB_Baja_Usuario.setText("Baja");
-        jB_Baja_Usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jB_Baja_UsuarioActionPerformed(evt);
-            }
-        });
-
         jB_Modificar_Usuario.setText("Modificar");
         jB_Modificar_Usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,8 +158,6 @@ public class Panel_Usuarios extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jB_Alta_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jB_Baja_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jB_Modificar_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
@@ -177,7 +168,6 @@ public class Panel_Usuarios extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jB_Alta_usuario)
-                    .addComponent(jB_Baja_Usuario)
                     .addComponent(jB_Modificar_Usuario))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,6 +190,7 @@ public class Panel_Usuarios extends javax.swing.JPanel {
 
     private void jB_Modificar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_UsuarioActionPerformed
         // TODO add your handling code here:
+       if(current_user.VerificoPermisos(CONSTANT.USUARIOS,CONSTANT.MODIFICACION)){ 
         try {
             int selectedRow = jT_Usuarios.getSelectedRow();
             DefaultTableModel model = (DefaultTableModel) jT_Usuarios.getModel();
@@ -217,12 +208,13 @@ public class Panel_Usuarios extends javax.swing.JPanel {
         } catch (IOException ex) {
             Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+       }
 
     }//GEN-LAST:event_jB_Modificar_UsuarioActionPerformed
 
     private void jB_Alta_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_usuarioActionPerformed
         // TODO add your handling code here:
+        if(current_user.VerificoPermisos(CONSTANT.USUARIOS,CONSTANT.ALTA)){ 
         try {
             Input_Usuarios JframeUsuarios = new Input_Usuarios();
             JframeUsuarios.Alta();
@@ -235,29 +227,12 @@ public class Panel_Usuarios extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jB_Alta_usuarioActionPerformed
-
-    private void jB_Baja_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Baja_UsuarioActionPerformed
-        try {
-            // TODO add your handling code here:
-            int selectedRow = jT_Usuarios.getSelectedRow();
-            DefaultTableModel model = (DefaultTableModel) jT_Usuarios.getModel();
-
-            int selectedID = (int) model.getValueAt(selectedRow, 0);
-            Tabla.update("usuarios", selectedID, "anulado", "True");
-            this.CargaUsuarios();
-        } catch (IOException ex) {
-            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-    }//GEN-LAST:event_jB_Baja_UsuarioActionPerformed
+    }//GEN-LAST:event_jB_Alta_usuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jB_Alta_usuario;
-    private javax.swing.JButton jB_Baja_Usuario;
     private javax.swing.JButton jB_Modificar_Usuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -72,5 +72,12 @@ public class Usuario extends Entidad {
     public static ResultSet select() {
         return Tabla.select(tabla);
     }
+    
+    public boolean VerificoPermisos(int permisoNum, int tipo){
+      
+        return true;
+    }
+    
+    
 
 }

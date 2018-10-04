@@ -5,6 +5,7 @@
  */
 package Outputs;
 
+import Entidades.CONSTANT;
 import Entidades.Usuario;
 import Inputs.Input_Clientes;
 import Inputs.Input_Recorridos;
@@ -69,7 +70,6 @@ public class Panel_Recorridos extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jT_Recorridos = new javax.swing.JTable();
         jB_Alta_Recorridos = new javax.swing.JButton();
-        jB_Baja_Recorridos = new javax.swing.JButton();
         jB_Modificar_Recorridos = new javax.swing.JButton();
 
         jT_Recorridos.setModel(new javax.swing.table.DefaultTableModel(
@@ -104,8 +104,6 @@ public class Panel_Recorridos extends javax.swing.JPanel {
             }
         });
 
-        jB_Baja_Recorridos.setText("Baja");
-
         jB_Modificar_Recorridos.setText("Modificar");
         jB_Modificar_Recorridos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,8 +121,6 @@ public class Panel_Recorridos extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jB_Alta_Recorridos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jB_Baja_Recorridos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jB_Modificar_Recorridos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -135,7 +131,6 @@ public class Panel_Recorridos extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jB_Alta_Recorridos)
-                    .addComponent(jB_Baja_Recorridos)
                     .addComponent(jB_Modificar_Recorridos))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,6 +139,7 @@ public class Panel_Recorridos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jB_Modificar_RecorridosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_RecorridosActionPerformed
+        if(current_user.VerificoPermisos(CONSTANT.RECORRIDOS,CONSTANT.MODIFICACION)){ 
         int selectedRow = jT_Recorridos.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jT_Recorridos.getModel();
 
@@ -158,9 +154,11 @@ public class Panel_Recorridos extends javax.swing.JPanel {
         }
         JframeRecorridos.setVisible(true);
         JframeRecorridos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        }
     }//GEN-LAST:event_jB_Modificar_RecorridosActionPerformed
 
     private void jB_Alta_RecorridosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_RecorridosActionPerformed
+         if(current_user.VerificoPermisos(CONSTANT.RECORRIDOS,CONSTANT.ALTA)){ 
         int selectedRow = jT_Recorridos.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jT_Recorridos.getModel();
 
@@ -174,12 +172,12 @@ public class Panel_Recorridos extends javax.swing.JPanel {
         }
         JframeRecorridos.setVisible(true);
         JframeRecorridos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+         }
     }//GEN-LAST:event_jB_Alta_RecorridosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jB_Alta_Recorridos;
-    private javax.swing.JButton jB_Baja_Recorridos;
     private javax.swing.JButton jB_Modificar_Recorridos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jT_Recorridos;

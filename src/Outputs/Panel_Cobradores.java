@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Outputs;
+import Entidades.CONSTANT;
 import Entidades.Usuario;
 import cec.JavaPostgreSQL;
 import java.awt.List;
@@ -102,7 +103,6 @@ public class Panel_Cobradores extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jT_Cobradores = new javax.swing.JTable();
         jB_Alta_Cobradores = new javax.swing.JButton();
-        jB_Baja_Cobradores = new javax.swing.JButton();
         jB_Modificar_Cobradores = new javax.swing.JButton();
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 768));
@@ -139,13 +139,6 @@ public class Panel_Cobradores extends javax.swing.JPanel {
             }
         });
 
-        jB_Baja_Cobradores.setText("Baja");
-        jB_Baja_Cobradores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jB_Baja_CobradoresActionPerformed(evt);
-            }
-        });
-
         jB_Modificar_Cobradores.setText("Modificar");
         jB_Modificar_Cobradores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,8 +156,6 @@ public class Panel_Cobradores extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jB_Alta_Cobradores, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jB_Baja_Cobradores, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jB_Modificar_Cobradores, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
@@ -175,7 +166,6 @@ public class Panel_Cobradores extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jB_Alta_Cobradores)
-                    .addComponent(jB_Baja_Cobradores)
                     .addComponent(jB_Modificar_Cobradores))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,6 +188,7 @@ public class Panel_Cobradores extends javax.swing.JPanel {
 
     private void jB_Modificar_CobradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_CobradoresActionPerformed
         // TODO add your handling code here:
+        if(current_user.VerificoPermisos(CONSTANT.COBRADORES,CONSTANT.MODIFICACION)){ 
         try {
         int selectedRow = jT_Cobradores.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jT_Cobradores.getModel();
@@ -216,7 +207,7 @@ public class Panel_Cobradores extends javax.swing.JPanel {
         } catch (IOException ex) {
             Logger.getLogger(Panel_Cobradores.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
+        }
        
            
      
@@ -226,7 +217,8 @@ public class Panel_Cobradores extends javax.swing.JPanel {
 
     private void jB_Alta_CobradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_CobradoresActionPerformed
         // TODO add your handling code here:
-           try {
+          if(current_user.VerificoPermisos(CONSTANT.COBRADORES,CONSTANT.ALTA)){ 
+        try {
         Input_Cobradores JframeCobradores = new Input_Cobradores();
         JframeCobradores.Alta();
         JframeCobradores.setVisible(true);
@@ -238,29 +230,12 @@ public class Panel_Cobradores extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(Panel_Cobradores.class.getName()).log(Level.SEVERE, null, ex);
         }
+          }
     }//GEN-LAST:event_jB_Alta_CobradoresActionPerformed
-
-    private void jB_Baja_CobradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Baja_CobradoresActionPerformed
-        try {
-            // TODO add your handling code here:
-            int selectedRow = jT_Cobradores.getSelectedRow();
-            DefaultTableModel model = (DefaultTableModel) jT_Cobradores.getModel();
-            
-            int selectedID = (int) model.getValueAt(selectedRow,0);
-            Tabla.update("entidades", selectedID,"anulado", "True");
-            this.Carga();
-        } catch (IOException ex) {
-            Logger.getLogger(Panel_Cobradores.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Panel_Cobradores.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }//GEN-LAST:event_jB_Baja_CobradoresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jB_Alta_Cobradores;
-    private javax.swing.JButton jB_Baja_Cobradores;
     private javax.swing.JButton jB_Modificar_Cobradores;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
