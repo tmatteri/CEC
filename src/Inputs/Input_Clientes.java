@@ -519,7 +519,7 @@ public class Input_Clientes extends javax.swing.JFrame {
                 Usuario.updateAll(Tabla.UltimoNumero("usuarios"), jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), true);
            
         }
-
+        this.dispose();
 
     }//GEN-LAST:event_jB_Guardar_UsuarioActionPerformed
 

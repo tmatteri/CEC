@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 import Inputs.*;
 import cec.Tabla;
 import javax.swing.WindowConstants;
+import util.CD;
 
 /**
  *
@@ -56,39 +57,24 @@ public class Panel_Usuarios extends javax.swing.JPanel {
                 return false;
             }
         };
+        jT_Usuarios.setModel(modelo);
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("Mail");
         modelo.addColumn("Anulado");
-        String NombreUsuario = current_user.getNombre();
+       
+        ResultSet rs = Tabla.select("id,nombre,email,anulado", "usuarios", "1=1");
+        Object[] datos = new Object[4];//creamos un object de la cantidad de COLUMNAS
 
-        if (NombreUsuario.equals("test")) {
+        while (rs.next()) {
+            for (int i = 0; i < 4; i++) {
+                datos[i] = rs.getObject(i + 1);//cargamos la fila en el objeto
 
-        } else {
-            jT_Usuarios.setModel(modelo);//asignamos el model, todo lo que pase en el model se va a modificar en
-            //la tabla
-            ResultSet rs;
-            Connection conn = null;
-            JavaPostgreSQL conexion = new JavaPostgreSQL();
-            conn = conexion.getConnection();
-            Statement st = conn.createStatement();
-            String consulta = "SELECT id, nombre, email, anulado FROM usuarios;";
-            rs = st.executeQuery(consulta); //ejecutamos la consulta
-            Object[] datos = new Object[4];//creamos un object de la cantidad de COLUMNAS
-
-            conn.close();//cerramos conexion
-
-            while (rs.next()) {
-                for (int i = 0; i < 4; i++) {
-                    datos[i] = rs.getObject(i + 1);//cargamos la fila en el objeto
-
-                }
-                modelo.addRow(datos);//cargamos el objeto en el model
             }
-            modelo.fireTableDataChanged();
-            rs.close();
-            conn.close();
+            modelo.addRow(datos);//cargamos el objeto en el model
         }
+        modelo.fireTableDataChanged();
+        rs.close();
 
     }
 
@@ -190,43 +176,74 @@ public class Panel_Usuarios extends javax.swing.JPanel {
 
     private void jB_Modificar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_UsuarioActionPerformed
         // TODO add your handling code here:
-       if(current_user.VerificoPermisos(CONSTANT.USUARIOS,CONSTANT.MODIFICACION)){ 
-        try {
-            int selectedRow = jT_Usuarios.getSelectedRow();
-            DefaultTableModel model = (DefaultTableModel) jT_Usuarios.getModel();
+        if (current_user.VerificoPermisos(CONSTANT.USUARIOS, CONSTANT.MODIFICACION)) {
+            try {
+                int selectedRow = jT_Usuarios.getSelectedRow();
+                DefaultTableModel model = (DefaultTableModel) jT_Usuarios.getModel();
 
-            int selectedID = (int) model.getValueAt(selectedRow, 0);
+                int selectedID = (int) model.getValueAt(selectedRow, 0);
 
-            Input_Usuarios JframeUsuarios = new Input_Usuarios();
+                Input_Usuarios JframeUsuarios = new Input_Usuarios();
 
-            JframeUsuarios.Modificacion(selectedID);
-            JframeUsuarios.setVisible(true);
-            JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            this.CargaUsuarios();
-        } catch (SQLException ex) {
-            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+                JframeUsuarios.Modificacion(selectedID);
+                JframeUsuarios.setVisible(true);
+                JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                JframeUsuarios.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                        try {
+                            try {
+                                CargaUsuarios();
+                                // your code
+                            } catch (IOException ex) {
+                                Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Panel_Productos.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                });
+            } catch (SQLException ex) {
+                Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-       }
 
     }//GEN-LAST:event_jB_Modificar_UsuarioActionPerformed
 
     private void jB_Alta_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_usuarioActionPerformed
         // TODO add your handling code here:
-        if(current_user.VerificoPermisos(CONSTANT.USUARIOS,CONSTANT.ALTA)){ 
-        try {
-            Input_Usuarios JframeUsuarios = new Input_Usuarios();
-            JframeUsuarios.Alta();
-            JframeUsuarios.setVisible(true);
-            JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        if (current_user.VerificoPermisos(CONSTANT.USUARIOS, CONSTANT.ALTA)) {
+            
+            try {
+                Input_Usuarios JframeUsuarios = new Input_Usuarios();
+                JframeUsuarios.Alta();
+                JframeUsuarios.setVisible(true);
+                JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-            this.CargaUsuarios();
-        } catch (IOException ex) {
-            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                JframeUsuarios.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                        
+
+                       
+                        try {
+                            CargaUsuarios();
+                            // your code
+                        } catch (IOException ex) {
+                            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                       
+                        
+                        
+                    }
+                });
+            } catch (SQLException ex) {
+                Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+          
         }
     }//GEN-LAST:event_jB_Alta_usuarioActionPerformed
 

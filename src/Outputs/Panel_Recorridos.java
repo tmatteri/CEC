@@ -10,6 +10,7 @@ import Entidades.Usuario;
 import Inputs.Input_Clientes;
 import Inputs.Input_Recorridos;
 import cec.Tabla;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -154,6 +155,23 @@ public class Panel_Recorridos extends javax.swing.JPanel {
         }
         JframeRecorridos.setVisible(true);
         JframeRecorridos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        JframeRecorridos.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                        
+
+                       
+                        try {
+                            cargaRecorridos();
+                            // your code
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                       
+                        
+                        
+                    }
+                });
         }
     }//GEN-LAST:event_jB_Modificar_RecorridosActionPerformed
 
@@ -172,6 +190,24 @@ public class Panel_Recorridos extends javax.swing.JPanel {
         }
         JframeRecorridos.setVisible(true);
         JframeRecorridos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+         JframeRecorridos.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                        
+
+                       
+                        try {
+                            cargaRecorridos();
+                            // your code
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                       
+                        
+                        
+                    }
+                });
+         
          }
     }//GEN-LAST:event_jB_Alta_RecorridosActionPerformed
 

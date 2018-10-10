@@ -11,6 +11,7 @@ import Inputs.Input_Clientes;
 import Inputs.Input_Productos;
 import Inputs.Input_Recorridos;
 import cec.Tabla;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -142,42 +143,65 @@ public class Panel_Productos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jB_Modificar_ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_ProductosActionPerformed
-        if(current_user.VerificoPermisos(CONSTANT.CLIENTES,CONSTANT.MODIFICACION)){ 
-        int selectedRow = jT_Productos.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) jT_Productos.getModel();
+        if (current_user.VerificoPermisos(CONSTANT.CLIENTES, CONSTANT.MODIFICACION)) {
+            int selectedRow = jT_Productos.getSelectedRow();
+            DefaultTableModel model = (DefaultTableModel) jT_Productos.getModel();
 
-        int selectedID = (int) model.getValueAt(selectedRow, 0);
+            int selectedID = (int) model.getValueAt(selectedRow, 0);
 
-        Input_Productos JframeProductos = new Input_Productos();
+            Input_Productos JframeProductos = new Input_Productos();
 
-        try {
-            JframeProductos.Modificacion(selectedID);
-        } catch (SQLException ex) {
-            Logger.getLogger(Panel_Productos.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                JframeProductos.Modificacion(selectedID);
+            } catch (SQLException ex) {
+                Logger.getLogger(Panel_Productos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JframeProductos.setVisible(true);
+            JframeProductos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+             JframeProductos.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                        try {
+                            carga();
+                            // your code
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Panel_Productos.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                });
         }
-        JframeProductos.setVisible(true);
-        JframeProductos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        }
-        
+
     }//GEN-LAST:event_jB_Modificar_ProductosActionPerformed
 
     private void jB_Alta_ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_ProductosActionPerformed
-         if(current_user.VerificoPermisos(CONSTANT.PRODUCTOS,CONSTANT.ALTA)){ 
-        int selectedRow = jT_Productos.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) jT_Productos.getModel();
+        if (current_user.VerificoPermisos(CONSTANT.PRODUCTOS, CONSTANT.ALTA)) {
+            int selectedRow = jT_Productos.getSelectedRow();
+            DefaultTableModel model = (DefaultTableModel) jT_Productos.getModel();
 
-        //int selectedID = (int) model.getValueAt(selectedRow, 0);
-        Input_Productos JframeProductos = new Input_Productos();
+            //int selectedID = (int) model.getValueAt(selectedRow, 0);
+            Input_Productos JframeProductos = new Input_Productos();
 
-        try {
-            JframeProductos.Alta();
-        } catch (SQLException ex) {
-            Logger.getLogger(Panel_Productos.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                JframeProductos.Alta();
+            } catch (SQLException ex) {
+                Logger.getLogger(Panel_Productos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JframeProductos.setVisible(true);
+            JframeProductos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            JframeProductos.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                    try {
+                        carga();
+                        // your code
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Panel_Productos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+
         }
-        JframeProductos.setVisible(true);
-        JframeProductos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-         }
-        
+
     }//GEN-LAST:event_jB_Alta_ProductosActionPerformed
 
 

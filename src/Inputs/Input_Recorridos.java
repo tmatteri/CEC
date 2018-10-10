@@ -185,9 +185,10 @@ public class Input_Recorridos extends javax.swing.JFrame {
 
         if (NewRecord) {
             Recorridos.insert(Tabla.UltimoNumero("recorridos") + 1, jTDescripcion.getText(), Integer.parseInt(jTId_cobrador.getText()), jCAnulado.isSelected());
-
+            this.dispose();
         } else {
             Recorridos.updateAll(id_local, jTDescripcion.getText(), Integer.parseInt(jTId_cobrador.getText()), jCAnulado.isSelected());
+            this.dispose();
         }
 
 

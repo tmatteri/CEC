@@ -285,6 +285,7 @@ public class Input_Cobradores extends javax.swing.JFrame {
                         ,jTCelular.getText(),jTDireccion.getText(), true);
           
         }
+        this.dispose();
 
 
     }//GEN-LAST:event_jB_Guardar_UsuarioActionPerformed

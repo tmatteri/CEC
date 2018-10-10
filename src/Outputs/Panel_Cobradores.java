@@ -201,10 +201,27 @@ public class Panel_Cobradores extends javax.swing.JPanel {
             JframeCobradores.Modificacion(selectedID);
               JframeCobradores.setVisible(true);
         JframeCobradores.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-         this.Carga();
+          JframeCobradores.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                        
+
+                       
+                        try {
+                            Carga();
+                            // your code
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (IOException ex) {
+                            Logger.getLogger(Panel_Cobradores.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                       
+                        
+                        
+                    }
+                });
+          
         } catch (SQLException ex) {
-            Logger.getLogger(Panel_Cobradores.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
             Logger.getLogger(Panel_Cobradores.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
@@ -223,10 +240,27 @@ public class Panel_Cobradores extends javax.swing.JPanel {
         JframeCobradores.Alta();
         JframeCobradores.setVisible(true);
         JframeCobradores.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-    
-            this.Carga();
-        } catch (IOException ex) {
-            Logger.getLogger(Panel_Cobradores.class.getName()).log(Level.SEVERE, null, ex);
+        
+          JframeCobradores.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                        
+
+                       
+                        try {
+                            Carga();
+                            // your code
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (IOException ex) {
+                            Logger.getLogger(Panel_Cobradores.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                       
+                        
+                        
+                    }
+                });
+          
         } catch (SQLException ex) {
             Logger.getLogger(Panel_Cobradores.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -169,9 +169,10 @@ public class Input_Productos extends javax.swing.JFrame {
 
         if (NewRecord) {
             Productos.insert(Tabla.UltimoNumero("productos") + 1, jTDescripcion.getText(), Float.parseFloat(jTPrecio.getText()), Integer.parseInt(jTStock.getText()));
-
+           
         } else {
             Productos.updateAll(id_local, jTDescripcion.getText(), Float.parseFloat(jTPrecio.getText()), Integer.parseInt(jTStock.getText()));
+            
         }
 
         this.dispose();

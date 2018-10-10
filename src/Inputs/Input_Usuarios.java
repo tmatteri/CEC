@@ -267,12 +267,12 @@ public class Input_Usuarios extends javax.swing.JFrame {
 
          
                 Usuario.insert(Tabla.UltimoNumero("usuarios") + 1, jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), jCBAnulado.isSelected());
-                this.setVisible(false);
+                this.dispose();
          
 
         } else {
             Usuario.updateAll(idLocal, jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), jCBAnulado.isSelected());
-            this.setVisible(false);
+          this.dispose();
         }
 
 
@@ -281,7 +281,7 @@ public class Input_Usuarios extends javax.swing.JFrame {
     private void jB_Cancelar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Cancelar_UsuarioActionPerformed
         // TODO add your handling code here:
 
-        this.setVisible(false);
+        this.dispose();
 
     }//GEN-LAST:event_jB_Cancelar_UsuarioActionPerformed
 
