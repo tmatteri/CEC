@@ -6,6 +6,7 @@
 package cec;
 
 import Entidades.Usuario;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
@@ -15,6 +16,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JTextField;
 
 /**
  *
@@ -47,6 +51,15 @@ public class Ingreso extends javax.swing.JFrame {
         }
 
     }
+
+    /*Action action = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("some action");
+        }
+    };
+    JTextField fieldPass = new JTextField(10);
+    fieldPass.addActionListener(action);*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -260,6 +273,7 @@ public class Ingreso extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonIngresar;
     private javax.swing.JTextField fieldIp;
@@ -272,4 +286,5 @@ public class Ingreso extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
+
 }
