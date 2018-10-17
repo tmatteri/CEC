@@ -5,6 +5,14 @@
  */
 package Entidades;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author Programación 2
@@ -28,7 +36,6 @@ public class Entidad {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
 
     public boolean isAnulado() {
         return anulado;
@@ -77,7 +84,32 @@ public class Entidad {
     public String getMail() {
         return mail;
     }
-    
-    
+
+    public void ImportarClientes(String ruta) throws FileNotFoundException, IOException {
+        String cadena;
+        File archivo = new File(ruta);
+        FileReader f = new FileReader(archivo);
+        BufferedReader b = new BufferedReader(f);
+        int comienzo = 0;
+        int fin = 0;
+        String campos[] = new String[10];
+
+        while ((cadena = b.readLine()) != null) {
+
+            comienzo = 0;
+            fin = 0;
+            for(int i = 0;i<10;i++){
+            fin = cadena.indexOf("|", comienzo);
+            campos[i] = (cadena.substring(comienzo, fin));
+            comienzo = fin + 1;
+            }
+        }
+        b.close();
+        
+        
+        
+        
+        
+    }
 
 }
