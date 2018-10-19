@@ -28,3 +28,9 @@ Tue Sep 25 20:27:13 ART 2018;Tomas;DESKTOP-AICU0K9/192.168.225.1;org.postgresql.
   Detail: Ya existe la llave (id)=(2).
 Tue Oct 09 20:05:13 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: no existe la relación «id»
   Position: 15
+Thu Oct 18 21:31:22 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: no existe la columna «anulado»
+  Position: 34
+Thu Oct 18 21:31:37 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: no existe la columna «anulado»
+  Position: 34
+Thu Oct 18 21:34:16 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: no existe la columna «anulado»
+  Position: 29

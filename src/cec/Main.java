@@ -8,7 +8,7 @@ package cec;
 import Outputs.*;
 import com.mxrck.autocompleter.AutoCompleter;
 
-import Entidades.Usuario;
+import Entidades.*;
 import Outputs.Panel_Recorridos;
 import java.awt.Color;
 import java.awt.Component;
@@ -26,12 +26,14 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Parent;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.metal.MetalTabbedPaneUI;
 
 /**
@@ -52,6 +54,7 @@ public class Main extends javax.swing.JFrame {
     JMenuItem menu_usuarios = new JMenuItem("Usuarios");
     JMenuItem menu_clientes = new JMenuItem("Clientes/Proveedores");
     JMenuItem menu_cobradores = new JMenuItem("Cobradores/Vendedores");
+    JMenuItem menu_importarclientes = new JMenuItem("Importar clientes");
     JMenuItem menu_facturas = new JMenuItem("Facturas");
     JMenuItem menu_recorridos = new JMenuItem("Recorridos");
     JMenuItem menu_productos = new JMenuItem("Productos");
@@ -75,6 +78,22 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         CrearMenu();
         jTabbedPane1.setUI(new CustomTabbedPaneUI());
+        menu_facturas.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                //JOptionPane.showMessageDialog(Main.this, "click");
+                panel_facturas_ingresos.setCurrent_user(current_user);
+               // panel_facturas.C();
+                jTabbedPane1.addTab("Facturas   ", panel_facturas_ingresos);
+                
+                
+            }
+        });
+        
+        
+        
         menu_usuarios.addActionListener(new ActionListener() {
 
             @Override
@@ -170,7 +189,22 @@ public class Main extends javax.swing.JFrame {
             }
         });
          
+         menu_importarclientes.addActionListener(new ActionListener(){
+            
+            @Override
+            public void actionPerformed(ActionEvent e){
+                
+                String ruta = SelectFile();
+                Entidad impo = new Entidad();
+                try {
+                    impo.ImportarClientes(ruta);
+                } catch (IOException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
         
+        });
         
     }
 
@@ -181,6 +215,7 @@ public class Main extends javax.swing.JFrame {
         menu_entidades.add(menu_clientes);
         menu_cuenta.add(menu_productos);
         menu_entidades.add(menu_cobradores);
+        menu_entidades.add(menu_importarclientes);
         menu_procesos.add(menu_facturas);
         barraMenu.add(menu_cuenta);
         barraMenu.add(menu_entidades);
@@ -188,6 +223,21 @@ public class Main extends javax.swing.JFrame {
         barraMenu.add(menu_opciones);
         setJMenuBar(barraMenu);
 
+    }
+    
+    private String SelectFile ()
+    {   String ruta = "";
+    
+         JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("texto", "txt");
+        chooser.setFileFilter(filter);
+        int returnval = chooser.showOpenDialog(this);
+        if(returnval == JFileChooser.APPROVE_OPTION) {
+           ruta = chooser.getSelectedFile().getPath();
+        }else{
+           ruta = ""; 
+        }
+        return ruta;
     }
 
     /**

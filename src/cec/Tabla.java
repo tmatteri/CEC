@@ -122,6 +122,29 @@ public class Tabla {
         //no puedo cerrar la conexion por que se pierde el enlace al rs
         return rs;
     }
+    
+    
+    public static String selectOne(String campos, String tabla, String filtro) throws SQLException{
+        ResultSet rs = null;
+        String datoreturn = "";
+        
+        consulta = "select " + campos + " from " + tabla + " where " + filtro;
+        connect();
+        try {
+            rs = sentencia.executeQuery(consulta);
+        } catch (Exception e) {
+            Log.setLog(e);
+        }
+        while (rs.next()) {
+            datoreturn = rs.getString(campos);
+            
+        }
+        rs.close();
+        
+        return datoreturn;
+        
+    }
+    
 
     public static int UltimoNumero(String tabla) {
         int retorno = 1;

@@ -12,7 +12,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import util.CD;
+import util.Help;
 
 /**
  *
@@ -23,9 +25,17 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
     /**
      * Creates new form Input_Usuarios
      */
-    public Input_Facturas_Ingresos() {
+    public Input_Facturas_Ingresos() throws SQLException {
         initComponents();
+        ayudaComprobante.Autocompletar(jTComprobante, "comprobantes");
+        ayudaCliente.Autocompletar(jTCliente, "entidades", "anulado = false AND tipo LIKE 'CLIENTE'");
+        ayudaCuenta.Autocompletar(jTCuenta, "cuentas");
+
     }
+    Help ayudaComprobante = new Help();
+    Help ayudaCliente = new Help();
+    Help ayudaCuenta = new Help();
+
     private boolean NewRecord = true;
 
     public void Alta() throws SQLException {
@@ -37,13 +47,41 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         NewRecord = false;
         ResultSet rs = Tabla.select("usuarios", "id = " + selectedId);
         rs.next();
-        jTNombre.setText(rs.getString("nombre"));
-        jTMail.setText(rs.getString("email"));
-        jTContrasena.setText(rs.getString("contrasena"));
+        jTComprobante.setText(rs.getString("nombre"));
+        jTFechaVencimiento.setText(rs.getString("email"));
+        jTFecha.setText(rs.getString("contrasena"));
 
     }
 
-    public void Baja() {
+    public void CargaItems() throws SQLException {
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        jT_Items.setModel(modelo);
+        modelo.addColumn("ID");
+        modelo.addColumn("Producto");
+        modelo.addColumn("Descripción");
+        modelo.addColumn("Cantidad");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Alicuota");
+        modelo.addColumn("Precio Total");
+
+        ResultSet rs = Tabla.select("id,id_producto,descripcion,cantidad,precio,alicuota", "items", "1=1");
+        Object[] datos = new Object[7];//creamos un object de la cantidad de COLUMNAS
+
+        while (rs.next()) {
+
+            datos[0] = rs.getObject(1);//cargamos la fila en el objeto
+            datos[1] = Tabla.selectOne("descripcion", "productos", "id = '" + (int) rs.getObject(2) + "'");
+            datos[2] = rs.getObject(3);//cargamos la fila en el objeto
+            datos[3] = rs.getObject(4);//cargamos la fila en el objeto
+            datos[4] = rs.getObject(5);//cargamos la fila en el objeto
+            datos[5] = rs.getObject(6);//cargamos la fila en el objeto
+            datos[6] = (int) datos[3] * (float) datos[4] * ((int) datos[5] / 100);
+
+            modelo.addRow(datos);//cargamos el objeto en el model
+        }
+        modelo.fireTableDataChanged();
+        rs.close();
 
     }
 
@@ -59,20 +97,20 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTNombre = new javax.swing.JTextField();
-        jTContrasena = new javax.swing.JTextField();
-        jTMail = new javax.swing.JTextField();
+        jTComprobante = new javax.swing.JTextField();
+        jTFecha = new javax.swing.JTextField();
+        jTFechaVencimiento = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jT_Usuarios = new javax.swing.JTable();
+        jT_Items = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jB_Guardar_Usuario = new javax.swing.JButton();
         jTRazon_social = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTRazon_social6 = new javax.swing.JTextField();
+        jTCliente = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTRazon_social7 = new javax.swing.JTextField();
+        jTCuenta = new javax.swing.JTextField();
         jTRazon_social8 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTRazon_social9 = new javax.swing.JTextField();
@@ -86,19 +124,19 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
 
         jLabel3.setText("Fecha vencimiento:");
 
-        jTNombre.addActionListener(new java.awt.event.ActionListener() {
+        jTComprobante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTNombreActionPerformed(evt);
+                jTComprobanteActionPerformed(evt);
             }
         });
 
-        jTContrasena.addActionListener(new java.awt.event.ActionListener() {
+        jTFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTContrasenaActionPerformed(evt);
+                jTFechaActionPerformed(evt);
             }
         });
 
-        jT_Usuarios.setModel(new javax.swing.table.DefaultTableModel(
+        jT_Items.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null}
             },
@@ -121,7 +159,7 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jT_Usuarios);
+        jScrollPane1.setViewportView(jT_Items);
 
         jLabel1.setText("Tipo:");
 
@@ -143,10 +181,10 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
 
         jLabel6.setText("Dias Financiacion:");
 
-        jTRazon_social6.setName("jTRazon_social"); // NOI18N
-        jTRazon_social6.addActionListener(new java.awt.event.ActionListener() {
+        jTCliente.setName("jTRazon_social"); // NOI18N
+        jTCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTRazon_social6ActionPerformed(evt);
+                jTClienteActionPerformed(evt);
             }
         });
 
@@ -154,10 +192,10 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
 
         jLabel10.setText("Numero de Cuenta:");
 
-        jTRazon_social7.setName("jTRazon_social"); // NOI18N
-        jTRazon_social7.addActionListener(new java.awt.event.ActionListener() {
+        jTCuenta.setName("jTRazon_social"); // NOI18N
+        jTCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTRazon_social7ActionPerformed(evt);
+                jTCuentaActionPerformed(evt);
             }
         });
 
@@ -221,11 +259,11 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jTMail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                                        .addComponent(jTContrasena, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTRazon_social6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTRazon_social7, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTFechaVencimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                                        .addComponent(jTFecha, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTComprobante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTRazon_social8, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTRazon_social9, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(58, 58, 58))
@@ -252,25 +290,25 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTComprobante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTRazon_social, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTRazon_social6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTRazon_social7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTRazon_social8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,27 +340,25 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTContrasenaActionPerformed
+    private void jTFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFechaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTContrasenaActionPerformed
+    }//GEN-LAST:event_jTFechaActionPerformed
 
-    private void jTNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNombreActionPerformed
+    private void jTComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTComprobanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTNombreActionPerformed
+    }//GEN-LAST:event_jTComprobanteActionPerformed
 
     private void jB_Guardar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Guardar_UsuarioActionPerformed
         // TODO add your handling code here:
 
         if (NewRecord) {
 
-           
-                Usuario.insert(Tabla.UltimoNumero("usuarios") + 1, jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), true);
-             
+            Usuario.insert(Tabla.UltimoNumero("usuarios") + 1, jTComprobante.getText(), jTFecha.getText(), jTFechaVencimiento.getText(), true);
 
         } else {
-           
-                Usuario.updateAll(Tabla.UltimoNumero("usuarios"), jTNombre.getText(), jTContrasena.getText(), jTMail.getText(), true);
-           
+
+            Usuario.updateAll(Tabla.UltimoNumero("usuarios"), jTComprobante.getText(), jTFecha.getText(), jTFechaVencimiento.getText(), true);
+
         }
 
 
@@ -332,13 +368,13 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTRazon_socialActionPerformed
 
-    private void jTRazon_social6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTRazon_social6ActionPerformed
+    private void jTClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTRazon_social6ActionPerformed
+    }//GEN-LAST:event_jTClienteActionPerformed
 
-    private void jTRazon_social7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTRazon_social7ActionPerformed
+    private void jTCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCuentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTRazon_social7ActionPerformed
+    }//GEN-LAST:event_jTCuentaActionPerformed
 
     private void jTRazon_social8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTRazon_social8ActionPerformed
         // TODO add your handling code here:
@@ -385,7 +421,11 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Input_Facturas_Ingresos().setVisible(true);
+                try {
+                    new Input_Facturas_Ingresos().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Input_Facturas_Ingresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -404,15 +444,15 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTContrasena;
-    private javax.swing.JTextField jTMail;
-    private javax.swing.JTextField jTNombre;
+    private javax.swing.JTextField jTCliente;
+    private javax.swing.JTextField jTComprobante;
+    private javax.swing.JTextField jTCuenta;
+    private javax.swing.JTextField jTFecha;
+    private javax.swing.JTextField jTFechaVencimiento;
     private javax.swing.JTextField jTRazon_social;
     private javax.swing.JTextField jTRazon_social10;
-    private javax.swing.JTextField jTRazon_social6;
-    private javax.swing.JTextField jTRazon_social7;
     private javax.swing.JTextField jTRazon_social8;
     private javax.swing.JTextField jTRazon_social9;
-    private javax.swing.JTable jT_Usuarios;
+    private javax.swing.JTable jT_Items;
     // End of variables declaration//GEN-END:variables
 }

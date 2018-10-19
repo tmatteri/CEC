@@ -67,7 +67,7 @@ public class Help {
          }
         });
         
-        ResultSet rs =Tabla.select(table, "anulado = false");
+        ResultSet rs =Tabla.select(table);
         while (rs.next()) {
             int a = rs.getInt("id");
             String b = rs.getString("nombre");
@@ -82,7 +82,35 @@ public class Help {
         
     }
     
-    
+     public void Autocompletar(JTextField campo, String table , String parametros) throws SQLException{
+        
+        TextAutoCompleter textAutoCompleter = new TextAutoCompleter(campo, new AutoCompleterCallback() {
+    @Override
+    public void callback(Object selectedItem) {
+        System.out.println("El usuario seleccionó: " + selectedItem);
+        Dato datid = (Dato) selectedItem;
+       // return datid;
+       id = datid.getId();
+       texto = datid.getTexto();
+      
+         }
+        });
+        
+        ResultSet rs =Tabla.select(table, parametros);
+        while (rs.next()) {
+            int a = rs.getInt("id");
+            String b = rs.getString("nombre");
+            Dato dat = new Dato(a,b);
+            
+            textAutoCompleter.addItem(dat);
+           
+            
+        }
+        rs.close();
+        textAutoCompleter.setMode(0);
+        
+    }
+     
     
     
     
