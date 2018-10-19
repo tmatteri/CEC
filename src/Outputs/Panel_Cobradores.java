@@ -58,7 +58,7 @@ public class Panel_Cobradores extends javax.swing.JPanel {
         modelo.addColumn("Nombre");
         modelo.addColumn("Mail");
         modelo.addColumn("Anulado");
-       String NombreUsuario = current_user.getNombre();
+       String NombreUsuario = current_user.getNombre_fantasia();
        
 
         if (NombreUsuario.equals("test")) {

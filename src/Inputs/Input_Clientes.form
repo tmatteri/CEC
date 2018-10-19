@@ -65,17 +65,17 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jTMail" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jTContrasena" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTEmail" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTCuit" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jTNombre" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jTRazon_social6" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
-                                      <Component id="jTRazon_social7" min="-2" pref="350" max="-2" attributes="0"/>
-                                      <Component id="jTRazon_social8" min="-2" pref="350" max="-2" attributes="0"/>
-                                      <Component id="jTRazon_social9" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
-                                      <Component id="jTRazon_social12" min="-2" pref="350" max="-2" attributes="0"/>
-                                      <Component id="jTRazon_social13" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
-                                      <Component id="jTRazon_social15" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="jTTelefono" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="jTCelular" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="jTLocal" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="jTBarrio" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="jTHoraio_atencion" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="jTNumero" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="jTRecorrido" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                               </Group>
@@ -107,16 +107,16 @@
                                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jTRazon_social" max="32767" attributes="0"/>
-                                      <Component id="jTRazon_social1" pref="350" max="32767" attributes="0"/>
-                                      <Component id="jTRazon_social2" pref="350" max="32767" attributes="0"/>
-                                      <Component id="jTRazon_social3" pref="350" max="32767" attributes="0"/>
-                                      <Component id="jTRazon_social4" pref="350" max="32767" attributes="0"/>
-                                      <Component id="jTRazon_social5" pref="350" max="32767" attributes="0"/>
-                                      <Component id="jTRazon_social10" alignment="0" pref="350" max="32767" attributes="0"/>
-                                      <Component id="jTRazon_social11" alignment="0" pref="350" max="32767" attributes="0"/>
-                                      <Component id="jTRazon_social14" alignment="0" pref="350" max="32767" attributes="0"/>
+                                      <Component id="jTRubro" pref="350" max="32767" attributes="0"/>
+                                      <Component id="jTFecha_creacion" pref="350" max="32767" attributes="0"/>
+                                      <Component id="jTNumero_cobro" pref="350" max="32767" attributes="0"/>
+                                      <Component id="jTDomicilio" pref="350" max="32767" attributes="0"/>
+                                      <Component id="jTEntre_calles" pref="350" max="32767" attributes="0"/>
+                                      <Component id="jTLocalidad" alignment="0" pref="350" max="32767" attributes="0"/>
+                                      <Component id="jTDomicilio_cobro" alignment="0" pref="350" max="32767" attributes="0"/>
+                                      <Component id="jTCodigo_postal" alignment="0" pref="350" max="32767" attributes="0"/>
                                       <Component id="jCBAnulado" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jCTipo" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -134,7 +134,7 @@
                       <Component id="jB_Guardar_Usuario" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jB_Cancelar_Usuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTNombre" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -144,65 +144,65 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTContrasena" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTRazon_social1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTCuit" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTRubro" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTMail" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTRazon_social2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTFecha_creacion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTRazon_social3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTRazon_social6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTNumero_cobro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTRazon_social4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTDomicilio" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTRazon_social7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTCelular" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTRazon_social5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTRazon_social8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTEntre_calles" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTLocal" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTRazon_social9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTRazon_social10" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTBarrio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTLocalidad" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTRazon_social11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTRazon_social12" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTDomicilio_cobro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTHoraio_atencion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTRazon_social13" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTRazon_social14" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTNumero" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTCodigo_postal" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTRazon_social15" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTRecorrido" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -246,12 +246,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTNombreActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTContrasena">
+        <Component class="javax.swing.JTextField" name="jTCuit">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTContrasenaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCuitActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTMail">
+        <Component class="javax.swing.JTextField" name="jTEmail">
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCBAnulado">
           <Events>
@@ -348,44 +348,44 @@
             <Property name="text" type="java.lang.String" value="Raz&#xf3;n Social:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social1">
+        <Component class="javax.swing.JTextField" name="jTRubro">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRubroActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social2">
+        <Component class="javax.swing.JTextField" name="jTFecha_creacion">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFecha_creacionActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social3">
+        <Component class="javax.swing.JTextField" name="jTNumero_cobro">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTNumero_cobroActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social4">
+        <Component class="javax.swing.JTextField" name="jTDomicilio">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTDomicilioActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social5">
+        <Component class="javax.swing.JTextField" name="jTEntre_calles">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTEntre_callesActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
@@ -398,12 +398,12 @@
             <Property name="text" type="java.lang.String" value="Fecha Creaci&#xf3;n:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social6">
+        <Component class="javax.swing.JTextField" name="jTTelefono">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTTelefonoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -416,20 +416,20 @@
             <Property name="text" type="java.lang.String" value="Celular:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social7">
+        <Component class="javax.swing.JTextField" name="jTCelular">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCelularActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social8">
+        <Component class="javax.swing.JTextField" name="jTLocal">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTLocalActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
@@ -452,60 +452,60 @@
             <Property name="text" type="java.lang.String" value="Entre Calles:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social9">
+        <Component class="javax.swing.JTextField" name="jTBarrio">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social9ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTBarrioActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social10">
+        <Component class="javax.swing.JTextField" name="jTLocalidad">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social10ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTLocalidadActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social11">
+        <Component class="javax.swing.JTextField" name="jTDomicilio_cobro">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social11ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTDomicilio_cobroActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social12">
+        <Component class="javax.swing.JTextField" name="jTHoraio_atencion">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social12ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTHoraio_atencionActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social13">
+        <Component class="javax.swing.JTextField" name="jTNumero">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social13ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTNumeroActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social14">
+        <Component class="javax.swing.JTextField" name="jTCodigo_postal">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social14ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCodigo_postalActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social15">
+        <Component class="javax.swing.JTextField" name="jTRecorrido">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social15ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRecorridoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
@@ -548,7 +548,7 @@
             <Property name="text" type="java.lang.String" value="Recorrido:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="jCTipo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
@@ -559,7 +559,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCTipoActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

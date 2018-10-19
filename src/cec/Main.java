@@ -62,6 +62,7 @@ public class Main extends javax.swing.JFrame {
     Panel_Recorridos panel_recorridos = new Panel_Recorridos();
     Panel_Cobradores panel_cobradores = new Panel_Cobradores();
     Panel_Productos panel_productos = new Panel_Productos();
+    Panel_Facturas_Ingresos panel_facturas_ingresos = new Panel_Facturas_Ingresos();
     
     public void setCurrent_user(Usuario user) {
 
@@ -131,6 +132,21 @@ public class Main extends javax.swing.JFrame {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 jTabbedPane1.addTab("Productos   ", panel_productos);
+            }
+        
+        });
+        
+        menu_facturas.addActionListener(new ActionListener(){
+            
+            @Override
+            public void actionPerformed(ActionEvent e){
+                panel_facturas_ingresos.setCurrent_user(current_user);
+                try {
+                    panel_facturas_ingresos.carga();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                jTabbedPane1.addTab("Facturas in   ", panel_facturas_ingresos);
             }
         
         });

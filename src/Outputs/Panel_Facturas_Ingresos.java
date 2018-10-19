@@ -8,6 +8,9 @@ package Outputs;
 import Entidades.CONSTANT;
 import Entidades.Usuario;
 import Inputs.Input_Clientes;
+import Inputs.Input_Facturas_Ingresos;
+import cec.Tabla;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,6 +37,30 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
         current_user.cargaPermisos();
 
     }
+      
+    public void carga() throws SQLException {
+        DefaultTableModel modelo = new DefaultTableModel();
+        jT_Facturas_Ingresos.setModel(modelo);
+        ResultSet rs = Tabla.select("id,fecha_creacion,id_entidad,descripcion,total,id_cobrador", "comprobantes", "1=1");
+
+        Object[] datos = new Object[4];//creamos un object de la cantidad de COLUMNAS
+        modelo.addColumn("ID");
+        modelo.addColumn("Fecha");
+        modelo.addColumn("Cliente");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Total");
+        modelo.addColumn("Pendiente");
+        while (rs.next()) {
+            for (int i = 0; i < 6; i++) {
+                datos[i] = rs.getObject(i + 1);//cargamos la fila en el objeto
+            }
+            modelo.addRow(datos);//cargamos el objeto en el model
+        }
+        modelo.fireTableDataChanged();
+        rs.close();
+    }
+
+    /**
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,23 +72,23 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jT_Baja_Facturas_Ingresos = new javax.swing.JTable();
+        jT_Facturas_Ingresos = new javax.swing.JTable();
         jB_Alta_Facturas_Ingresos = new javax.swing.JButton();
         jB_Modificar_Cliente = new javax.swing.JButton();
 
-        jT_Baja_Facturas_Ingresos.setModel(new javax.swing.table.DefaultTableModel(
+        jT_Facturas_Ingresos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Cliente", "Descripción", "Total", "Pendiente"
+                "ID", "Fecha", "Cliente", "Descripción", "Total", "Pendiente"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -72,7 +99,7 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jT_Baja_Facturas_Ingresos);
+        jScrollPane1.setViewportView(jT_Facturas_Ingresos);
 
         jB_Alta_Facturas_Ingresos.setText("Alta");
         jB_Alta_Facturas_Ingresos.addActionListener(new java.awt.event.ActionListener() {
@@ -117,20 +144,20 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
 
     private void jB_Modificar_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_ClienteActionPerformed
         if(current_user.VerificoPermisos(CONSTANT.CLIENTES,CONSTANT.MODIFICACION)){ 
-        int selectedRow = jT_Baja_Facturas_Ingresos.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) jT_Baja_Facturas_Ingresos.getModel();
+        int selectedRow = jT_Facturas_Ingresos.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jT_Facturas_Ingresos.getModel();
 
         int selectedID = (int) model.getValueAt(selectedRow, 0);
 
-        Input_Clientes JframeClientes = new Input_Clientes();
+        Input_Facturas_Ingresos JframeFacturasIngreso = new Input_Facturas_Ingresos();
 
         try {
-            JframeClientes.Modificacion(selectedID);
+            JframeFacturasIngreso.Modificacion(selectedID);
         } catch (SQLException ex) {
             Logger.getLogger(Panel_Facturas_Ingresos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        JframeClientes.setVisible(true);
-        JframeClientes.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        JframeFacturasIngreso.setVisible(true);
+        JframeFacturasIngreso.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         }
         
     }//GEN-LAST:event_jB_Modificar_ClienteActionPerformed
@@ -138,20 +165,20 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
     private void jB_Alta_Facturas_IngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_Facturas_IngresosActionPerformed
      
        if(current_user.VerificoPermisos(CONSTANT.CLIENTES,CONSTANT.ALTA)){ 
-        int selectedRow = jT_Baja_Facturas_Ingresos.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) jT_Baja_Facturas_Ingresos.getModel();
+        int selectedRow = jT_Facturas_Ingresos.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jT_Facturas_Ingresos.getModel();
 
         //int selectedID = (int) model.getValueAt(selectedRow, 0);
 
-        Input_Clientes JframeClientes = new Input_Clientes();
+        Input_Facturas_Ingresos JframeFacturasIngreso = new Input_Facturas_Ingresos();
 
         try {
-            JframeClientes.Alta();
+            JframeFacturasIngreso.Alta();
         } catch (SQLException ex) {
             Logger.getLogger(Panel_Facturas_Ingresos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        JframeClientes.setVisible(true);
-        JframeClientes.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        JframeFacturasIngreso.setVisible(true);
+        JframeFacturasIngreso.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
         
        }
@@ -163,6 +190,6 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
     private javax.swing.JButton jB_Alta_Facturas_Ingresos;
     private javax.swing.JButton jB_Modificar_Cliente;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jT_Baja_Facturas_Ingresos;
+    private javax.swing.JTable jT_Facturas_Ingresos;
     // End of variables declaration//GEN-END:variables
 }

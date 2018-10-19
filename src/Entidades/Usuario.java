@@ -49,7 +49,7 @@ public class Usuario extends Entidad {
         return Tabla.insert(tabla, campos, valores);
     }
     public  void Guardar(){
-        Usuario.insert(this.id, this.nombre, this.pass,this.mail,this.anulado);
+        Usuario.insert(this.id, this.nombre_fantasia, this.pass,this.email,this.anulado);
                
     }
 

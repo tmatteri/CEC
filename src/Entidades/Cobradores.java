@@ -23,7 +23,7 @@ public class Cobradores  extends Entidad{
         return Tabla.insert(tabla, campos, valores);
     }
     public  void Guardar(){
-        Cobradores.insert(this.id, this.nombre, this.mail,this.cuit,this.telefono,this.celular,this.domicilio,this.anulado);
+        Cobradores.insert(this.id, this.nombre_fantasia, this.email,this.cuit,this.telefono,this.celular,this.domicilio,this.anulado);
                
     }
 
