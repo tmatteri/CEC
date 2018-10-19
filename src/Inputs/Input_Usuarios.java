@@ -29,8 +29,8 @@ public class Input_Usuarios extends javax.swing.JFrame {
      */
     public Input_Usuarios() throws SQLException {
         initComponents();
-        
-      //  usuarioNombre.Autocompletar(jTNombre,"usuarios");
+       
+       //usuarioNombre.Autocompletar(jTNombre,"usuarios");
       
         
     }
@@ -260,9 +260,6 @@ public class Input_Usuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
 
      
-        
-        
-        
         if (NewRecord) {
 
          

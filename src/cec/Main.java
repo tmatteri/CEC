@@ -65,6 +65,7 @@ public class Main extends javax.swing.JFrame {
     Panel_Recorridos panel_recorridos = new Panel_Recorridos();
     Panel_Cobradores panel_cobradores = new Panel_Cobradores();
     Panel_Productos panel_productos = new Panel_Productos();
+    Panel_Facturas_Ingresos panel_facturas = new Panel_Facturas_Ingresos();
     
     public void setCurrent_user(Usuario user) {
 
@@ -77,6 +78,22 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         CrearMenu();
         jTabbedPane1.setUI(new CustomTabbedPaneUI());
+        menu_facturas.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                //JOptionPane.showMessageDialog(Main.this, "click");
+                panel_facturas.setCurrent_user(current_user);
+               // panel_facturas.C();
+                jTabbedPane1.addTab("Facturas   ", panel_facturas);
+                
+                
+            }
+        });
+        
+        
+        
         menu_usuarios.addActionListener(new ActionListener() {
 
             @Override

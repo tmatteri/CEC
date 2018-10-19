@@ -8,6 +8,7 @@ package Outputs;
 import Entidades.CONSTANT;
 import Entidades.Usuario;
 import Inputs.Input_Clientes;
+import Inputs.Input_Facturas_Ingresos;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -117,20 +118,25 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
 
     private void jB_Modificar_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_ClienteActionPerformed
         if(current_user.VerificoPermisos(CONSTANT.CLIENTES,CONSTANT.MODIFICACION)){ 
-        int selectedRow = jT_Baja_Facturas_Ingresos.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) jT_Baja_Facturas_Ingresos.getModel();
-
-        int selectedID = (int) model.getValueAt(selectedRow, 0);
-
-        Input_Clientes JframeClientes = new Input_Clientes();
-
-        try {
-            JframeClientes.Modificacion(selectedID);
+        try { 
+            int selectedRow = jT_Baja_Facturas_Ingresos.getSelectedRow();
+            DefaultTableModel model = (DefaultTableModel) jT_Baja_Facturas_Ingresos.getModel();
+            
+            int selectedID = (int) model.getValueAt(selectedRow, 0);
+            
+            Input_Facturas_Ingresos JframeFacturas = new Input_Facturas_Ingresos();
+            
+            
+            try {
+                JframeFacturas.Modificacion(selectedID);
+            } catch (SQLException ex) {
+                Logger.getLogger(Panel_Facturas_Ingresos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JframeFacturas.setVisible(true);
+            JframeFacturas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         } catch (SQLException ex) {
             Logger.getLogger(Panel_Facturas_Ingresos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        JframeClientes.setVisible(true);
-        JframeClientes.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         }
         
     }//GEN-LAST:event_jB_Modificar_ClienteActionPerformed
@@ -143,15 +149,20 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
 
         //int selectedID = (int) model.getValueAt(selectedRow, 0);
 
-        Input_Clientes JframeClientes = new Input_Clientes();
+         Input_Facturas_Ingresos JframeFacturas = null;
+           try {
+               JframeFacturas = new Input_Facturas_Ingresos();
+           } catch (SQLException ex) {
+               Logger.getLogger(Panel_Facturas_Ingresos.class.getName()).log(Level.SEVERE, null, ex);
+           }
 
         try {
-            JframeClientes.Alta();
+            JframeFacturas.Alta();
         } catch (SQLException ex) {
             Logger.getLogger(Panel_Facturas_Ingresos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        JframeClientes.setVisible(true);
-        JframeClientes.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        JframeFacturas.setVisible(true);
+        JframeFacturas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
         
        }

@@ -74,12 +74,12 @@
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jTMail" alignment="0" pref="350" max="32767" attributes="0"/>
-                                          <Component id="jTContrasena" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jTNombre" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
+                                          <Component id="jTFechaVencimiento" alignment="0" pref="350" max="32767" attributes="0"/>
+                                          <Component id="jTFecha" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTComprobante" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jTRazon_social6" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
-                                      <Component id="jTRazon_social7" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="jTCliente" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="jTCuenta" min="-2" pref="350" max="-2" attributes="0"/>
                                       <Component id="jTRazon_social8" min="-2" pref="350" max="-2" attributes="0"/>
                                       <Component id="jTRazon_social9" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                                   </Group>
@@ -118,29 +118,29 @@
                   <EmptySpace pref="27" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTComprobante" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTRazon_social" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTContrasena" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTFecha" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTMail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTFechaVencimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTRazon_social6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTRazon_social7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTCuenta" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -174,17 +174,17 @@
             <Property name="text" type="java.lang.String" value="Fecha vencimiento:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTNombre">
+        <Component class="javax.swing.JTextField" name="jTComprobante">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTNombreActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTComprobanteActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTContrasena">
+        <Component class="javax.swing.JTextField" name="jTFecha">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTContrasenaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFechaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTMail">
+        <Component class="javax.swing.JTextField" name="jTFechaVencimiento">
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -193,7 +193,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jT_Usuarios">
+            <Component class="javax.swing.JTable" name="jT_Items">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="7" rowCount="1">
@@ -273,12 +273,12 @@
             <Property name="text" type="java.lang.String" value="Dias Financiacion:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social6">
+        <Component class="javax.swing.JTextField" name="jTCliente">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTClienteActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -291,12 +291,12 @@
             <Property name="text" type="java.lang.String" value="Numero de Cuenta:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social7">
+        <Component class="javax.swing.JTextField" name="jTCuenta">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCuentaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTRazon_social8">
