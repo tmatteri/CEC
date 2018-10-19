@@ -187,7 +187,7 @@ public class Ingreso extends javax.swing.JFrame {
 
         if (this.fieldIp.getText().equals("test")) {
             Usuario current_user = new Usuario();
-            current_user.setNombre("test");
+            current_user.setNombre_fantasia("test");
             current_user.setId(1);
             main.setCurrent_user(current_user);
 
@@ -215,7 +215,7 @@ public class Ingreso extends javax.swing.JFrame {
 
                 if (this.ingresoCorrecto) {
                     Usuario current_user = new Usuario();
-                    current_user.setNombre(this.fieldUser.getText());
+                    current_user.setNombre_fantasia(this.fieldUser.getText());
                     current_user.setId(id_usuario);
                     main.setCurrent_user(current_user);
 
