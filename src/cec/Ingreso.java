@@ -70,16 +70,19 @@ public class Ingreso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fieldPass = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         fieldUser = new javax.swing.JTextField();
-        fieldPass = new javax.swing.JTextField();
         buttonIngresar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         fieldIp = new javax.swing.JTextField();
+        jPass = new javax.swing.JPasswordField();
+
+        fieldPass.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,8 +96,6 @@ public class Ingreso extends javax.swing.JFrame {
         jLabel3.setText("Contraseña:");
 
         fieldUser.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-
-        fieldPass.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
 
         buttonIngresar.setText("Ingresar");
         buttonIngresar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +111,12 @@ public class Ingreso extends javax.swing.JFrame {
         fieldIp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldIpActionPerformed(evt);
+            }
+        });
+
+        jPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPassActionPerformed(evt);
             }
         });
 
@@ -136,25 +143,25 @@ public class Ingreso extends javax.swing.JFrame {
                                 .addComponent(fieldIp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(buttonIngresar))
-                            .addComponent(fieldPass, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                            .addComponent(jPass))))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(3, 3, 3)
+                .addGap(6, 6, 6)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fieldUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                    .addComponent(jPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonIngresar)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -204,7 +211,9 @@ public class Ingreso extends javax.swing.JFrame {
                 int id_usuario = 0;
                 while (rs.next()) {
                     pass = rs.getString("contrasena");
-                    if (this.fieldPass.getText().equals(pass)) {
+                   
+                    String myPass=String.valueOf(jPass.getPassword());
+                    if (myPass.equals(pass)) {
                         this.ingresoCorrecto = true;
                         id_usuario = rs.getInt("id");
 
@@ -220,6 +229,7 @@ public class Ingreso extends javax.swing.JFrame {
                     main.setCurrent_user(current_user);
 
                     main.setVisible(true);
+                    main.setLocationRelativeTo(null);
                     this.setVisible(false);
 
                 }
@@ -237,6 +247,10 @@ public class Ingreso extends javax.swing.JFrame {
     private void fieldIpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldIpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldIpActionPerformed
+
+    private void jPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,6 +298,7 @@ public class Ingreso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPass;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 
