@@ -13,7 +13,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import util.CD;
 import util.Help;
 
@@ -32,7 +35,7 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         ayudaComprobante.Autocompletar(jTComprobante, "comprobantes");
         ayudaCliente.Autocompletar(jTCliente, "entidades", "anulado = false AND tipo LIKE 'CLIENTE'");
         ayudaCuenta.Autocompletar(jTCuenta, "cuentas");
-
+        CargaItems();
     }
    
     Help ayudaComprobante = new Help();
@@ -58,12 +61,8 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
 
     public void CargaItems() throws SQLException {
       
-         DefaultTableModel modelo =  new DefaultTableModel() {
-            @Override
-            public boolean isCellEditable(int fila, int columna) {
-                return true;
-            }
-        };
+         DefaultTableModel modelo =  new DefaultTableModel();
+         
         jT_Items.setModel(modelo);
        // modelo.addColumn("ID");
         modelo.addColumn("Producto");
@@ -90,6 +89,7 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         }
         modelo.fireTableDataChanged();
         rs.close();
+        anadeListenerAlModelo(jT_Items);
 
     }
 
@@ -461,6 +461,73 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
                 }
             }
         });
+    }
+    
+    
+    private void anadeListenerAlModelo(JTable tabla) {
+        tabla.getModel().addTableModelListener(new TableModelListener() {
+
+            @Override
+            public void tableChanged(TableModelEvent evento) {
+                actualizaSumas(evento);
+            }
+             public boolean isCellEditable(int fila, int columna) {
+                return columna != 5 && columna != 1 ;
+            }    
+             
+        });
+    }
+    
+    
+    protected void actualizaSumas(TableModelEvent evento) {
+        // Solo se trata el evento UPDATE, correspondiente al cambio de valor
+        // de una celda.
+        if (evento.getType() == TableModelEvent.UPDATE) {
+
+            // Se obtiene el modelo de la tabla y la fila/columna que han cambiado.
+            TableModel modelo = ((TableModel) (evento.getSource()));
+            int fila = evento.getFirstRow();
+            int columna = evento.getColumn();
+
+            // Los cambios en la ultima fila y columna se ignoran.
+            // Este return es necesario porque cuando nuestro codigo modifique
+            // los valores de las sumas en esta fila y columna, saltara nuevamente
+            // el evento, metiendonos en un bucle recursivo de llamadas a este
+            // metodo.
+            if (columna == 5 || columna == 1)  {
+                return;
+            }
+
+            try {
+                // Se actualiza la suma en la ultima columna de la fila que ha
+                // cambiado.
+                
+                double valorPrimeraColumna = 0;
+                        if(!modelo.getValueAt(fila,2).toString().equals("")){
+                        valorPrimeraColumna = Double.parseDouble( modelo.getValueAt(fila,2).toString());
+                        }
+                        
+                double valorSegundaColumna = 0;
+                if(!modelo.getValueAt(fila,3).toString().equals("")){
+                        valorSegundaColumna = Double.parseDouble( modelo.getValueAt(fila,3).toString());
+                        }
+                
+                
+                double valorTerceraColumna = 0;
+                 if(!modelo.getValueAt(fila,3).toString().equals("")){
+                        valorTerceraColumna = Double.parseDouble( modelo.getValueAt(fila,4).toString());
+                        }
+                               
+                double precioTotal = valorPrimeraColumna*valorSegundaColumna;
+                
+                modelo.setValueAt(precioTotal, fila, 5);
+                
+                
+            } catch (NullPointerException e) {
+                // La celda que ha cambiado esta vacia.
+            }
+        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
