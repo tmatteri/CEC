@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 import util.CD;
 
 /**
@@ -125,7 +126,7 @@ public class Input_Clientes extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jCTipo = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jBAgregar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -343,7 +344,12 @@ public class Input_Clientes extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Agregar");
+        jBAgregar.setText("Agregar");
+        jBAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAgregarActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Quitar");
 
@@ -393,7 +399,7 @@ public class Input_Clientes extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton1)
+                                .addComponent(jBAgregar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton2))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -505,7 +511,7 @@ public class Input_Clientes extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton1)
+                                .addComponent(jBAgregar)
                                 .addComponent(jButton2))
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
@@ -629,6 +635,13 @@ public class Input_Clientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCTipoActionPerformed
 
+    private void jBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAgregarActionPerformed
+        // TODO add your handling code here:s
+        Input_Contactos JframeContactos = new Input_Contactos();
+        JframeContactos.setVisible(true);
+        JframeContactos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jBAgregarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -666,8 +679,8 @@ public class Input_Clientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAgregar;
     private javax.swing.JButton jB_Guardar_Usuario;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCBAnulado;
     private javax.swing.JComboBox<String> jCTipo;

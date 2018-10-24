@@ -28,10 +28,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -52,7 +49,6 @@
                       </Group>
                       <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
@@ -61,16 +57,15 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                           <Component id="jTEmail" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTCuit" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTFecha_nac" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTNombre" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jTTelefono" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                       <Component id="jTCelular" min="-2" pref="350" max="-2" attributes="0"/>
-                      <Component id="jTLocal" min="-2" pref="350" max="-2" attributes="0"/>
+                      <Component id="jTNombre_conyugue" min="-2" pref="350" max="-2" attributes="0"/>
                       <Component id="jTBarrio" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
-                      <Component id="jTHoraio_atencion" min="-2" pref="350" max="-2" attributes="0"/>
-                      <Component id="jTNumero" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
-                      <Component id="jTRecorrido" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                      <Component id="jTpiso" min="-2" pref="350" max="-2" attributes="0"/>
+                      <Component id="jTReside" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -83,22 +78,20 @@
                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" pref="79" max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jCBAnulado" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jTCodigo_postal" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTDomicilio_cobro" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTCodigo_postal" alignment="0" pref="350" max="32767" attributes="0"/>
+                          <Component id="jTDepto" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTLocalidad" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTEntre_calles" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTDomicilio" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTNumero_cobro" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTRubro" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTRazon_social" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTNumero" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTNacionalidad" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTDni" alignment="0" max="32767" attributes="0"/>
                           <Component id="jB_Guardar_Usuario" min="-2" pref="90" max="-2" attributes="0"/>
-                          <Component id="jTFecha_creacion" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
@@ -112,86 +105,100 @@
                   <Component id="jB_Guardar_Usuario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="jTNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTCuit" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTFecha_nac" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jTFecha_creacion" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTCelular" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTNombre_conyugue" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTRazon_social" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTBarrio" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTpiso" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTReside" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTDni" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTNumero" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTDomicilio" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTEntre_calles" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTLocalidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTDepto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTCodigo_postal" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCBAnulado" min="-2" pref="20" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTRubro" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTNumero_cobro" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTDomicilio" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTCelular" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTEntre_calles" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTLocal" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTBarrio" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTLocalidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTDomicilio_cobro" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTHoraio_atencion" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTNumero" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTCodigo_postal" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTRecorrido" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jCBAnulado" min="-2" pref="20" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="43" max="32767" attributes="0"/>
+                  <EmptySpace pref="28" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -217,9 +224,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTNombreActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTCuit">
+        <Component class="javax.swing.JTextField" name="jTFecha_nac">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCuitActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFecha_nacActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTEmail">
@@ -242,12 +249,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_Guardar_UsuarioActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social">
+        <Component class="javax.swing.JTextField" name="jTDni">
           <Properties>
-            <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="jTDni" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_socialActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTDniActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -255,28 +262,20 @@
             <Property name="text" type="java.lang.String" value="DNI:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRubro">
+        <Component class="javax.swing.JTextField" name="jTNacionalidad">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRubroActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTNacionalidadActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTFecha_creacion">
+        <Component class="javax.swing.JTextField" name="jTNumero">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFecha_creacionActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTNumero_cobro">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTNumero_cobroActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTNumeroActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTDomicilio">
@@ -298,11 +297,6 @@
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nacionalidad:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha Creaci&#xf3;n:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTTelefono">
@@ -331,12 +325,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCelularActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTLocal">
+        <Component class="javax.swing.JTextField" name="jTNombre_conyugue">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTLocalActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTNombre_conyugueActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
@@ -375,28 +369,20 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTLocalidadActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTDomicilio_cobro">
+        <Component class="javax.swing.JTextField" name="jTDepto">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTDomicilio_cobroActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTDeptoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTHoraio_atencion">
+        <Component class="javax.swing.JTextField" name="jTpiso">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTHoraio_atencionActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTNumero">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTNumeroActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTpisoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTCodigo_postal">
@@ -407,12 +393,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCodigo_postalActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRecorrido">
+        <Component class="javax.swing.JTextField" name="jTReside">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRecorridoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTResideActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
@@ -438,11 +424,6 @@
         <Component class="javax.swing.JLabel" name="jLabel19">
           <Properties>
             <Property name="text" type="java.lang.String" value="CP:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel20">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Barrio:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel22">
