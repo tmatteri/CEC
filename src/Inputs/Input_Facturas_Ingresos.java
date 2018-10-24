@@ -34,13 +34,13 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
      */
     public Input_Facturas_Ingresos() throws SQLException {
         initComponents();
-        
+
         ayudaComprobante.Autocompletar(jTComprobante, "comprobantes");
         ayudaCliente.Autocompletar(jTCliente, "entidades", "anulado = false AND tipo LIKE 'CLIENTE'");
         ayudaCuenta.Autocompletar(jTCuenta, "cuentas");
         CargaItems();
     }
-   
+
     Help ayudaComprobante = new Help();
     Help ayudaCliente = new Help();
     Help ayudaCuenta = new Help();
@@ -63,17 +63,17 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
     }
 
     public void CargaItems() throws SQLException {
-      
-         DefaultTableModel modelo =  new DefaultTableModel(){
-         @Override
-          public boolean isCellEditable(int fila, int columna) {
-                return columna != 5 && columna != 1 ;
-            }   
-         
-         };
-         
+
+        DefaultTableModel modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int fila, int columna) {
+                return columna != 5 && columna != 1;
+            }
+
+        };
+
         jT_Items.setModel(modelo);
-       // modelo.addColumn("ID");
+        // modelo.addColumn("ID");
         modelo.addColumn("Producto");
         modelo.addColumn("Descripción");
         modelo.addColumn("Cantidad");
@@ -99,7 +99,7 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         modelo.fireTableDataChanged();
         rs.close();
         anadeListenerAlModelo(jT_Items);
-        jT_Items.setDefaultRenderer(double.class,new DecimalFormatRenderer());
+        jT_Items.setDefaultRenderer(double.class, new DecimalFormatRenderer());
     }
 
     /**
@@ -432,9 +432,9 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         // TODO add your handling code here:
         Object obj[] = new Object[6];
         DefaultTableModel modelo = (DefaultTableModel) jT_Items.getModel();
-         modelo.addRow(obj);
-        
-       
+        modelo.addRow(obj);
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -478,8 +478,7 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
             }
         });
     }
-    
-    
+
     private void anadeListenerAlModelo(JTable tabla) {
         tabla.getModel().addTableModelListener(new TableModelListener() {
 
@@ -487,12 +486,10 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
             public void tableChanged(TableModelEvent evento) {
                 actualizaSumas(evento);
             }
-             
-             
+
         });
     }
-    
-    
+
     protected void actualizaSumas(TableModelEvent evento) {
         // Solo se trata el evento UPDATE, correspondiente al cambio de valor
         // de una celda.
@@ -502,70 +499,68 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
             TableModel modelo = ((TableModel) (evento.getSource()));
             int fila = evento.getFirstRow();
             int columna = evento.getColumn();
-            DecimalFormat formatter = new DecimalFormat( "#.00" );
+            DecimalFormat formatter = new DecimalFormat("#.00");
             // Los cambios en la ultima fila y columna se ignoran.
             // Este return es necesario porque cuando nuestro codigo modifique
             // los valores de las sumas en esta fila y columna, saltara nuevamente
             // el evento, metiendonos en un bucle recursivo de llamadas a este
             // metodo.
-            if (columna == 5 || columna == 1)  {
+            if (columna == 5 || columna == 1) {
                 return;
             }
 
             try {
                 // Se actualiza la suma en la ultima columna de la fila que ha
                 // cambiado.
-                
+
                 double valorPrimeraColumna = 0;
-                        if(!modelo.getValueAt(fila,2).toString().equals("")){
-                        valorPrimeraColumna = Double.parseDouble( modelo.getValueAt(fila,2).toString());
+                if (!modelo.getValueAt(fila, 2).toString().equals("")) {
+                    valorPrimeraColumna = Double.parseDouble(modelo.getValueAt(fila, 2).toString());
                     //   modelo.setValueAt(formatter.format(valorPrimeraColumna), fila, 2);
-                        }
-                        
+                }
+
                 double valorSegundaColumna = 0;
-                if(!modelo.getValueAt(fila,3).toString().equals("")){
-                        valorSegundaColumna = Double.parseDouble( modelo.getValueAt(fila,3).toString());
-                        
-                        }
-                
-                 double precioTotal = valorPrimeraColumna*valorSegundaColumna;
-                  modelo.setValueAt(formatter.format(precioTotal), fila, 5);
+                if (!modelo.getValueAt(fila, 3).toString().equals("")) {
+                    valorSegundaColumna = Double.parseDouble(modelo.getValueAt(fila, 3).toString());
+
+                }
+
+                double precioTotal = valorPrimeraColumna * valorSegundaColumna;
+                modelo.setValueAt(formatter.format(precioTotal), fila, 5);
                 double valorTerceraColumna = 0;
-                 if(!modelo.getValueAt(fila,3).toString().equals("")){
-                        valorTerceraColumna = Double.parseDouble( modelo.getValueAt(fila,4).toString());
-                    
-                        }
-                               
-               
-                
-                modelo.setValueAt(formatter.format(precioTotal+(precioTotal*(valorTerceraColumna/100))), fila, 5);
-                
-                
+                if (!modelo.getValueAt(fila, 3).toString().equals("")) {
+                    valorTerceraColumna = Double.parseDouble(modelo.getValueAt(fila, 4).toString());
+
+                }
+
+                modelo.setValueAt(formatter.format(precioTotal + (precioTotal * (valorTerceraColumna / 100))), fila, 5);
+
             } catch (NullPointerException e) {
                 // La celda que ha cambiado esta vacia.
             }
+
         }
-        
-        
 
     }
- static class DecimalFormatRenderer extends DefaultTableCellRenderer {
-       DecimalFormat formatter = new DecimalFormat( "#.00" );
- 
-      public Component getTableCellRendererComponent(
-         JTable table, Object value, boolean isSelected,
-         boolean hasFocus, int row, int column) {
- 
-         // First format the cell value as required
-          if (column == 2 || column == 3 || column == 5) {
-         value = formatter.format((Number)value);
-          }
+
+    static class DecimalFormatRenderer extends DefaultTableCellRenderer {
+
+        DecimalFormat formatter = new DecimalFormat("#.00");
+
+        public Component getTableCellRendererComponent(
+                JTable table, Object value, boolean isSelected,
+                boolean hasFocus, int row, int column) {
+
+            // First format the cell value as required
+            if (column == 2 || column == 3 || column == 5) {
+                value = formatter.format((Number) value);
+            }
             // And pass it on to parent class
- 
-         return super.getTableCellRendererComponent(
-            table, value, isSelected, hasFocus, row, column );
-      }
-   }
+
+            return super.getTableCellRendererComponent(
+                    table, value, isSelected, hasFocus, row, column);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jB_Guardar_Usuario;
     private javax.swing.JButton jButton1;
