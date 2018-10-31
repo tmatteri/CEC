@@ -53,7 +53,7 @@ public class Help {
     }
     
     
-    public void Autocompletar(JTextField campo, String table) throws SQLException{
+    public void Autocompletar(JTextField campo,String nombre ,String table) throws SQLException{
         
         TextAutoCompleter textAutoCompleter = new TextAutoCompleter(campo, new AutoCompleterCallback() {
     @Override
@@ -70,7 +70,7 @@ public class Help {
         ResultSet rs =Tabla.select(table);
         while (rs.next()) {
             int a = rs.getInt("id");
-            String b = rs.getString("nombre");
+            String b = rs.getString(nombre);
             Dato dat = new Dato(a,b);
             
             textAutoCompleter.addItem(dat);
@@ -82,7 +82,7 @@ public class Help {
         
     }
     
-     public void Autocompletar(JTextField campo, String table , String parametros) throws SQLException{
+     public void Autocompletar(JTextField campo,String nombre, String table , String parametros) throws SQLException{
         
         TextAutoCompleter textAutoCompleter = new TextAutoCompleter(campo, new AutoCompleterCallback() {
     @Override

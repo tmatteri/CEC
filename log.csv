@@ -34,3 +34,11 @@ Thu Oct 18 21:31:37 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.pos
   Position: 34
 Thu Oct 18 21:34:16 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: no existe la columna «anulado»
   Position: 29
+Tue Oct 30 19:24:57 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: no existe la columna «descripcion»
+  Position: 23
+Tue Oct 30 19:25:01 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: no existe la columna «descripcion»
+  Position: 23
+Tue Oct 30 19:44:18 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: no existe la relación «id_tipo_de_comprobante»
+  Position: 15
+Tue Oct 30 19:44:21 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: no existe la relación «id_tipo_de_comprobante»
+  Position: 15

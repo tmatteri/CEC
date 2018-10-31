@@ -39,9 +39,9 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
     public Input_Facturas_Ingresos() throws SQLException {
         initComponents();
 
-        ayudaComprobante.Autocompletar(jTComprobante, "comprobantes");
-        ayudaCliente.Autocompletar(jTCliente, "entidades", "anulado = false AND tipo LIKE 'CLIENTE'");
-        ayudaCuenta.Autocompletar(jTCuenta, "cuentas");
+        ayudaComprobante.Autocompletar(jTComprobante,"codigo","tipos_de_comprobantes");
+        ayudaCliente.Autocompletar(jTCliente,"nombre_fantasia", "entidades", "anulado = false AND tipo LIKE 'CLIENTE'");
+        ayudaCuenta.Autocompletar(jTCuenta,"descripcion", "cuentas");
         CargaItems();
     }
 
@@ -52,7 +52,7 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
     private boolean NewRecord = true;
 
     public void Alta() throws SQLException {
-        int id = Tabla.UltimoNumero("entidades");
+        int id = Tabla.UltimoNumero("comprobantes");
     }
 
     public void Modificacion(int selectedId) throws SQLException {
@@ -440,9 +440,17 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
             modelo.addRow(obj);*/
             
             Input_Items item = new Input_Items();
+            item.VinculaTabla(jT_Items);
+            item.setLocationRelativeTo(null);
             item.setVisible(true);
             item.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            
+            item.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                              calculaTotal();
+                            // your code  
+                    }
+                });
 
         } catch (SQLException ex) {
             Logger.getLogger(Input_Facturas_Ingresos.class.getName()).log(Level.SEVERE, null, ex);
@@ -451,6 +459,12 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    
+    private void calculaTotal(){
+        
+        
+    }
+    
     /**
      * @param args the command line arguments
      */

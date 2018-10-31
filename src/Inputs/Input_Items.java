@@ -7,11 +7,18 @@ package Inputs;
 
 import cec.Tabla;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
+import sun.util.calendar.CalendarUtils;
+import util.CD;
 import util.Help;
 
 /**
@@ -25,23 +32,96 @@ public class Input_Items extends javax.swing.JFrame {
      */
     public Input_Items() throws SQLException {
         initComponents();
-        
-        ayudaProducto.Autocompletar(jT_Producto, "productos");
-        JFormattedTextField jF_Cantidad = new JFormattedTextField ();
-        JFormattedTextField jF_Precio = new JFormattedTextField ();
-        JFormattedTextField jF_IVA = new JFormattedTextField ();
-        JFormattedTextField jF_Total = new JFormattedTextField ();
-        
+
+        ayudaProducto.Autocompletar(jT_Producto, "descripcion", "productos");
+        NumberFormat amountFormat = NumberFormat.getNumberInstance();
+        /*JFormattedTextField jF_Cantidad = new JFormattedTextField (amountFormat);
+        JFormattedTextField jF_Precio = new JFormattedTextField (amountFormat);
+        JFormattedTextField jF_IVA = new JFormattedTextField (amountFormat);
+        JFormattedTextField jF_Total = new JFormattedTextField (amountFormat);*/
+
+        jT_Cantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+
+        });
+        jT_Precio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jT_IVA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jT_Cantidad.addFocusListener(new java.awt.event.FocusAdapter() {
+
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                //this will be called on tab i.e when the field looses focus
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jT_Precio.addFocusListener(new java.awt.event.FocusAdapter() {
+
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                //this will be called on tab i.e when the field looses focus
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jT_IVA.addFocusListener(new java.awt.event.FocusAdapter() {
+
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                //this will be called on tab i.e when the field looses focus
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
     }
-    
+
     JTable jtable;
-    
+
     Help ayudaProducto = new Help();
-    
-    public void VinculaTabla(JTable table){
-    jtable = table;
-    
+
+    public void VinculaTabla(JTable table) {
+        jtable = table;
+
     }
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        actualizaSumas();
+    }
+       private void jTextField1ActionPerformed(java.awt.event.FocusEvent evt) {
+
+        actualizaSumas();
+    }
+    protected void actualizaSumas() {
+
+        double cantidad = 0;
+        if (!jT_Cantidad.getText().equalsIgnoreCase("")) {
+            cantidad = Double.parseDouble(jT_Cantidad.getText());
+        }
+        double precio = 0;
+        if (!jT_Precio.getText().equalsIgnoreCase("")) {
+            precio = Double.parseDouble(jT_Precio.getText());
+
+        }
+        double iva = 0;
+
+        if (!jT_IVA.getText().equalsIgnoreCase("")) {
+            iva = Double.parseDouble(jT_IVA.getText());;
+        }
+
+        double subtotal = cantidad * precio;
+        double impIVA = subtotal * iva / 100;
+        double total = subtotal + impIVA;
+
+        jT_Total.setText(Double.toString(total));
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,17 +134,16 @@ public class Input_Items extends javax.swing.JFrame {
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
-        jT_IDProd = new javax.swing.JTextField();
         jT_Producto = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jF_Cantidad = new javax.swing.JFormattedTextField();
-        jF_Precio = new javax.swing.JFormattedTextField();
-        jF_IVA = new javax.swing.JFormattedTextField();
-        jF_Total = new javax.swing.JFormattedTextField();
+        jT_Cantidad = new javax.swing.JTextField();
+        jT_Precio = new javax.swing.JTextField();
+        jT_IVA = new javax.swing.JTextField();
+        jT_Total = new javax.swing.JTextField();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
@@ -73,16 +152,6 @@ public class Input_Items extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Producto");
-
-        jT_IDProd.setText(" ");
-        jT_IDProd.setRequestFocusEnabled(false);
-        jT_IDProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jT_IDProdActionPerformed(evt);
-            }
-        });
-
-        jT_Producto.setText(" ");
 
         jLabel3.setText("Cantidad");
 
@@ -99,41 +168,71 @@ public class Input_Items extends javax.swing.JFrame {
             }
         });
 
+        jT_Cantidad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jT_CantidadFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jT_CantidadFocusLost(evt);
+            }
+        });
+
+        jT_Precio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jT_PrecioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jT_PrecioFocusLost(evt);
+            }
+        });
+
+        jT_IVA.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jT_IVAFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jT_IVAFocusLost(evt);
+            }
+        });
+
+        jT_Total.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jF_IVA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jT_IVA, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jT_Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jT_Total, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jT_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jT_IDProd, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jF_Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jT_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(8, 8, 8)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jF_Total))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jF_Precio)))))
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jT_Producto)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -142,20 +241,19 @@ public class Input_Items extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jT_IDProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jT_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(jF_Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jF_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jT_Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jT_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
-                    .addComponent(jF_IVA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jF_Total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jT_IVA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jT_Total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -164,29 +262,48 @@ public class Input_Items extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jT_IDProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jT_IDProdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jT_IDProdActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Object[] datos = new Object[7];//creamos un object de la cantidad de COLUMNAS
         DefaultTableModel model = (DefaultTableModel) jtable.getModel();
-       
 
-            //datos[0] = rs.getObject(1);//cargamos la fila en el objeto
-            datos[0] = jT_IDProd.getText();
-            datos[1] = jT_Producto.getText();//cargamos la fila en el objeto
-            datos[2] = jF_Cantidad.getValue();//cargamos la fila en el objeto
-            datos[3] = jF_Precio.getValue();//cargamos la fila en el objeto
-            datos[4] = jF_IVA.getValue();//cargamos la fila en el objeto
-            datos[5] = jF_Total.getValue();
+        //datos[0] = rs.getObject(1);//cargamos la fila en el objeto
+        datos[0] = ayudaProducto.getId();
+        datos[1] = jT_Producto.getText();//cargamos la fila en el objeto
+        datos[2] = jT_Cantidad.getText();//cargamos la fila en el objeto
+        datos[3] = jT_Precio.getText();//cargamos la fila en el objeto
+        datos[4] = jT_IVA.getText();//cargamos la fila en el objeto
+        datos[5] = jT_Total.getText();
 
-            model.addRow(datos);//cargamos el objeto en el model
-            model.fireTableDataChanged();
-       
-        
+        model.addRow(datos);//cargamos el objeto en el model
+        model.fireTableDataChanged();
+        this.dispose();
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jT_CantidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jT_CantidadFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jT_CantidadFocusGained
+
+    private void jT_CantidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jT_CantidadFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jT_CantidadFocusLost
+
+    private void jT_PrecioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jT_PrecioFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jT_PrecioFocusGained
+
+    private void jT_PrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jT_PrecioFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jT_PrecioFocusLost
+
+    private void jT_IVAFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jT_IVAFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jT_IVAFocusGained
+
+    private void jT_IVAFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jT_IVAFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jT_IVAFocusLost
 
     /**
      * @param args the command line arguments
@@ -229,10 +346,6 @@ public class Input_Items extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JFormattedTextField jF_Cantidad;
-    private javax.swing.JFormattedTextField jF_IVA;
-    private javax.swing.JFormattedTextField jF_Precio;
-    private javax.swing.JFormattedTextField jF_Total;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
@@ -240,7 +353,10 @@ public class Input_Items extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jT_IDProd;
+    private javax.swing.JTextField jT_Cantidad;
+    private javax.swing.JTextField jT_IVA;
+    private javax.swing.JTextField jT_Precio;
     private javax.swing.JTextField jT_Producto;
+    private javax.swing.JTextField jT_Total;
     // End of variables declaration//GEN-END:variables
 }
