@@ -6,8 +6,11 @@
 package Inputs;
 
 import Entidades.Usuario;
+import Outputs.Panel_Clientes;
 import cec.Tabla;
+import com.sun.imageio.plugins.common.I18N;
 import java.awt.Component;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
@@ -15,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.WindowConstants;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -98,8 +102,8 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         }
         modelo.fireTableDataChanged();
         rs.close();
-        anadeListenerAlModelo(jT_Items);
-        jT_Items.setDefaultRenderer(double.class, new DecimalFormatRenderer());
+      //  anadeListenerAlModelo(jT_Items);
+      //  jT_Items.setDefaultRenderer(double.class, new DecimalFormatRenderer());
     }
 
     /**
@@ -429,10 +433,20 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        Object obj[] = new Object[6];
-        DefaultTableModel modelo = (DefaultTableModel) jT_Items.getModel();
-        modelo.addRow(obj);
+        try {
+            // TODO add your handling code here:
+            /*Object obj[] = new Object[6];
+            DefaultTableModel modelo = (DefaultTableModel) jT_Items.getModel();
+            modelo.addRow(obj);*/
+            
+            Input_Items item = new Input_Items();
+            item.setVisible(true);
+            item.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Input_Facturas_Ingresos.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 
     }//GEN-LAST:event_jButton3ActionPerformed

@@ -211,10 +211,8 @@ public class Panel_Clientes extends javax.swing.JPanel {
                     } catch (IOException ex) {
                         Logger.getLogger(Panel_Clientes.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
                 }
             });
-
         }
 
     }//GEN-LAST:event_jB_Alta_ClienteActionPerformed
