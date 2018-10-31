@@ -57,6 +57,19 @@ public class Tabla {
         return x;
     }
 
+    private static int executeSeveral() {
+        int x = 0;
+        //connect();
+        System.out.println(consulta);
+        try {
+            x = sentencia.executeUpdate(consulta);
+        } catch (Exception e) {
+            Log.setLog(e);
+        }
+        //close();
+        return x;
+    }
+
     public static int delete(String tabla, int id) {
         consulta = "delete from " + tabla + " where id=" + id;
         return execute();
@@ -144,11 +157,36 @@ public class Tabla {
 
     }
 
+    public static int insertSeveral(String tabla, String campos, String valores) {
+        consulta = "insert into " + tabla + " (" + campos + ") values (" + valores + ")";
+        return executeSeveral();
+    }
+
+    public static ResultSet executeThis(String exe) {
+        ResultSet rs = null;
+        consulta = exe;
+        connect();
+        try {
+            rs = sentencia.executeQuery(consulta);
+        } catch (Exception e) {
+            Log.setLog(e);
+        }
+        return rs;
+    }
+
+    public static int Delete(String tabla, int id) throws SQLException {
+        int retorno = 1;
+        ResultSet rs = Tabla.executeThis("delete from " + tabla + " where id=" + id);
+        rs.close();
+        return retorno;
+    }
+
     public static int UltimoNumero(String tabla) {
         int retorno = 1;
 
         try {
-            ResultSet rs = Tabla.select(tabla, "id = (SELECT MAX(id) from " + tabla + ")");
+            ResultSet rs = Tabla.select(tabla, "id = (SELECT MAX(id) as id from " + tabla + ")");
+
             while (rs.next()) {
                 retorno = rs.getInt("id");
             }

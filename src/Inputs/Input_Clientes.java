@@ -7,7 +7,9 @@ package Inputs;
 
 import Entidades.EntidadFacturable;
 import Entidades.Usuario;
+import Outputs.Panel_Clientes;
 import cec.Tabla;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -15,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
 import util.CD;
 
 /**
@@ -25,10 +28,10 @@ public class Input_Clientes extends javax.swing.JFrame {
 
     /**
      * Creates new form Input_Usuarios
-    
-    */
+     *
+     */
     private int id_local;
-    
+
     public Input_Clientes() {
         initComponents();
     }
@@ -67,6 +70,26 @@ public class Input_Clientes extends javax.swing.JFrame {
         id_local = selectedId;
     }
 
+    public void ActualizarContactos() throws SQLException {
+        DefaultTableModel modelo = new DefaultTableModel();
+        jT_Contactos.setModel(modelo);
+        ResultSet rs = Tabla.select("id,nombre_completo,domicilio,celular", "contactos", "1=1");
+
+        Object[] datos = new Object[4];//creamos un object de la cantidad de COLUMNAS
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Direccion");
+        modelo.addColumn("Celular");
+        while (rs.next()) {
+            for (int i = 0; i < 4; i++) {
+                datos[i] = rs.getObject(i + 1);//cargamos la fila en el objeto
+            }
+            modelo.addRow(datos);//cargamos el objeto en el model
+        }
+        modelo.fireTableDataChanged();
+        rs.close();
+    }
+
     public void Baja() {
 
     }
@@ -88,7 +111,7 @@ public class Input_Clientes extends javax.swing.JFrame {
         jTEmail = new javax.swing.JTextField();
         jCBAnulado = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jT_Usuarios = new javax.swing.JTable();
+        jT_Contactos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jB_Guardar_Usuario = new javax.swing.JButton();
@@ -155,7 +178,7 @@ public class Input_Clientes extends javax.swing.JFrame {
             }
         });
 
-        jT_Usuarios.setModel(new javax.swing.table.DefaultTableModel(
+        jT_Contactos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null}
             },
@@ -178,7 +201,7 @@ public class Input_Clientes extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jT_Usuarios);
+        jScrollPane1.setViewportView(jT_Contactos);
 
         jLabel1.setText("Nombre:");
 
@@ -352,6 +375,11 @@ public class Input_Clientes extends javax.swing.JFrame {
         });
 
         jButton2.setText("Quitar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -550,18 +578,18 @@ public class Input_Clientes extends javax.swing.JFrame {
 
         if (NewRecord) {
             LocalDate dia = LocalDate.now();
-            EntidadFacturable.insert(Tabla.UltimoNumero("entidades") + 1, dia, jTCuit.getText(), jTRubro.getText(), jTNombre.getText(), 
-                    jTRazon_social.getText(),jTDomicilio.getText(),jTTelefono.getText(),Integer.parseInt(jTNumero.getText()),jTCelular.getText(),
-                    Integer.parseInt(jTLocal.getText()),jTEntre_calles.getText(),jTBarrio.getText(),jTLocalidad.getText(),jTHoraio_atencion.getText(),
-                    jTDomicilio_cobro.getText(),Integer.parseInt(jTNumero_cobro.getText()),jTCodigo_postal.getText(),jCTipo.getName(),
-                    Integer.parseInt(jTRecorrido.getText()),jTEmail.getName(),jCBAnulado.isEnabled());
+            EntidadFacturable.insert(Tabla.UltimoNumero("entidades") + 1, dia, jTCuit.getText(), jTRubro.getText(), jTNombre.getText(),
+                    jTRazon_social.getText(), jTDomicilio.getText(), jTTelefono.getText(), Integer.parseInt(jTNumero.getText()), jTCelular.getText(),
+                    Integer.parseInt(jTLocal.getText()), jTEntre_calles.getText(), jTBarrio.getText(), jTLocalidad.getText(), jTHoraio_atencion.getText(),
+                    jTDomicilio_cobro.getText(), Integer.parseInt(jTNumero_cobro.getText()), jTCodigo_postal.getText(), jCTipo.getName(),
+                    Integer.parseInt(jTRecorrido.getText()), jTEmail.getName(), jCBAnulado.isEnabled());
         } else {
             LocalDate dia = LocalDate.parse(jTFecha_creacion.getText());
-            EntidadFacturable.updateAll(id_local, dia, jTCuit.getText(), jTRubro.getText(), jTNombre.getText(), 
-                    jTRazon_social.getText(),jTDomicilio.getText(),jTTelefono.getText(),Integer.parseInt(jTNumero.getText()),jTCelular.getText(),
-                    Integer.parseInt(jTLocal.getText()),jTEntre_calles.getText(),jTBarrio.getText(),jTLocalidad.getText(),jTHoraio_atencion.getText(),
-                    jTDomicilio_cobro.getText(),Integer.parseInt(jTNumero_cobro.getText()),jTCodigo_postal.getText(),jCTipo.getName(),
-                    Integer.parseInt(jTRecorrido.getText()),jTEmail.getName(),jCBAnulado.isEnabled());
+            EntidadFacturable.updateAll(id_local, dia, jTCuit.getText(), jTRubro.getText(), jTNombre.getText(),
+                    jTRazon_social.getText(), jTDomicilio.getText(), jTTelefono.getText(), Integer.parseInt(jTNumero.getText()), jTCelular.getText(),
+                    Integer.parseInt(jTLocal.getText()), jTEntre_calles.getText(), jTBarrio.getText(), jTLocalidad.getText(), jTHoraio_atencion.getText(),
+                    jTDomicilio_cobro.getText(), Integer.parseInt(jTNumero_cobro.getText()), jTCodigo_postal.getText(), jCTipo.getName(),
+                    Integer.parseInt(jTRecorrido.getText()), jTEmail.getName(), jCBAnulado.isEnabled());
         }
         this.dispose();
 
@@ -640,7 +668,31 @@ public class Input_Clientes extends javax.swing.JFrame {
         Input_Contactos JframeContactos = new Input_Contactos();
         JframeContactos.setVisible(true);
         JframeContactos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        JframeContactos.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                try {
+                    ActualizarContactos();
+                    // your code
+                } catch (SQLException ex) {
+                    Logger.getLogger(Panel_Clientes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        });
     }//GEN-LAST:event_jBAgregarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = jT_Contactos.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jT_Contactos.getModel();
+        int selectedID = (int) model.getValueAt(selectedRow, 0);
+        try {
+            Tabla.Delete("contactos", selectedID);
+        } catch (SQLException ex) {
+            Logger.getLogger(Input_Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -727,6 +779,6 @@ public class Input_Clientes extends javax.swing.JFrame {
     private javax.swing.JTextField jTRecorrido;
     private javax.swing.JTextField jTRubro;
     private javax.swing.JTextField jTTelefono;
-    private javax.swing.JTable jT_Usuarios;
+    private javax.swing.JTable jT_Contactos;
     // End of variables declaration//GEN-END:variables
 }
