@@ -42,3 +42,5 @@ Tue Oct 30 19:44:18 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.pos
   Position: 15
 Tue Oct 30 19:44:21 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: no existe la relación «id_tipo_de_comprobante»
   Position: 15
+Tue Oct 30 21:07:47 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: no existe la columna «descripcion»
+  Position: 23
