@@ -116,7 +116,7 @@ public class EntidadFacturable extends Entidad {
     }
 
     public static int insert(int id, LocalDate fecha_creacion, String cuit, String rubro, String nombre_fantasia, String razon_social, String domicilio, String telefono, int numero_domicilio, String celular, int local, String entre_calles, String barrio, String localidad, String horario_atencion, String domicilio_cobro, int numero_domicilio_cobro, String codigo_postal, String tipo, int id_recorrido, String email, boolean anulado) {
-        String campos = "id,fecha_creacion,cuit,rubro,nombre_fantasia,razon_social,domicilio,telefono,numero_domicilio,celular,local,entre_calles,barrio,localidad,horario_atencion,domicilio_cobro,numero_domicilio_cobro,codigo_postal,tipo,id_recorrido,email,anulado";
+        String campos = "id,fecha_creacion,cuit,rubro,nombre_fantasia,razon_social,domicilio,telefono,numero_domicilio,celular,num_local,entre_calles,barrio,localidad,horario_atencion,domicilio_cobro,numero_domicilio_cobro,codigo_postal,tipo,id_recorrido,email,anulado";
         String valores = id + ",'" + fecha_creacion + "','" + cuit + "','" + rubro + "','" + nombre_fantasia + "','" + razon_social + "','" + domicilio + "','" + telefono + "'," + numero_domicilio + ",'" + celular + "'," + local + ",'" + entre_calles + "','" + barrio + "','" + localidad + "','" + horario_atencion + "','" + domicilio_cobro + "'," + numero_domicilio_cobro + ",'" + codigo_postal + "','" + tipo + "'," + id_recorrido + ",'" + email + "'," + anulado;
         return Tabla.insert(tabla, campos, valores);
     }
@@ -127,7 +127,8 @@ public class EntidadFacturable extends Entidad {
     }
 
     public static int updateAll(int id, LocalDate fecha_creacion, String cuit, String rubro, String nombre_fantasia, String razon_social, String domicilio, String telefono, int numero_domicilio, String celular, int local, String entre_calles, String barrio, String localidad, String horario_atencion, String domicilio_cobro, int numero_domicilio_cobro, String codigo_postal, String tipo, int id_recorrido, String email, boolean anulado) {
-        String campos = "id<>descripcion<>precio<>stock";
+        String campos =  "id<>fecha_creacion<>cuit<>rubro<>nombre_fantasia<>razon_social<>domicilio<>telefono<>numero_domicilio<>celular<>num_local<>entre_calles<>barrio<>localidad<>horario_atencion<>domicilio_cobro<>numero_domicilio_cobro<>codigo_postal<>tipo,id_recorrido<>email<>anulado";
+   
         String valores = id + "<>'" + fecha_creacion + "'<>'" + cuit + "'<>'" + rubro + "'<>'" + nombre_fantasia + "'<>'" + razon_social + "'<>'" + domicilio + "'<>'" + telefono + "'<>" + numero_domicilio + "<>'" + celular + "'<>" + local + "<>'" + entre_calles + "'<>'" + barrio + "'<>'" + localidad + "'<>'" + horario_atencion + "'<>'" + domicilio_cobro + "'<>" + numero_domicilio_cobro + "<>'" + codigo_postal + "'<>'" + tipo + "'<>" + id_recorrido + "<>'" + email + "'<>" + anulado;
         return Tabla.updateAll(tabla, id, campos, valores);
     }

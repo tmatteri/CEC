@@ -32,14 +32,15 @@ public class Panel_Clientes extends javax.swing.JPanel {
      */
     public Panel_Clientes() {
         initComponents();
+        
     }
     Usuario current_user = new Usuario();
-
+    
     public void setCurrent_user(Usuario user) {
 
         this.current_user = user;
         current_user.cargaPermisos();
-
+        
     }
 
     public void Cargar() throws SQLException, IOException {

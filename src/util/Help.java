@@ -99,7 +99,7 @@ public class Help {
         ResultSet rs =Tabla.select(table, parametros);
         while (rs.next()) {
             int a = rs.getInt("id");
-            String b = rs.getString("nombre");
+            String b = rs.getString(nombre);
             Dato dat = new Dato(a,b);
             
             textAutoCompleter.addItem(dat);

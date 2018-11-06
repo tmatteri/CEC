@@ -70,7 +70,7 @@
                               <Component id="jTCliente" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                               <Component id="jTCuenta" min="-2" pref="350" max="-2" attributes="0"/>
                               <Component id="jTRazon_social8" min="-2" pref="350" max="-2" attributes="0"/>
-                              <Component id="jTRazon_social9" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                              <Component id="jT_Descripcion" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -80,11 +80,11 @@
                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jTRazon_social" min="-2" pref="236" max="-2" attributes="0"/>
+                                  <Component id="jT_Financiamientol" min="-2" pref="236" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="jTRazon_social10" max="32767" attributes="0"/>
+                                  <Component id="jT_Total" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -119,7 +119,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTComprobante" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTRazon_social" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jT_Financiamientol" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -149,8 +149,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTRazon_social9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTRazon_social10" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jT_Descripcion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jT_Total" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -268,12 +268,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_Guardar_UsuarioActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social">
+        <Component class="javax.swing.JTextField" name="jT_Financiamientol">
           <Properties>
-            <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="jT_Financiamientol" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_socialActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jT_FinanciamientolActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -320,20 +320,20 @@
             <Property name="text" type="java.lang.String" value="CUIT:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social9">
+        <Component class="javax.swing.JTextField" name="jT_Descripcion">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social9ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jT_DescripcionActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTRazon_social10">
+        <Component class="javax.swing.JTextField" name="jT_Total">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTRazon_social" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRazon_social10ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jT_TotalActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">

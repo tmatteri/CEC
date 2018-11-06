@@ -7,6 +7,8 @@ package Entidades;
 
 import Entidades.Cobradores;
 import Entidades.Entidad;
+import cec.Tabla;
+import java.sql.ResultSet;
 import java.sql.Time;
 import java.util.Date;
 
@@ -15,6 +17,7 @@ import java.util.Date;
  * @author Tomas
  */
 public class Comprobantes {
+     private static final String tabla = "comprobantes";
     private int id;
     private TiposDeComprobantes tipo_de_comprobante;
     private Entidad entidad;
@@ -159,5 +162,40 @@ public class Comprobantes {
         this.fecha_de_entrega = fecha_de_entrega;
     }
     
+    
+      public static int insert(int id,int id_tipo_de_comprobante, int id_entidad, String descripcion,String fecha_creacion,String fecha_vencimiento
+              ,double total,int id_cobrador,String dias_financiacion,String dias_restantes,boolean estado,String lugar_de_entrega,String hora_de_entrega,String fecha_de_entrega) {
+         
+        String campos = "id,id_tipo_de_comprobante,id_entidad,descripcion,fecha_creacion,fecha_vencimiento,total,id_cobrador,dias_financiacion,"
+                + "dias_restantes,estado,lugar_de_entrega,hora_de_entrega,fecha_de_entrega";
+        String valores = id + "," + id_tipo_de_comprobante + "," + id_entidad + ",'" + descripcion + "','"+ fecha_creacion + "','"
+                + fecha_vencimiento+"',"+total + ","+ id_cobrador + ",'" + dias_financiacion +"','" + dias_restantes+"'," + estado+",'" + lugar_de_entrega+"','" + hora_de_entrega+"','" + fecha_de_entrega;
+        return Tabla.insert(tabla, campos, valores);
+    }
+    
+    
+         public static int updateAll(int id,int id_tipo_de_comprobante, int id_entidad, String descripcion,String fecha_creacion,String fecha_vencimiento
+              ,double total,int id_cobrador,String dias_financiacion,String dias_restantes,boolean estado,String lugar_de_entrega,String hora_de_entrega,String fecha_de_entrega) {
+         
+        String campos = "id<>id_tipo_de_comprobante<>id_entidad<>descripcion<>fecha_creacion<>fecha_vencimiento<>total<>id_cobrador<>dias_financiacion<>"
+                + "dias_restantes<>estado<>lugar_de_entrega<>hora_de_entrega<>fecha_de_entrega";
+        String valores = id + "<>" + id_tipo_de_comprobante + "<>" + id_entidad + "<>" + descripcion + "<>"+ fecha_creacion + "<>"
+                + fecha_vencimiento+ "<>"+total + "<>"+ id_cobrador + "<>" + dias_financiacion +"<>" + dias_restantes+"<>" + estado+"<>" + lugar_de_entrega+"<>" + hora_de_entrega+"<>" + fecha_de_entrega;
+        return Tabla.insert(tabla, campos, valores);
+    }
+         
+     public static int delete(int id) {
+        return Tabla.delete(tabla, id);
+    }
+
+    public static int update(int id, String campo, String valor) {
+        return Tabla.update(tabla, id, campo, valor);
+    }
+    
+
+    public static ResultSet select() {
+        return Tabla.select(tabla);
+    }
+
     
 }

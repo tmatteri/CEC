@@ -120,7 +120,14 @@ public class Main extends javax.swing.JFrame {
                 
                 //JOptionPane.showMessageDialog(Main.this, "click");
                 panel_clientes.setCurrent_user(current_user);
-               // panel_usuarios.CargaUsuarios();
+                try {
+                    // panel_usuarios.CargaUsuarios();
+                    panel_clientes.Cargar();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 jTabbedPane1.addTab("Clientes   ", panel_clientes);
                 
                 

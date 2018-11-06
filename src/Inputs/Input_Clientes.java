@@ -581,15 +581,15 @@ public class Input_Clientes extends javax.swing.JFrame {
             EntidadFacturable.insert(Tabla.UltimoNumero("entidades") + 1, dia, jTCuit.getText(), jTRubro.getText(), jTNombre.getText(),
                     jTRazon_social.getText(), jTDomicilio.getText(), jTTelefono.getText(), Integer.parseInt(jTNumero.getText()), jTCelular.getText(),
                     Integer.parseInt(jTLocal.getText()), jTEntre_calles.getText(), jTBarrio.getText(), jTLocalidad.getText(), jTHoraio_atencion.getText(),
-                    jTDomicilio_cobro.getText(), Integer.parseInt(jTNumero_cobro.getText()), jTCodigo_postal.getText(), jCTipo.getName(),
-                    Integer.parseInt(jTRecorrido.getText()), jTEmail.getName(), jCBAnulado.isEnabled());
+                    jTDomicilio_cobro.getText(), Integer.parseInt(jTNumero_cobro.getText()), jTCodigo_postal.getText(), (String) jCTipo.getSelectedItem(),
+                    Integer.parseInt(jTRecorrido.getText()), jTEmail.getName(), jCBAnulado.isSelected());
         } else {
             LocalDate dia = LocalDate.parse(jTFecha_creacion.getText());
             EntidadFacturable.updateAll(id_local, dia, jTCuit.getText(), jTRubro.getText(), jTNombre.getText(),
                     jTRazon_social.getText(), jTDomicilio.getText(), jTTelefono.getText(), Integer.parseInt(jTNumero.getText()), jTCelular.getText(),
                     Integer.parseInt(jTLocal.getText()), jTEntre_calles.getText(), jTBarrio.getText(), jTLocalidad.getText(), jTHoraio_atencion.getText(),
-                    jTDomicilio_cobro.getText(), Integer.parseInt(jTNumero_cobro.getText()), jTCodigo_postal.getText(), jCTipo.getName(),
-                    Integer.parseInt(jTRecorrido.getText()), jTEmail.getName(), jCBAnulado.isEnabled());
+                    jTDomicilio_cobro.getText(), Integer.parseInt(jTNumero_cobro.getText()), jTCodigo_postal.getText(), (String) jCTipo.getSelectedItem(),
+                    Integer.parseInt(jTRecorrido.getText()), jTEmail.getName(), jCBAnulado.isSelected());
         }
         this.dispose();
 

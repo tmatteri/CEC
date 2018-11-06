@@ -44,3 +44,12 @@ Tue Oct 30 19:44:21 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.pos
   Position: 15
 Tue Oct 30 21:07:47 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: no existe la columna «descripcion»
   Position: 23
+Mon Nov 05 20:57:54 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «')»
+  Position: 266
+Mon Nov 05 20:58:07 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «')»
+  Position: 266
+Mon Nov 05 20:58:22 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «')»
+  Position: 266
+Mon Nov 05 21:02:54 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: literal de array no es válido: «1»
+  Detail: El valor de array debe comenzar con «{» o información de dimensión.
+  Position: 359
