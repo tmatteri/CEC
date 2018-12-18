@@ -53,3 +53,11 @@ Mon Nov 05 20:58:22 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.pos
 Mon Nov 05 21:02:54 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: literal de array no es válido: «1»
   Detail: El valor de array debe comenzar con «{» o información de dimensión.
   Position: 359
+Tue Nov 13 19:58:05 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.17;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «')»
+  Position: 264
+Tue Nov 13 20:02:02 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.17;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «')»
+  Position: 285
+Tue Nov 13 20:02:17 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.17;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «')»
+  Position: 285
+Tue Nov 13 20:02:22 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.17;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «')»
+  Position: 285

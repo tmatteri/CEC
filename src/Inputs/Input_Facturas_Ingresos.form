@@ -62,15 +62,15 @@
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jTFechaVencimiento" alignment="0" pref="350" max="32767" attributes="0"/>
-                                  <Component id="jTFecha" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTComprobante" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
-                              </Group>
                               <Component id="jTCliente" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                               <Component id="jTCuenta" min="-2" pref="350" max="-2" attributes="0"/>
                               <Component id="jTRazon_social8" min="-2" pref="350" max="-2" attributes="0"/>
                               <Component id="jT_Descripcion" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jTFechaVencimiento" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTFecha" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTComprobante" alignment="0" pref="108" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
