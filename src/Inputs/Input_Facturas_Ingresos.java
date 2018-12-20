@@ -412,12 +412,12 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         if (NewRecord) {
 
             Comprobantes.insert(Tabla.UltimoNumero("comprobantes") + 1, ayudaComprobante.getId(), ayudaCliente.getId(), jT_Descripcion.getText(), jTFecha.getText(),
-            jTFechaVencimiento.getText(),Double.parseDouble(jT_Total.getText()),0,jT_Financiamientol.getText(),"",true,"","","");
+            jTFechaVencimiento.getText(),Double.parseDouble(jT_Total.getText()),0,Integer.parseInt(jT_Financiamientol.getText()),0,true,"","00:00:00","01/01/2000");
          
         } else {
 
             Comprobantes.updateAll(Tabla.UltimoNumero("comprobantes") + 1, ayudaComprobante.getId(), ayudaCliente.getId(), jT_Descripcion.getText(), jTFecha.getText(),
-            jTFechaVencimiento.getText(),Double.parseDouble(jT_Total.getText()),0,jT_Financiamientol.getText(),"",true,"","","");
+            jTFechaVencimiento.getText(),Double.parseDouble(jT_Total.getText()),0,Integer.parseInt(jT_Financiamientol.getText()),0,true,"","00:00:00","01/01/2000");
         }
 
     }//GEN-LAST:event_jB_Guardar_UsuarioActionPerformed

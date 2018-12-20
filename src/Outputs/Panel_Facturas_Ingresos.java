@@ -9,13 +9,21 @@ import Entidades.CONSTANT;
 import Entidades.Usuario;
 import Inputs.Input_Clientes;
 import Inputs.Input_Facturas_Ingresos;
+import cec.JavaPostgreSQL;
 import cec.Tabla;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
+import util.CD;
 
 /**
  *
@@ -38,12 +46,20 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
 
     }
 
-    public void carga() throws SQLException {
+    public void carga() throws SQLException, IOException {
         DefaultTableModel modelo = new DefaultTableModel();
         jT_Facturas_Ingresos.setModel(modelo);
-        ResultSet rs = Tabla.select("id,fecha_creacion,id_entidad,descripcion,total,id_cobrador", "comprobantes", "1=1");
-
-        Object[] datos = new Object[4];//creamos un object de la cantidad de COLUMNAS
+        ResultSet rs;
+         Connection conn = null;
+        JavaPostgreSQL conexion = new JavaPostgreSQL();
+        conn = conexion.getConnection();
+        Statement st = conn.createStatement();
+   
+    //    ResultSet rs = Tabla.select("id,fecha_creacion,id_entidad,descripcion,total,id_cobrador", "comprobantes", "1=1");
+          String consulta = "SELECT id, fecha_creacion, id_entidad, descripcion,total,id_cobrador FROM comprobantes;";
+        rs = st.executeQuery(consulta); //ejecutamos la consulta
+        
+        Object[] datos = new Object[6];//creamos un object de la cantidad de COLUMNAS
         modelo.addColumn("ID");
         modelo.addColumn("Fecha");
         modelo.addColumn("Cliente");
@@ -52,6 +68,7 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
         modelo.addColumn("Pendiente");
         while (rs.next()) {
             for (int i = 0; i < 6; i++) {
+                
                 datos[i] = rs.getObject(i + 1);//cargamos la fila en el objeto
             }
             modelo.addRow(datos);//cargamos el objeto en el model
@@ -74,6 +91,7 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
         jT_Facturas_Ingresos = new javax.swing.JTable();
         jB_Alta_Facturas_Ingresos = new javax.swing.JButton();
         jB_Modificar_Cliente = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jT_Facturas_Ingresos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,6 +132,13 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Imprimir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,6 +147,8 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
                         .addComponent(jB_Alta_Facturas_Ingresos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jB_Modificar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -134,7 +161,8 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jB_Alta_Facturas_Ingresos)
-                    .addComponent(jB_Modificar_Cliente))
+                    .addComponent(jB_Modificar_Cliente)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(138, 138, 138))
@@ -193,10 +221,33 @@ public class Panel_Facturas_Ingresos extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jB_Alta_Facturas_IngresosActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CD.error("ERROR!!");
+        Desktop desktop;/* Declaro un objeto Desktop que es una nueva API en JAVA
+     Para mas detalle sobre ésta API ver la siguiente Página web > 
+     http://java.sun.com/developer/technicalArticles/J2SE/Desktop/javase6/desktop_api/
+        */
+     File file = new File("./nota_de_pedido.html");//declaro un Objeto File que apunte a mi archivo html
+        if (Desktop.isDesktopSupported()){// si éste Host soporta esta API 
+           desktop = Desktop.getDesktop();//objtengo una instancia del Desktop(Escritorio)de mi host 
+             try {
+                 desktop.open(file);//abro el archivo con el programa predeterminado
+             } catch (IOException ex) {
+                 Logger.getLogger(Panel_Facturas_Ingresos.class.getName()).log(Level.SEVERE, null, ex);
+             }
+               
+          
+        }
+       else{ JOptionPane.showMessageDialog(null,"Lo lamento,no se puede abrir el archivo; ésta Maquina no soporta la API Desktop");
+       }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jB_Alta_Facturas_Ingresos;
     private javax.swing.JButton jB_Modificar_Cliente;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jT_Facturas_Ingresos;
     // End of variables declaration//GEN-END:variables

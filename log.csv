@@ -61,3 +61,19 @@ Tue Nov 13 20:02:17 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.17;org.po
   Position: 285
 Tue Nov 13 20:02:22 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.17;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «')»
   Position: 285
+Wed Dec 19 19:57:13 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.14;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «')»
+  Position: 295
+Wed Dec 19 19:57:25 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.14;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «')»
+  Position: 295
+Wed Dec 19 20:08:03 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.14;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «')»
+  Position: 286
+Wed Dec 19 20:08:40 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.14;org.postgresql.util.PSQLException: ERROR: una cadena de caracteres entre comillas está inconclusa en o cerca de «')»
+  Position: 286
+Wed Dec 19 20:10:53 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.14;org.postgresql.util.PSQLException: ERROR: invalid input syntax for integer: ""
+  Position: 270
+Wed Dec 19 20:18:33 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.14;org.postgresql.util.PSQLException: ERROR: la sintaxis de entrada no es válida para tipo time: «»
+  Position: 281
+Wed Dec 19 20:21:09 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.14;org.postgresql.util.PSQLException: ERROR: el valor de hora/fecha está fuera de rango: «00/00/00»
+  Hint: Quizás necesite una configuración diferente de «datestyle».
+  Position: 293
+Wed Dec 19 20:34:58 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.14;java.lang.NullPointerException
