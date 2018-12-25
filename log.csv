@@ -53,3 +53,9 @@ Mon Nov 05 20:58:22 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.pos
 Mon Nov 05 21:02:54 ART 2018;Programación 2;DESKTOP-07DEOP0/192.168.0.3;org.postgresql.util.PSQLException: ERROR: literal de array no es válido: «1»
   Detail: El valor de array debe comenzar con «{» o información de dimensión.
   Position: 359
+Mon Nov 26 00:14:41 ART 2018;msosa;DESKTOP-K2R3L15/192.168.0.7;java.lang.NullPointerException
+Mon Nov 26 00:14:43 ART 2018;msosa;DESKTOP-K2R3L15/192.168.0.7;java.lang.NullPointerException
+Mon Nov 26 00:14:57 ART 2018;msosa;DESKTOP-K2R3L15/192.168.0.7;java.lang.NullPointerException
+Mon Nov 26 00:14:58 ART 2018;msosa;DESKTOP-K2R3L15/192.168.0.7;java.lang.NullPointerException
+Mon Nov 26 00:15:15 ART 2018;msosa;DESKTOP-K2R3L15/192.168.0.7;java.lang.NullPointerException
+Mon Nov 26 00:15:16 ART 2018;msosa;DESKTOP-K2R3L15/192.168.0.7;java.lang.NullPointerException
