@@ -173,6 +173,8 @@ public class Main extends javax.swing.JFrame {
                     panel_facturas_ingresos.carga();
                 } catch (SQLException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 jTabbedPane1.addTab("Facturas in   ", panel_facturas_ingresos);
             }

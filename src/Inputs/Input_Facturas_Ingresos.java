@@ -41,7 +41,7 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         initComponents();
 
         ayudaComprobante.Autocompletar(jTComprobante, "codigo", "tipos_de_comprobantes");
-        ayudaCliente.Autocompletar(jTCliente, "nombre_fantasia", "entidades", "anulado = false AND tipo LIKE 'Cliente'");
+        ayudaCliente.Autocompletar(jTCliente, "nombre_fantasia", "entidades");
         ayudaCuenta.Autocompletar(jTCuenta, "descripcion", "cuentas");
         CargaItems();
     }
@@ -287,14 +287,14 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTFechaVencimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                                .addComponent(jTFecha, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTComprobante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jTCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTRazon_social8, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jT_Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jT_Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTFechaVencimiento, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTFecha, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTComprobante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)))
                         .addGap(58, 58, 58)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel16)
@@ -412,12 +412,12 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         if (NewRecord) {
 
             Comprobantes.insert(Tabla.UltimoNumero("comprobantes") + 1, ayudaComprobante.getId(), ayudaCliente.getId(), jT_Descripcion.getText(), jTFecha.getText(),
-            jTFechaVencimiento.getText(),Double.parseDouble(jT_Total.getText()),0,jT_Financiamientol.getText(),"",true,"","","");
+            jTFechaVencimiento.getText(),Double.parseDouble(jT_Total.getText()),0,Integer.parseInt(jT_Financiamientol.getText()),0,true,"","00:00:00","01/01/2000");
          
         } else {
 
             Comprobantes.updateAll(Tabla.UltimoNumero("comprobantes") + 1, ayudaComprobante.getId(), ayudaCliente.getId(), jT_Descripcion.getText(), jTFecha.getText(),
-            jTFechaVencimiento.getText(),Double.parseDouble(jT_Total.getText()),0,jT_Financiamientol.getText(),"",true,"","","");
+            jTFechaVencimiento.getText(),Double.parseDouble(jT_Total.getText()),0,Integer.parseInt(jT_Financiamientol.getText()),0,true,"","00:00:00","01/01/2000");
         }
 
     }//GEN-LAST:event_jB_Guardar_UsuarioActionPerformed

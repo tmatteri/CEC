@@ -154,6 +154,7 @@ public class Panel_Clientes extends javax.swing.JPanel {
         if (current_user.VerificoPermisos(CONSTANT.CLIENTES, CONSTANT.MODIFICACION)) {
             int selectedRow = jT_Clientes.getSelectedRow();
             DefaultTableModel model = (DefaultTableModel) jT_Clientes.getModel();
+            
 
             int selectedID = (int) model.getValueAt(selectedRow, 0);
 
