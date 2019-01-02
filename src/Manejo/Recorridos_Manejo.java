@@ -5,11 +5,10 @@
  */
 package Manejo;
 
-import Inputs.Input_Usuarios;
-import Outputs.Panel_Productos;
-import Outputs_New.Out_Vista_Usuarios;
+import Inputs.Input_Recorridos;
+import Outputs.Panel_Usuarios;
+import Outputs_New.Out_Vista_Recorridos;
 import cec.Tabla;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -22,29 +21,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author msosa
  */
-public class Usuarios_Manejo {
+public class Recorridos_Manejo {
     
     
     public static void  Cargar(JTable table) throws SQLException{
-        DefaultTableModel modelo = new DefaultTableModel() {
-            @Override
-            public boolean isCellEditable(int fila, int columna) {
-                return false;
-            }
-        };
+         DefaultTableModel modelo = new DefaultTableModel();
         table.setModel(modelo);
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
-        modelo.addColumn("Mail");
+        modelo.addColumn("Cobrador");
         modelo.addColumn("Anulado");
-       
-        ResultSet rs = Tabla.select("id,nombre,email,anulado", "usuarios", "1=1");
+        ResultSet rs = Tabla.select("recorridos");
         Object[] datos = new Object[4];//creamos un object de la cantidad de COLUMNAS
-
         while (rs.next()) {
             for (int i = 0; i < 4; i++) {
                 datos[i] = rs.getObject(i + 1);//cargamos la fila en el objeto
-
             }
             modelo.addRow(datos);//cargamos el objeto en el model
         }
@@ -54,42 +45,51 @@ public class Usuarios_Manejo {
     }
     
     public static void Modificar(JTable table){
-               try {
-                int selectedRow = table.getSelectedRow();
-                DefaultTableModel model = (DefaultTableModel) table.getModel();
+               
+        int selectedRow = table.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
 
-                int selectedID = (int) model.getValueAt(selectedRow, 0);
+        int selectedID = (int) model.getValueAt(selectedRow, 0);
 
-                Input_Usuarios JframeUsuarios = new Input_Usuarios();
+        Input_Recorridos JframeRecorridos = new Input_Recorridos();
 
-                JframeUsuarios.Modificacion(selectedID);
-                JframeUsuarios.setVisible(true);
-                JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                JframeUsuarios.addWindowListener(new java.awt.event.WindowAdapter() {
+        try {
+            JframeRecorridos.Modificacion(selectedID);
+        } catch (SQLException ex) {
+            Logger.getLogger(Out_Vista_Recorridos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JframeRecorridos.setVisible(true);
+        JframeRecorridos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        JframeRecorridos.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+     
                         try {
-                           Cargar(table);
+                            Cargar(table);
                             // your code
                         } catch (SQLException ex) {
-                            Logger.getLogger(Panel_Productos.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
                         }
+
                     }
                 });
-            } catch (SQLException ex) {
-                Logger.getLogger(Out_Vista_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
     }
     
     public static void Crear(JTable table){
-        try {
-                Input_Usuarios JframeUsuarios = new Input_Usuarios();
-                JframeUsuarios.Alta();
-                JframeUsuarios.setVisible(true);
-                JframeUsuarios.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        int selectedRow = table.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
 
-                JframeUsuarios.addWindowListener(new java.awt.event.WindowAdapter() {
+        //int selectedID = (int) model.getValueAt(selectedRow, 0);
+        Input_Recorridos JframeRecorridos = new Input_Recorridos();
+
+        try {
+            JframeRecorridos.Alta();
+        } catch (SQLException ex) {
+            Logger.getLogger(Out_Vista_Recorridos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JframeRecorridos.setVisible(true);
+        JframeRecorridos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+         JframeRecorridos.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosed(java.awt.event.WindowEvent windowEvent) {
                         
@@ -99,17 +99,13 @@ public class Usuarios_Manejo {
                             Cargar(table);
                             // your code
                         } catch (SQLException ex) {
-                            Logger.getLogger(Out_Vista_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(Panel_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
                         }
                        
                         
                         
                     }
                 });
-            } catch (SQLException ex) {
-                Logger.getLogger(Out_Vista_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
         
     }
     
