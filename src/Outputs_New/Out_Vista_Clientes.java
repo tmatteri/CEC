@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Outputs;
+package Outputs_New;
 
+import Outputs.*;
 import Entidades.CONSTANT;
 import Entidades.Usuario;
 import Inputs.Input_Clientes;
+import Manejo.Clientes_Manejo;
 import cec.JavaPostgreSQL;
 import cec.Tabla;
 import java.io.IOException;
@@ -25,50 +27,24 @@ import util.CD;
  *
  * @author martin
  */
-public class Panel_Clientes extends javax.swing.JPanel {
+public class Out_Vista_Clientes extends javax.swing.JPanel {
 
     /**
      * Creates new form Panel_Clientes
      */
-    public Panel_Clientes() {
+    public Out_Vista_Clientes() {
         initComponents();
         
     }
     Usuario current_user = new Usuario();
     
     public void setCurrent_user(Usuario user) {
-
         this.current_user = user;
         current_user.cargaPermisos();
-        
     }
 
     public void Cargar() throws SQLException, IOException {
-        DefaultTableModel modelo = new DefaultTableModel();
-        jT_Clientes.setModel(modelo);
-        modelo.addColumn("ID");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Cobrador");
-        modelo.addColumn("Anulado");
-        ResultSet rs;
-        Connection conn = null;
-        JavaPostgreSQL conexion = new JavaPostgreSQL();
-        conn = conexion.getConnection();
-        Statement st = conn.createStatement();
-        String consulta = "SELECT id, nombre_fantasia, email, anulado FROM entidades;";
-        rs = st.executeQuery(consulta); //ejecutamos la consulta
-        Object[] datos = new Object[4];//creamos un object de la cantidad de COLUMNAS
-
-        conn.close();//cerramos conexion
-        while (rs.next()) {
-            for (int i = 0; i < 4; i++) {
-                datos[i] = rs.getObject(i + 1);//cargamos la fila en el objeto
-            }
-            modelo.addRow(datos);//cargamos el objeto en el model
-        }
-        modelo.fireTableDataChanged();
-        rs.close();
-        
+        Clientes_Manejo.Cargar(jT_Clientes);
     }
 
     /**
@@ -152,72 +128,15 @@ public class Panel_Clientes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jB_Modificar_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Modificar_ClienteActionPerformed
-        if (current_user.VerificoPermisos(CONSTANT.CLIENTES, CONSTANT.MODIFICACION)) {
-            int selectedRow = jT_Clientes.getSelectedRow();
-            DefaultTableModel model = (DefaultTableModel) jT_Clientes.getModel();
-            
-
-            int selectedID = (int) model.getValueAt(selectedRow, 0);
-
-            Input_Clientes JframeClientes = new Input_Clientes();
-
-            try {
-                JframeClientes.Modificacion(selectedID);
-            } catch (SQLException ex) {
-                Logger.getLogger(Panel_Clientes.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            JframeClientes.setVisible(true);
-            JframeClientes.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            JframeClientes.addWindowListener(new java.awt.event.WindowAdapter() {
-                @Override
-                public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-                    try {
-                        Cargar();
-                        // your code
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Panel_Clientes.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (IOException ex) {
-                        Logger.getLogger(Panel_Clientes.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                }
-            });
-
-        }
-
+           if (current_user.VerificoPermisos(CONSTANT.CLIENTES, CONSTANT.MODIFICACION)) {
+               Clientes_Manejo.Modificar(jT_Clientes);
+           }
     }//GEN-LAST:event_jB_Modificar_ClienteActionPerformed
 
     private void jB_Alta_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Alta_ClienteActionPerformed
-
         if (current_user.VerificoPermisos(CONSTANT.CLIENTES, CONSTANT.ALTA)) {
-            int selectedRow = jT_Clientes.getSelectedRow();
-            DefaultTableModel model = (DefaultTableModel) jT_Clientes.getModel();
-
-            //int selectedID = (int) model.getValueAt(selectedRow, 0);
-            Input_Clientes JframeClientes = new Input_Clientes();
-
-            try {
-                JframeClientes.Alta();
-            } catch (SQLException ex) {
-                Logger.getLogger(Panel_Clientes.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            JframeClientes.setVisible(true);
-            JframeClientes.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            JframeClientes.addWindowListener(new java.awt.event.WindowAdapter() {
-                @Override
-                public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-                    try {
-                        Cargar();
-                        // your code
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Panel_Clientes.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (IOException ex) {
-                        Logger.getLogger(Panel_Clientes.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            });
+            Clientes_Manejo.Crear(jT_Clientes);
         }
-
     }//GEN-LAST:event_jB_Alta_ClienteActionPerformed
 
 

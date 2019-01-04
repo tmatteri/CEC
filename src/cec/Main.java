@@ -45,6 +45,7 @@ public class Main extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
+    
     JMenuBar barraMenu = new JMenuBar();
     JMenu menu_cuenta = new JMenu("Configuración");
     JMenu menu_entidades = new JMenu("Entidades");
@@ -76,6 +77,7 @@ public class Main extends javax.swing.JFrame {
 
     public Main() {
         initComponents();
+        this.setLocationRelativeTo(this);
         CrearMenu();
         jTabbedPane1.setUI(new CustomTabbedPaneUI());
         menu_facturas.addActionListener(new ActionListener() {
@@ -101,13 +103,13 @@ public class Main extends javax.swing.JFrame {
                 
                 //JOptionPane.showMessageDialog(Main.this, "click");
                 panel_usuarios.setCurrent_user(current_user);
-                try {
+                /*try {
                     panel_usuarios.CargaUsuarios();
                 } catch (IOException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                }*/
                 jTabbedPane1.addTab("Usuarios   ", panel_usuarios);
                 
                 
@@ -170,6 +172,8 @@ public class Main extends javax.swing.JFrame {
                 try {
                     panel_facturas_ingresos.carga();
                 } catch (SQLException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -333,10 +337,10 @@ public class Main extends javax.swing.JFrame {
       FontMetrics fm = g.getFontMetrics(g.getFont());
       int charWidth = fm.charWidth('x');
       int maxAscent = fm.getMaxAscent();
-      g.drawString("x", textRect.x + textRect.width - 1, textRect.y + textRect.height - 4);
-      g.drawRect(textRect.x+textRect.width-3,
+      g.drawString("x", textRect.x-2 + textRect.width - 1, textRect.y + textRect.height - 4);
+      g.drawRect(textRect.x-2+textRect.width-3,
                  textRect.y+textRect.height-maxAscent-1, charWidth+2, maxAscent-1);
-      xRect = new Rectangle(textRect.x+textRect.width-5,
+      xRect = new Rectangle(textRect.x-2+textRect.width-5,
                  textRect.y+textRect.height-maxAscent-1, charWidth+2, maxAscent-1);
       g.setFont(f);
       
