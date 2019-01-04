@@ -9,7 +9,7 @@ import Entidades.Comprobantes;
 import Entidades.Usuario;
 import Outputs.Panel_Clientes;
 import cec.Tabla;
-import com.sun.imageio.plugins.common.I18N;
+//import com.sun.imageio.plugins.common.I18N;
 import java.awt.Component;
 import java.io.IOException;
 import java.sql.ResultSet;
