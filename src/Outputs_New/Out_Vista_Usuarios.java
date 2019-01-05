@@ -48,8 +48,14 @@ public class Out_Vista_Usuarios extends javax.swing.JPanel {
     }
 
     public Out_Vista_Usuarios() {
-        initComponents();
-
+        try {
+            initComponents();
+            CargaUsuarios();
+        } catch (IOException ex) {
+            Logger.getLogger(Out_Vista_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Out_Vista_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void CargaUsuarios() throws IOException, SQLException {

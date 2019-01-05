@@ -10,6 +10,8 @@ import com.mxrck.autocompleter.AutoCompleter;
 
 import Entidades.*;
 import Outputs.Panel_Recorridos;
+import Outputs_New.*;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -61,7 +63,9 @@ public class Main extends javax.swing.JFrame {
     JMenuItem menu_productos = new JMenuItem("Productos");
 
     private Usuario current_user = new Usuario();
-    Panel_Usuarios panel_usuarios = new Panel_Usuarios();
+    //Panel_Usuarios panel_usuarios = new Panel_Usuarios();
+    Out_Vista_Usuarios panel_usuarios = new Out_Vista_Usuarios();
+    
     Panel_Clientes panel_clientes = new Panel_Clientes();
     Panel_Recorridos panel_recorridos = new Panel_Recorridos();
     Panel_Cobradores panel_cobradores = new Panel_Cobradores();
@@ -110,6 +114,7 @@ public class Main extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 }*/
+                
                 jTabbedPane1.addTab("Usuarios   ", panel_usuarios);
                 
                 
@@ -172,8 +177,6 @@ public class Main extends javax.swing.JFrame {
                 try {
                     panel_facturas_ingresos.carga();
                 } catch (SQLException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

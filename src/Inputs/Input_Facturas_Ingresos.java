@@ -6,6 +6,7 @@
 package Inputs;
 
 import Entidades.Comprobantes;
+import Entidades.Item;
 import Entidades.Usuario;
 import Outputs.Panel_Clientes;
 import cec.Tabla;
@@ -59,12 +60,13 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
     public void Modificacion(int selectedId) throws SQLException {
 
         NewRecord = false;
-        ResultSet rs = Tabla.select("usuarios", "id = " + selectedId);
+        ResultSet rs = Tabla.select("comprobantes", "id = " + selectedId);
         rs.next();
-        jTComprobante.setText(rs.getString("nombre"));
-        jTFechaVencimiento.setText(rs.getString("email"));
-        jTFecha.setText(rs.getString("contrasena"));
-
+        jTComprobante.setText(rs.getString("id_tipo_de_comprobante"));
+        jTFechaVencimiento.setText(rs.getString("fecha_vencimiento"));
+        jTFecha.setText(rs.getString("fecha_creacion"));
+        jTCliente.setText(Tabla.selectOne("nombre_fantasia","entidades","id = "+rs.getString("id_entidad")));
+        jTCUIT.setText(Tabla.selectOne("cuit","entidades","id = "+rs.getString("id_entidad")));
     }
 
     public void CargaItems() throws SQLException {
@@ -78,7 +80,7 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         };
 
         jT_Items.setModel(modelo);
-        // modelo.addColumn("ID");
+        modelo.addColumn("ID");
         modelo.addColumn("Producto");
         modelo.addColumn("Descripción");
         modelo.addColumn("Cantidad");
@@ -91,13 +93,13 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
 
         while (rs.next()) {
 
-            //datos[0] = rs.getObject(1);//cargamos la fila en el objeto
-            datos[0] = Tabla.selectOne("descripcion", "productos", "id = '" + (int) rs.getObject(2) + "'");
-            datos[1] = rs.getObject(3);//cargamos la fila en el objeto
-            datos[2] = rs.getObject(4);//cargamos la fila en el objeto
-            datos[3] = rs.getObject(5);//cargamos la fila en el objeto
-            datos[4] = rs.getObject(6);//cargamos la fila en el objeto
-            datos[5] = (int) datos[3] * (float) datos[4] * ((int) datos[5] / 100);
+            datos[0] = rs.getObject(1);//cargamos la fila en el objeto
+            datos[1] = Tabla.selectOne("descripcion", "productos", "id = '" + (int) rs.getObject(2) + "'");
+            datos[2] = rs.getObject(3);//cargamos la fila en el objeto
+            datos[3] = rs.getObject(4);//cargamos la fila en el objeto
+            datos[4] = rs.getObject(5);//cargamos la fila en el objeto
+            datos[5] = rs.getObject(6);//cargamos la fila en el objeto
+            datos[6] = (int) datos[3] * (float) datos[4] * ((int) datos[5] / 100);
 
             modelo.addRow(datos);//cargamos el objeto en el model
         }
@@ -133,7 +135,7 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jTCuenta = new javax.swing.JTextField();
-        jTRazon_social8 = new javax.swing.JTextField();
+        jTCUIT = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jT_Descripcion = new javax.swing.JTextField();
         jT_Total = new javax.swing.JTextField();
@@ -223,10 +225,10 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
             }
         });
 
-        jTRazon_social8.setName("jTRazon_social"); // NOI18N
-        jTRazon_social8.addActionListener(new java.awt.event.ActionListener() {
+        jTCUIT.setName("jTRazon_social"); // NOI18N
+        jTCUIT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTRazon_social8ActionPerformed(evt);
+                jTCUITActionPerformed(evt);
             }
         });
 
@@ -289,7 +291,7 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTRazon_social8, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTCUIT, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jT_Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jTFechaVencimiento, javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,7 +352,7 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
                     .addComponent(jTCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTRazon_social8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTCUIT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -390,9 +392,9 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jT_DescripcionActionPerformed
 
-    private void jTRazon_social8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTRazon_social8ActionPerformed
+    private void jTCUITActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCUITActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTRazon_social8ActionPerformed
+    }//GEN-LAST:event_jTCUITActionPerformed
 
     private void jTCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCuentaActionPerformed
         // TODO add your handling code here:
@@ -410,10 +412,18 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         if (NewRecord) {
-
+            int numero_ultimo =Tabla.UltimoNumero("comprobantes") + 1;
+            
             Comprobantes.insert(Tabla.UltimoNumero("comprobantes") + 1, ayudaComprobante.getId(), ayudaCliente.getId(), jT_Descripcion.getText(), jTFecha.getText(),
             jTFechaVencimiento.getText(),Double.parseDouble(jT_Total.getText()),0,Integer.parseInt(jT_Financiamientol.getText()),0,true,"","00:00:00","01/01/2000");
-         
+            DefaultTableModel model = (DefaultTableModel) jT_Items.getModel();
+          
+            for(int i=0;i<jT_Items.getColumnCount();i++)
+            {
+                Item.insert(Tabla.UltimoNumero("items") + 1, numero_ultimo, (int) model.getValueAt(i, 2), (int) model.getValueAt(i, 3), (float) model.getValueAt(i, 4), (int) model.getValueAt(i, 5), (float) model.getValueAt(i, 6));
+                
+            }
+                       
         } else {
 
             Comprobantes.updateAll(Tabla.UltimoNumero("comprobantes") + 1, ayudaComprobante.getId(), ayudaCliente.getId(), jT_Descripcion.getText(), jTFecha.getText(),
@@ -611,12 +621,12 @@ public class Input_Facturas_Ingresos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTCUIT;
     private javax.swing.JTextField jTCliente;
     private javax.swing.JTextField jTComprobante;
     private javax.swing.JTextField jTCuenta;
     private javax.swing.JTextField jTFecha;
     private javax.swing.JTextField jTFechaVencimiento;
-    private javax.swing.JTextField jTRazon_social8;
     private javax.swing.JTextField jT_Descripcion;
     private javax.swing.JTextField jT_Financiamientol;
     private javax.swing.JTable jT_Items;

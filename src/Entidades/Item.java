@@ -5,11 +5,17 @@
  */
 package Entidades;
 
+import static Entidades.Entidad.tabla;
+import cec.Tabla;
+import java.sql.ResultSet;
+import java.time.LocalDate;
+
 /**
  *
  * @author Programación 2
  */
 public class Item {
+     private static final String tabla = "items";
     private int id;
     private int id_comprobante;
     private int id_producto;
@@ -87,7 +93,36 @@ public class Item {
         this.total = total;
     }
     
-    
+     public static int insert(int id, int id_comprobante,int id_producto,int cantidad,float precio,int alicuota,float total) {
+        String campos = "id,id_comprobante,id_producto,cantidad,precio,alicuota,total";
+        String valores = id + "," + id_comprobante + "," + id_producto + "," + cantidad+ "," + precio+ "," + alicuota+ "," + total;
+        return Tabla.insert(tabla, campos, valores);
+    }
+
+    public void Guardar() {
+        Item.insert(this.id,this.id_comprobante,this.id_producto,this.cantidad,this.precio,this.alicuota,this.total);
+
+    }
+
+    public static int updateAll(int id, int id_comprobante,int id_producto,int cantidad,float precio,int alicuota,float total) {
+        String campos =  "id<>id_comprobante<>id_producto<>cantidad<>precio<>alicuota<>total";
+   
+        String valores = id + "<>'" + id_comprobante + "'<>'" + id_producto + "'<>'" + cantidad + "'<>'" + precio + "'<>'" + alicuota + "'<>'" + total;
+        return Tabla.updateAll(tabla, id, campos, valores);
+    }
+
+    public static int delete(int id) {
+        return Tabla.delete(tabla, id);
+    }
+
+    public static int update(int id, String campo, String valor) {
+        return Tabla.update(tabla, id, campo, valor);
+    }
+
+    public static ResultSet select() {
+        return Tabla.select(tabla);
+    }
+
     
     
 }
